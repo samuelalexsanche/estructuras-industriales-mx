@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estructuras Industriales MX — Construcción y montaje de estructura de acero</title>
+  <meta name="description" content="Construcción industrial y montaje de estructura de acero para los sectores automotriz, farmacéutico, logístico, alimenticio y aeronáutico. Metros construidos con precisión y seguridad." />
+
+  <!-- ====== FÁCIL DE EDITAR: reemplaza el nombre, colores y datos ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#inicio" class="brand" aria-label="Inicio">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30"><path d="M4 26 L16 5 L28 26" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M9 26 L16 13 L23 26" fill="none" stroke="var(--accent)" stroke-width="2.2"/></svg>
+        </span>
+        <span class="brand__name">Estructuras <b>Industriales MX</b></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#cifras">Cifras</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#clientes">Clientes</a>
+        <a href="#contacto" class="btn btn--sm btn--primary">Cotizar proyecto</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" id="inicio">
+    <!-- Fondo técnico / blueprint parallax (100% código) -->
+    <div class="hero__bg" aria-hidden="true">
+      <div class="grid-layer" data-parallax="0.15"></div>
+      <div class="blueprint-layer" data-parallax="0.30">
+        <svg class="blueprint" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--primary)" stop-opacity="0.9"/>
+              <stop offset="1" stop-color="var(--primary)" stop-opacity="0.15"/>
+            </linearGradient>
+          </defs>
+          <!-- Marco de nave industrial en wireframe -->
+          <g class="wire" stroke="url(#beam)" fill="none" stroke-width="1.4">
+            <path class="draw" d="M120 780 L120 380 L720 140 L1320 380 L1320 780"/>
+            <path class="draw" d="M260 780 L260 430 L720 235 L1180 430 L1180 780"/>
+            <path class="draw" d="M120 380 L1320 380"/>
+            <path class="draw" d="M260 430 L1180 430"/>
+            <path class="draw" d="M120 560 L1320 560"/>
+            <path class="draw" d="M120 700 L1320 700"/>
+            <path class="draw" d="M420 780 L420 300"/>
+            <path class="draw" d="M620 780 L620 210"/>
+            <path class="draw" d="M820 780 L820 210"/>
+            <path class="draw" d="M1020 780 L1020 300"/>
+            <!-- Diagonales de arriostramiento -->
+            <path class="draw thin" d="M260 560 L420 430 M420 560 L620 430 M620 560 L820 430 M820 560 L1020 430 M1020 560 L1180 430"/>
+            <path class="draw thin" d="M120 700 L260 560 M420 700 L620 560 M820 700 L1020 560 M1180 700 L1320 560"/>
+          </g>
+          <!-- Nodos -->
+          <g class="nodes" fill="var(--accent)">
+            <circle cx="720" cy="140" r="4"/><circle cx="120" cy="380" r="3"/><circle cx="1320" cy="380" r="3"/>
+            <circle cx="420" cy="430" r="2.5"/><circle cx="620" cy="430" r="2.5"/><circle cx="820" cy="430" r="2.5"/><circle cx="1020" cy="430" r="2.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="particles" data-parallax="0.5" id="particles"></div>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__content container">
+      <div class="eyebrow reveal"><span class="pulse"></span> Construcción industrial &middot; Montaje de acero certificado</div>
+      <h1 class="hero__title reveal">
+        Construimos la <span class="grad">estructura</span> que sostiene a la industria de México.
+      </h1>
+      <p class="hero__sub reveal">
+        Diseño, fabricación y montaje de estructura metálica y obra industrial con precisión milimétrica,
+        seguridad y cumplimiento en tiempo. De la cimentación al último tornillo.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#contacto" class="btn btn--primary btn--lg">Cotiza tu proyecto</a>
+        <a href="#nosotros" class="btn btn--ghost btn--lg">
+          <span class="play"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+          Ver video de la empresa
+        </a>
+      </div>
+
+      <!-- mini métricas -->
+      <div class="hero__mini reveal">
+        <div><b data-count="850000" data-suffix="+">0</b><span>m² construidos</span></div>
+        <div class="sep"></div>
+        <div><b data-count="42000" data-suffix="+">0</b><span>ton. montadas</span></div>
+        <div class="sep"></div>
+        <div><b data-count="18" data-suffix=" años">0</b><span>de experiencia</span></div>
+      </div>
+    </div>
+
+    <a href="#nosotros" class="hero__scroll" aria-label="Desplázate hacia abajo">
+      <span></span> Scroll
+    </a>
+  </section>
+
+  <!-- ============================ VIDEO / NOSOTROS ============================ -->
+  <section class="section video-sec" id="nosotros">
+    <div class="container video-sec__grid">
+      <div class="video-sec__text reveal">
+        <div class="kicker">La empresa</div>
+        <h2 class="h2">Ingeniería y montaje que se ve, se mide y se sostiene.</h2>
+        <p class="lead">
+          Somos un equipo de construcción industrial especializado en estructura de acero para naves,
+          plantas y centros de distribución. Integramos ingeniería de detalle, fabricación en taller y
+          montaje en obra bajo estándares internacionales de seguridad y calidad.
+        </p>
+        <ul class="checklist">
+          <li>Ingeniería de detalle y modelado 3D / BIM</li>
+          <li>Fabricación en taller con control de calidad por lote</li>
+          <li>Montaje certificado y cumplimiento en tiempo</li>
+        </ul>
+        <a href="#contacto" class="btn btn--primary">Hablemos de tu obra</a>
+      </div>
+
+      <!-- Reproductor de video (reemplaza el src por el video real de la empresa) -->
+      <div class="video-sec__player reveal">
+        <div class="player" id="player">
+          <!-- Fondo técnico animado como poster mientras no hay video -->
+          <div class="player__poster">
+            <div class="player__grid"></div>
+            <button class="player__play" id="playBtn" aria-label="Reproducir video de la empresa">
+              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+            </button>
+            <div class="player__tag">Video corporativo &middot; 2:14</div>
+          </div>
+          <!--
+            Para el video real, descomenta y cambia el src:
+            <video controls poster="assets/poster.jpg">
+              <source src="assets/video-empresa.mp4" type="video/mp4">
+            </video>
+            O embebe YouTube/Vimeo dentro de .player
+          -->
+        </div>
+        <div class="player__caption">Recorrido por obra: fabricación, izaje y montaje de estructura.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CIFRAS / CONTADORES ============================ -->
+  <section class="section stats" id="cifras">
+    <div class="stats__bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="kicker">Nuestro impacto en números</div>
+        <h2 class="h2">Cifras que respaldan cada proyecto</h2>
+      </div>
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <div class="stat__num" data-count="850000" data-suffix="+">0</div>
+          <div class="stat__label">m² construidos</div>
+          <div class="stat__bar"><i></i></div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="42000" data-suffix="+">0</div>
+          <div class="stat__label">Toneladas de estructura montada</div>
+          <div class="stat__bar"><i></i></div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="240" data-suffix="+">0</div>
+          <div class="stat__label">Proyectos entregados</div>
+          <div class="stat__bar"><i></i></div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="99" data-suffix="%">0</div>
+          <div class="stat__label">Entregas en tiempo</div>
+          <div class="stat__bar"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SECTORES ============================ -->
+  <section class="section sectores" id="sectores">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="kicker">Experiencia por industria</div>
+        <h2 class="h2">Sectores en los que construimos</h2>
+        <p class="section-head__sub">Cada industria exige normas, tiempos y acabados distintos. Los dominamos.</p>
+      </div>
+
+      <div class="sectores__grid">
+        <!-- Automotriz -->
+        <article class="sector reveal" data-tilt>
+          <div class="sector__icon">
+            <svg viewBox="0 0 48 48"><path d="M6 30l4-11a5 5 0 0 1 4.7-3.4h18.6A5 5 0 0 1 38 19l4 11" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M6 30h36v6a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-2H13v2a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="14" cy="30" r="2.5" fill="var(--accent)"/><circle cx="34" cy="30" r="2.5" fill="var(--accent)"/></svg>
+          </div>
+          <h3>Automotriz</h3>
+          <p>Naves de producción, líneas de ensamble y plantas de autopartes con tolerancias exigentes.</p>
+          <span class="sector__arrow">Ver más →</span>
+        </article>
+
+        <!-- Farmacéutica -->
+        <article class="sector reveal" data-tilt>
+          <div class="sector__icon">
+            <svg viewBox="0 0 48 48"><rect x="20" y="6" width="8" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M24 20v8m-6 0h12l4 12a2 2 0 0 1-2 2.6H16a2 2 0 0 1-2-2.6z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M20 34h8" stroke="var(--accent)" stroke-width="2.4"/></svg>
+          </div>
+          <h3>Farmacéutica</h3>
+          <p>Cuartos limpios, plantas GMP y estructuras con control estricto de contaminación.</p>
+          <span class="sector__arrow">Ver más →</span>
+        </article>
+
+        <!-- Logístico -->
+        <article class="sector reveal" data-tilt>
+          <div class="sector__icon">
+            <svg viewBox="0 0 48 48"><path d="M6 34V16l12-6 12 6v18" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M6 34h36V22l-8-4" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="14" y="24" width="8" height="10" fill="none" stroke="var(--accent)" stroke-width="2.2"/></svg>
+          </div>
+          <h3>Logístico</h3>
+          <p>Centros de distribución y almacenes de gran claro para operación 24/7.</p>
+          <span class="sector__arrow">Ver más →</span>
+        </article>
+
+        <!-- Alimenticio -->
+        <article class="sector reveal" data-tilt>
+          <div class="sector__icon">
+            <svg viewBox="0 0 48 48"><path d="M14 6v14a4 4 0 0 0 8 0V6M18 6v36" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M34 6c-4 0-6 4-6 10s2 8 6 8v18" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="18" cy="26" r="2" fill="var(--accent)"/></svg>
+          </div>
+          <h3>Alimenticio</h3>
+          <p>Plantas de proceso y frío con acabados sanitarios y normas de inocuidad.</p>
+          <span class="sector__arrow">Ver más →</span>
+        </article>
+
+        <!-- Aeronáutico -->
+        <article class="sector reveal" data-tilt>
+          <div class="sector__icon">
+            <svg viewBox="0 0 48 48"><path d="M4 26l40-12-8 16-10-2-6 10-3-8z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="34" cy="18" r="2" fill="var(--accent)"/></svg>
+          </div>
+          <h3>Aeronáutico</h3>
+          <p>Hangares y naves de alta especificación con grandes claros libres de columna.</p>
+          <span class="sector__arrow">Ver más →</span>
+        </article>
+
+        <!-- Últimos proyectos (acceso) -->
+        <article class="sector sector--cta reveal">
+          <div class="sector__icon"><svg viewBox="0 0 48 48"><path d="M10 24h28M26 12l12 12-12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Últimos proyectos</h3>
+          <p>Mira lo más reciente que hemos construido y montado.</p>
+          <a href="#proyectos" class="sector__arrow">Ir a proyectos →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ÚLTIMOS PROYECTOS ============================ -->
+  <section class="section proyectos" id="proyectos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Portafolio reciente</div>
+        <h2 class="h2">Últimos proyectos</h2>
+      </div>
+
+      <div class="proyectos__grid">
+        <article class="proj reveal proj--lg">
+          <div class="proj__media" data-scene="a"></div>
+          <div class="proj__info">
+            <span class="chip chip--auto">Automotriz</span>
+            <h3>Planta de ensamble — Bajío</h3>
+            <p>28,000 m² · 3,400 ton · gran claro estructural</p>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__media" data-scene="b"></div>
+          <div class="proj__info">
+            <span class="chip chip--log">Logístico</span>
+            <h3>Centro de distribución</h3>
+            <p>41,000 m² · cross-dock</p>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__media" data-scene="c"></div>
+          <div class="proj__info">
+            <span class="chip chip--aero">Aeronáutico</span>
+            <h3>Hangar de mantenimiento</h3>
+            <p>Claro libre de 90 m</p>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__media" data-scene="d"></div>
+          <div class="proj__info">
+            <span class="chip chip--pharma">Farmacéutica</span>
+            <h3>Planta GMP</h3>
+            <p>Cuartos limpios ISO</p>
+          </div>
+        </article>
+
+        <article class="proj reveal proj--wide">
+          <div class="proj__media" data-scene="e"></div>
+          <div class="proj__info">
+            <span class="chip chip--food">Alimenticio</span>
+            <h3>Planta de proceso y frío</h3>
+            <p>19,500 m² · acabados sanitarios · cámaras de refrigeración</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CLIENTES / EMPRESAS ============================ -->
+  <section class="section clientes" id="clientes">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="kicker">Confianza</div>
+        <h2 class="h2">Empresas que han construido con nosotros</h2>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="false">
+      <div class="marquee__track">
+        <!-- Logos genéricos (reemplaza por los reales en assets/) -->
+        <span class="logo">NORTHAM<b>STEEL</b></span>
+        <span class="logo">Vela<b>Motors</b></span>
+        <span class="logo">PHARMA<b>NOVA</b></span>
+        <span class="logo">LogiPrime</span>
+        <span class="logo">AERO<b>MEX</b></span>
+        <span class="logo">Nutri<b>Andes</b></span>
+        <span class="logo">CEMENTIA</span>
+        <span class="logo">RIVAS &amp; Co.</span>
+        <!-- duplicado para loop continuo -->
+        <span class="logo">NORTHAM<b>STEEL</b></span>
+        <span class="logo">Vela<b>Motors</b></span>
+        <span class="logo">PHARMA<b>NOVA</b></span>
+        <span class="logo">LogiPrime</span>
+        <span class="logo">AERO<b>MEX</b></span>
+        <span class="logo">Nutri<b>Andes</b></span>
+        <span class="logo">CEMENTIA</span>
+        <span class="logo">RIVAS &amp; Co.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FORMULARIO / CONTACTO ============================ -->
+  <section class="section contacto" id="contacto">
+    <div class="contacto__bg" aria-hidden="true"><div class="grid-layer soft"></div></div>
+    <div class="container contacto__grid">
+      <div class="contacto__intro reveal">
+        <div class="kicker">Cotiza tu proyecto</div>
+        <h2 class="h2">Cuéntanos qué vas a construir</h2>
+        <p class="lead">Déjanos los datos de tu proyecto y un ingeniero te contacta en menos de 24 horas con los siguientes pasos.</p>
+
+        <ul class="contacto__list">
+          <li><span class="ci"></span> Respuesta de un ingeniero, no un bot</li>
+          <li><span class="ci"></span> Visita técnica y anteproyecto sin costo</li>
+          <li><span class="ci"></span> Cotización clara: alcance, tiempos y montaje</li>
+        </ul>
+
+        <div class="contacto__direct">
+          <a href="tel:+523327874747" class="direct"><b>Teléfono</b>+52 33 2787 4747</a>
+          <a href="mailto:contacto@estructurasindustriales.mx" class="direct"><b>Correo</b>contacto@estructurasindustriales.mx</a>
+        </div>
+      </div>
+
+      <form class="contacto__form reveal" id="leadForm" novalidate>
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+          <small class="err"></small>
+        </div>
+        <div class="field field--half">
+          <div>
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Nombre del negocio" required />
+            <small class="err"></small>
+          </div>
+          <div>
+            <label for="telefono">WhatsApp / Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="33 0000 0000" required />
+            <small class="err"></small>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="tu@empresa.com" required />
+          <small class="err"></small>
+        </div>
+        <div class="field field--half">
+          <div>
+            <label for="sector">Sector</label>
+            <select id="sector" name="sector" required>
+              <option value="" disabled selected>Selecciona…</option>
+              <option>Automotriz</option>
+              <option>Farmacéutica</option>
+              <option>Logístico</option>
+              <option>Alimenticio</option>
+              <option>Aeronáutico</option>
+              <option>Otro</option>
+            </select>
+            <small class="err"></small>
+          </div>
+          <div>
+            <label for="metros">Superficie estimada (m²)</label>
+            <input id="metros" name="metros" type="text" placeholder="Ej. 12,000" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="mensaje">Cuéntanos del proyecto</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Ubicación, tipo de nave, fechas objetivo…"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg btn--block">Solicitar cotización</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a href="#inicio" class="brand brand--footer">
+          <span class="brand__mark"><svg viewBox="0 0 32 32" width="26" height="26"><path d="M4 26 L16 5 L28 26" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M9 26 L16 13 L23 26" fill="none" stroke="var(--accent)" stroke-width="2.2"/></svg></span>
+          <span class="brand__name">Estructuras <b>Industriales MX</b></span>
+        </a>
+        <p class="footer__desc">Construcción industrial y montaje de estructura de acero en México.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Navegación</h4>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#sectores">Sectores</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contacto</h4>
+        <a href="tel:+523327874747">+52 33 2787 4747</a>
+        <a href="mailto:contacto@estructurasindustriales.mx">contacto@estructurasindustriales.mx</a>
+        <span>Guadalajara, Jalisco, México</span>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <span>© <span id="year"></span> Estructuras Industriales MX. Todos los derechos reservados.</span>
+      <span class="footer__made">Sitio construido para demostración.</span>
+    </div>
+  </footer>
+
+  <!-- ============================ BURBUJA WHATSAPP ============================ -->
+  <a class="wa" id="wa" href="https://wa.me/523327874747?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20construcci%C3%B3n%20industrial"
+     target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <span class="wa__pulse"></span>
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6C14 28.4 15 28.6 16 28.6 22.6 28.6 28 23.2 28 16.6 28 8.4 22.6 3 16 3zm0 23.3c-1 0-2-.2-2.9-.6l-.4-.2-4.9 1 1-4.8-.3-.4C7.6 19 7.1 17 7.1 15 7.1 10 11 6.1 16 6.1S24.9 10 24.9 15 21 26.3 16 26.3zm5-7.7c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
+    <span class="wa__label">¿Cotizamos tu proyecto?</span>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
