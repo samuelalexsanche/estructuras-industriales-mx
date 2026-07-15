@@ -1,18 +1,16 @@
 /* =====================================================================
    ESTRUCTURAS INDUSTRIALES MX — Asistente IA (chat)
-   Modelo real (DeepSeek) vía función serverless. La API key vive en el
-   backend (variable de entorno), nunca en este archivo público.
+   Modelo real (DeepSeek) vía Cloudflare Worker. La API key vive en el
+   Worker (secreto), nunca en este archivo público. Respuestas en streaming.
    ---------------------------------------------------------------------
-   ENDPOINT:
-   - En Vercel (recomendado): '/api/chat'  → funciona en cuanto despliegas
-     el repo en Vercel y agregas DEEPSEEK_API_KEY en Environment Variables.
-   - En Cloudflare Worker (alternativa): pega aquí la URL completa del Worker,
-     ej: 'https://estructuras-chat.tu-sub.workers.dev'
+   ⚙️  CONFIGURA AQUÍ: pega la URL de tu Worker ya desplegado con wrangler.
+       Ej: 'https://estructuras-chat.tu-sub.workers.dev'
+   Mientras esté vacío, el chat avisa que falta conectarlo (no inventa nada).
    ===================================================================== */
 (function () {
   'use strict';
 
-  const CHAT_ENDPOINT = '/api/chat'; // Vercel: función en api/chat.js
+  const CHAT_ENDPOINT = ''; // ←←← PEGA AQUÍ LA URL DE TU CLOUDFLARE WORKER
 
   const fab   = document.getElementById('aiFab');
   const panel = document.getElementById('aiPanel');
