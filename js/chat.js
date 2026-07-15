@@ -10,7 +10,7 @@
 (function () {
   'use strict';
 
-  const CHAT_ENDPOINT = ''; // ←←← PEGA AQUÍ LA URL DE TU CLOUDFLARE WORKER
+  const CHAT_ENDPOINT = 'https://estructuras-chat.mattera.workers.dev'; // Cloudflare Worker
 
   const fab   = document.getElementById('aiFab');
   const panel = document.getElementById('aiPanel');
