@@ -1,0 +1,6 @@
+name = "estructuras-chat"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# La API key NO va aquí. Se guarda como secreto cifrado:
+#   npx wrangler secret put DEEPSEEK_API_KEY
