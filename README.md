@@ -61,6 +61,9 @@ renders generados con IA (kie.ai u otro), coloca las imágenes en `assets/` y c�
 - Hero: `.hero__bg`
 - Proyectos: `.proj__media[data-scene]` en `css/styles.css`
 
-## Deploy en GitHub Pages
+## Deploy
 
-Ver el prompt de continuación entregado en el chat (incluye pasos de repo + Pages).
+- **GitHub Pages** (parte estática): push a `main` y se publica solo.
+- **Vercel** (recomendado, incluye el asistente IA funcionando): ver
+  [`DEPLOY-VERCEL.md`](DEPLOY-VERCEL.md). El chat corre en `api/chat.js` y la
+  API key va como variable de entorno `DEEPSEEK_API_KEY` en Vercel.
