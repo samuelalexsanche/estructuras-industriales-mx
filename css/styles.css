@@ -205,6 +205,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* ============================ PROYECTOS ============================ */
 .proyectos{background:linear-gradient(180deg,var(--bg-2),var(--bg))}
 .proyectos__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+/* Home "Últimos proyectos": tarjetas iguales y alineadas */
+#proyectos .proyectos__grid{grid-template-columns:repeat(3,1fr)}
+#proyectos .proj{min-height:300px}
+@media (max-width:960px){#proyectos .proyectos__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){#proyectos .proyectos__grid{grid-template-columns:1fr}}
 .proj{position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:230px;
   display:flex;align-items:flex-end;transition:transform .4s var(--ease),border-color .4s;background:var(--surface)}
 .proj--lg{grid-column:span 2;grid-row:span 2;min-height:auto}
