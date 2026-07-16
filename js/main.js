@@ -139,6 +139,28 @@
   const form = document.getElementById('leadForm');
   const note = document.getElementById('formNote');
   if (form) {
+    /* ---- Tipo de contacto: cliente / proveedor / empleo ---- */
+    const intentInputs = form.querySelectorAll('input[name="intent"]');
+    const groups = form.querySelectorAll('.intent-group');
+    const lblMensaje = document.getElementById('lblMensaje');
+    const lblEmpresa = document.getElementById('lblEmpresa');
+    const submitBtn = document.getElementById('formSubmit');
+    const intentCopy = {
+      cliente:   { msg: 'Cuéntanos del proyecto',            empresa: 'Empresa',                  btn: 'Solicitar cotización' },
+      proveedor: { msg: 'Qué ofreces: capacidad y experiencia', empresa: 'Empresa',               btn: 'Enviar propuesta' },
+      empleo:    { msg: 'Cuéntanos de ti y tu experiencia',   empresa: 'Empresa actual (opcional)', btn: 'Enviar solicitud' },
+    };
+    const applyIntent = (val) => {
+      groups.forEach((g) => { g.hidden = g.dataset.intent !== val; });
+      const c = intentCopy[val] || intentCopy.cliente;
+      if (lblMensaje) lblMensaje.textContent = c.msg;
+      if (lblEmpresa) lblEmpresa.textContent = c.empresa;
+      if (submitBtn) submitBtn.textContent = c.btn;
+    };
+    intentInputs.forEach((r) => r.addEventListener('change', () => applyIntent(r.value)));
+    const checked = form.querySelector('input[name="intent"]:checked');
+    applyIntent(checked ? checked.value : 'cliente');
+
     const setError = (input, msg) => {
       const field = input.closest('.field') || input.parentElement.closest('.field');
       const small = input.parentElement.querySelector('.err') || (field && field.querySelector('.err'));
@@ -147,10 +169,8 @@
     };
     const validators = {
       nombre: (v) => (v.trim().length >= 2 ? '' : 'Escribe tu nombre.'),
-      empresa: (v) => (v.trim().length >= 2 ? '' : 'Escribe el nombre de la empresa.'),
       telefono: (v) => (/[0-9]{7,}/.test(v.replace(/\D/g, '')) ? '' : 'Teléfono no válido.'),
       email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Correo no válido.'),
-      sector: (v) => (v ? '' : 'Selecciona un sector.'),
     };
 
     form.querySelectorAll('input,select').forEach((input) => {

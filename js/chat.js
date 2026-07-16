@@ -29,7 +29,7 @@
   let greeted = false;
 
   const WELCOME =
-    '¡Hola! 👷 Soy el asistente de Estructuras Industriales MX. ' +
+    '¡Hola! 👷 Soy el asistente de CAABSA STEEL. ' +
     'Puedo resolver dudas sobre lo que hacemos: sectores, fabricación y montaje ' +
     'de estructura de acero, zonas donde operamos y cómo cotizar. ¿En qué te ayudo?';
 
