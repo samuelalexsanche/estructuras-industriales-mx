@@ -2,3 +2,6 @@
 node_modules/
 *.log
 Thumbs.db
+
+# Archivos fuente crudos (fotos/video sin optimizar) — no subir
+assets/drive-download-*/

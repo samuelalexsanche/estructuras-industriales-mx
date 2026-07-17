@@ -128,10 +128,26 @@
      2) Reemplaza el bloque .player__poster por el <video> comentado en index.html
      Este handler solo avisa mientras no exista el video real.
   ------------------------------------------------------------------- */
-  const playBtn = document.getElementById('playBtn');
-  if (playBtn) {
-    playBtn.addEventListener('click', () => {
-      alert('Aquí se reproducirá el video corporativo. Reemplaza el placeholder por el video real en assets/ (ver comentarios en index.html).');
+  const corpVideo = document.getElementById('corpVideo');
+  const videoSound = document.getElementById('videoSound');
+  if (corpVideo && videoSound) {
+    const setLabel = (txt) => {
+      Array.from(videoSound.childNodes).forEach((n) => {
+        if (n.nodeType === 3 && n.textContent.trim()) n.textContent = ' ' + txt;
+      });
+    };
+    videoSound.addEventListener('click', () => {
+      if (corpVideo.muted) {
+        corpVideo.muted = false;
+        corpVideo.controls = true;
+        corpVideo.currentTime = 0;
+        corpVideo.play();
+        setLabel('Silenciar');
+      } else {
+        corpVideo.muted = true;
+        corpVideo.controls = false;
+        setLabel('Ver con sonido');
+      }
     });
   }
 

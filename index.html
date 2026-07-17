@@ -112,45 +112,43 @@
     </a>
   </section>
 
-  <!-- ============================ VIDEO / NOSOTROS ============================ -->
+  <!-- ============================ NOSOTROS + VIDEO ============================ -->
   <section class="section video-sec" id="nosotros">
-    <div class="container video-sec__grid">
-      <div class="video-sec__text reveal">
+    <div class="container">
+      <div class="section-head reveal" style="max-width:780px">
         <div class="kicker">La empresa</div>
         <h2 class="h2">Ingeniería y montaje que se ve, se mide y se sostiene.</h2>
         <p class="lead">
-          Somos un equipo de construcción industrial especializado en estructura de acero para naves,
-          plantas y centros de distribución. Integramos ingeniería de detalle, fabricación en taller y
-          montaje en obra bajo estándares internacionales de seguridad y calidad.
+          En CAABSA STEEL construimos naves, plantas y centros de distribución con estructura de acero,
+          bajo esquema llave en mano: de la ingeniería de detalle y la fabricación en taller al montaje
+          certificado en obra, con calidad avalada por la norma ISO 9001:2015.
         </p>
         <ul class="checklist">
           <li>Ingeniería de detalle y modelado 3D / BIM</li>
           <li>Fabricación en taller con control de calidad por lote</li>
-          <li>Montaje certificado y cumplimiento en tiempo</li>
+          <li>Montaje certificado y cumplimiento en tiempo · ISO 9001:2015</li>
         </ul>
         <a href="#contacto" class="btn btn--primary">Hablemos de tu obra</a>
       </div>
+    </div>
 
-      <!-- Reproductor de video (reemplaza el src por el video real de la empresa) -->
-      <div class="video-sec__player reveal">
-        <div class="player" id="player">
-          <!-- Fondo técnico animado como poster mientras no hay video -->
-          <div class="player__poster">
-            <div class="player__grid"></div>
-            <button class="player__play" id="playBtn" aria-label="Reproducir video de la empresa">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="player__tag">Video corporativo &middot; 2:14</div>
-          </div>
-          <!--
-            Para el video real, descomenta y cambia el src:
-            <video controls poster="assets/poster.jpg">
-              <source src="assets/video-empresa.mp4" type="video/mp4">
-            </video>
-            O embebe YouTube/Vimeo dentro de .player
-          -->
+    <!-- Video corporativo a todo lo ancho · autoplay silenciado con opción de sonido -->
+    <div class="videoband" id="video">
+      <video class="videoband__media" id="corpVideo" autoplay muted loop playsinline preload="metadata" poster="assets/video/poster.jpg">
+        <source src="assets/video/caabsa-corporativo.mp4" type="video/mp4" />
+      </video>
+      <div class="videoband__overlay"></div>
+      <div class="videoband__content reveal">
+        <div class="kicker">Video corporativo</div>
+        <h2 class="h2">CAABSA STEEL en movimiento</h2>
+        <p>Un recorrido por nuestras obras: fabricación en taller, izaje y montaje de estructura de acero en operación.</p>
+        <div class="videoband__cta">
+          <button class="btn btn--primary" id="videoSound" type="button">
+            <svg class="videoband__sound-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+            Ver con sonido
+          </button>
+          <span class="videoband__hint">Se reproduce en silencio automáticamente</span>
         </div>
-        <div class="player__caption">Recorrido por obra: fabricación, izaje y montaje de estructura.</div>
       </div>
     </div>
   </section>
@@ -269,47 +267,56 @@
 
       <div class="proyectos__grid">
         <article class="proj reveal">
-          <div class="proj__media" data-scene="a"></div>
+          <div class="proj__media"><img src="images/proyectos/martinrea/01.jpg" alt="Planta Martinrea Honsel" loading="lazy" /></div>
           <div class="proj__info">
             <span class="chip chip--auto">Automotriz</span>
-            <h3>Planta de ensamble — Bajío</h3>
-            <p>28,000 m² · 3,400 ton · gran claro estructural</p>
+            <h3>Martinrea Honsel</h3>
+            <p>Planta de autopartes · nave y edificio administrativo</p>
           </div>
         </article>
 
         <article class="proj reveal">
-          <div class="proj__media" data-scene="b"></div>
+          <div class="proj__media"><img src="images/proyectos/gates/01.jpg" alt="Ampliación de nave Gates" loading="lazy" /></div>
           <div class="proj__info">
-            <span class="chip chip--log">Logístico</span>
-            <h3>Centro de distribución</h3>
-            <p>41,000 m² · cross-dock</p>
+            <span class="chip chip--auto">Automotriz</span>
+            <h3>Gates</h3>
+            <p>1,500 m² · incremento de altura en nave en producción</p>
           </div>
         </article>
 
         <article class="proj reveal">
-          <div class="proj__media" data-scene="c"></div>
+          <div class="proj__media"><img src="images/proyectos/espejos/01.jpg" alt="Ampliación de nave Espejos Inteligentes" loading="lazy" /></div>
           <div class="proj__info">
-            <span class="chip chip--aero">Aeronáutico</span>
-            <h3>Hangar de mantenimiento</h3>
-            <p>Claro libre de 90 m</p>
+            <span class="chip chip--auto">Automotriz</span>
+            <h3>Espejos Inteligentes</h3>
+            <p>2,500 m² · ampliación de nave y almacén</p>
           </div>
         </article>
 
         <article class="proj reveal">
-          <div class="proj__media" data-scene="d"></div>
-          <div class="proj__info">
-            <span class="chip chip--pharma">Farmacéutica</span>
-            <h3>Planta GMP</h3>
-            <p>Cuartos limpios ISO</p>
-          </div>
-        </article>
-
-        <article class="proj reveal">
-          <div class="proj__media" data-scene="e"></div>
+          <div class="proj__media"><img src="images/proyectos/jugos-del-valle/01.jpg" alt="Planta Jugos del Valle" loading="lazy" /></div>
           <div class="proj__info">
             <span class="chip chip--food">Alimenticio</span>
-            <h3>Planta de proceso y frío</h3>
-            <p>19,500 m² · acabados sanitarios · cámaras de refrigeración</p>
+            <h3>Jugos del Valle</h3>
+            <p>Planta de bebidas · nave de proceso y almacén</p>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__media"><img src="images/proyectos/la-moderna/01.jpg" alt="Centro de distribución La Moderna" loading="lazy" /></div>
+          <div class="proj__info">
+            <span class="chip chip--log">Logístico</span>
+            <h3>La Moderna</h3>
+            <p>Centro de distribución · gran claro y andenes de carga</p>
+          </div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj__media"><img src="images/proyectos/tintas-sanchez/01.jpg" alt="Complejo industrial Grupo Sánchez" loading="lazy" /></div>
+          <div class="proj__info">
+            <span class="chip chip--ind">Industrial</span>
+            <h3>Grupo Sánchez</h3>
+            <p>Complejo llave en mano · 25,000 m² con oficinas y silos</p>
           </div>
         </article>
       </div>
@@ -359,37 +366,37 @@
 
       <div class="blog__grid">
         <a class="post reveal" href="blog.html">
-          <div class="post__media" data-scene="a">
-            <span class="chip chip--auto post__cat">Ingeniería</span>
+          <div class="post__media"><img src="images/proyectos/martinrea/03.jpg" alt="Proyecto industrial automotriz" loading="lazy" />
+            <span class="chip chip--auto post__cat">Automotriz</span>
           </div>
           <div class="post__body">
-            <div class="post__meta">10 jul 2026 · 4 min de lectura</div>
-            <h3>5 claves para reducir tiempos de montaje en nave industrial</h3>
-            <p>Cómo la ingeniería de detalle y la prefabricación en taller adelantan semanas la entrega de una obra.</p>
+            <div class="post__meta">Cuernavaca, Morelos</div>
+            <h3>Ingeniería subterránea al servicio de una llantera</h3>
+            <p>Edificio industrial de 5 niveles con 3 sótanos y grúa viajera para una planta de fabricación de llantas.</p>
             <span class="post__more">Leer artículo →</span>
           </div>
         </a>
 
         <a class="post reveal reveal-d1" href="blog.html">
-          <div class="post__media" data-scene="b">
-            <span class="chip chip--pharma post__cat">Normas</span>
+          <div class="post__media"><img src="images/proyectos/la-moderna/02.jpg" alt="Centro logístico La Moderna" loading="lazy" />
+            <span class="chip chip--log post__cat">Logística</span>
           </div>
           <div class="post__body">
-            <div class="post__meta">28 jun 2026 · 6 min de lectura</div>
-            <h3>Cuartos limpios: qué exige una estructura para planta GMP</h3>
-            <p>Materiales, acabados y control de contaminación en proyectos del sector farmacéutico.</p>
+            <div class="post__meta">Calidad certificada ISO 9001:2015</div>
+            <h3>Centros logísticos de alto rendimiento</h3>
+            <p>Planeación, precisión y calidad en la construcción de naves de distribución que operan como un reloj.</p>
             <span class="post__more">Leer artículo →</span>
           </div>
         </a>
 
         <a class="post reveal reveal-d2" href="blog.html">
-          <div class="post__media" data-scene="c">
-            <span class="chip chip--log post__cat">Logística</span>
+          <div class="post__media"><img src="images/proyectos/tintas-sanchez/03.jpg" alt="Complejo industrial Grupo Sánchez" loading="lazy" />
+            <span class="chip chip--ind post__cat">Industrial</span>
           </div>
           <div class="post__body">
-            <div class="post__meta">15 jun 2026 · 3 min de lectura</div>
-            <h3>Grandes claros: naves para centros de distribución 24/7</h3>
-            <p>Ventajas estructurales de los claros libres de columna para operación logística continua.</p>
+            <div class="post__meta">Proyecto llave en mano</div>
+            <h3>Complejo industrial de 25,000 m² para Grupo Sánchez</h3>
+            <p>Producción, almacén, oficinas, silos y básculas integrados en un solo desarrollo llave en mano.</p>
             <span class="post__more">Leer artículo →</span>
           </div>
         </a>
