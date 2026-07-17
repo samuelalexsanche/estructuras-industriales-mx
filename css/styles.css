@@ -492,6 +492,27 @@ a.sector:hover .sector__arrow{transform:translateX(6px)}
 .videoband__sound-ic{width:18px;height:18px;flex:none}
 @media (max-width:560px){.videoband{height:66vh;margin-top:44px}}
 
+/* ============================ FONDOS FOTOGRÁFICOS CON PARALLAX ============================ */
+.pbg{position:relative;background-size:cover;background-position:center;background-attachment:fixed;background-color:var(--bg)}
+.pbg::before{content:"";position:absolute;inset:0;background:rgba(10,14,20,.84);z-index:0;pointer-events:none}
+.pbg--soft::before{background:rgba(10,14,20,.68)}
+.pbg > *{position:relative;z-index:1}
+.pbg .kicker,.pbg .h2,.pbg .lead,.pbg .section-head__sub,.pbg .contacto__list li{text-shadow:0 1px 10px rgba(0,0,0,.5)}
+/* Banda de imagen a todo lo ancho con parallax */
+.pband{position:relative;left:50%;width:100vw;margin-left:-50vw;min-height:440px;display:flex;align-items:center;
+  overflow:hidden;background-size:cover;background-position:center;background-attachment:fixed;background-color:var(--bg)}
+.pband::before{content:"";position:absolute;inset:0;background:rgba(8,11,16,.52);z-index:0}
+.pband__content{position:relative;z-index:1;width:100%;max-width:var(--maxw);margin:0 auto;padding:64px 24px;
+  text-shadow:0 2px 16px rgba(0,0,0,.55)}
+.pband__content .h2{max-width:20ch}
+.pband__content p{color:#dfe6ef;max-width:52ch;margin-top:12px}
+.pband__content .btn{margin-top:24px;text-shadow:none}
+/* En móvil, background-attachment:fixed no es fiable → scroll normal */
+@media (max-width:768px){
+  .pbg,.pband{background-attachment:scroll}
+  .pband{min-height:360px}
+}
+
 /* Accesibilidad: respeta reduce motion */
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
