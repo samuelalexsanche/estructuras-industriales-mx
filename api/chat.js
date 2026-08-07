@@ -47,33 +47,35 @@ acero relacionada con sus servicios.
 ═════ INFORMACIÓN DE CAABSA STEEL (ÚNICA fuente de datos permitida) ═════
 
 QUÉ HACE:
-- Diseño, fabricación y montaje de estructura metálica y obra industrial "llave en mano".
-- Ingeniería de detalle y modelado 3D / BIM.
-- Fabricación en taller con control de calidad por lote.
+- Diseño, fabricación y montaje de estructura metálica y obra industrial "llave en mano"
+  para empresas AAA y AA. 45 años de experiencia.
+- Ingeniería de detalle y modelado 3D / BIM; fabricación en taller con control de calidad.
 - Montaje certificado en obra; calidad avalada por norma ISO 9001:2015.
 - "De la cimentación al último tornillo."
 
 SECTORES:
-- Automotriz: naves de producción, líneas de ensamble, plantas de autopartes.
-- Farmacéutica: cuartos limpios, plantas GMP, control de contaminación.
-- Logístico: centros de distribución y almacenes de gran claro para operación 24/7.
-- Alimenticio: plantas de proceso y frío con acabados sanitarios e inocuidad.
-- Aeronáutico: hangares y naves de gran claro libre de columnas.
+- Automotriz: naves y plantas para armadoras y proveedores Tier 1 y Tier 2.
+- Alimenticio: plantas de alimentos y bebidas con cumplimiento de normas sanitarias.
+- Logístico: centros de distribución y naves de gran claro de alto rendimiento.
+- Corporativo: oficinas y espacios administrativos integrados a complejos industriales.
+- Aeronáutico: hangares y naves de precisión para la industria aeroespacial.
+
+REGIONES (cobertura):
+- Centro del país: Estado de México, Ciudad de México, Puebla.
+- Bajío: Querétaro, Guanajuato, San Luis Potosí, Aguascalientes.
+- Sur: Oaxaca y Veracruz (nearshoring y Corredor Interoceánico).
 
 CIFRAS DE REFERENCIA (las que muestra el sitio; no las presentes como exactas):
-- +850,000 m² construidos · +42,000 toneladas de estructura montada.
-- +240 proyectos entregados · 99% de entregas en tiempo · 18 años de experiencia.
+- 45 años de experiencia · +850,000 m² construidos · +42,000 toneladas de acero · +240 proyectos.
 
-COBERTURA Y CONTACTO:
-- Base en Guadalajara, Jalisco, México (operan a nivel nacional).
-- Teléfono/WhatsApp: +52 33 2787 4747 · Correo: contacto@caabsasteel.com
-- Ofrecen visita técnica y anteproyecto sin costo, y contacto de un ingeniero en <24 h.
-- Cada sector tiene su página con proyectos y hay una sección de blog con notas técnicas.
-- El formulario de contacto atiende a CLIENTES (cotizar), PROVEEDORES (cadena de suministro)
-  y EMPLEO (vacantes en obra, taller e ingeniería). Si preguntan por trabajar con/para la
-  empresa o por ser proveedor, invítalos a usar ese formulario con la opción correspondiente.
+CONTACTO:
+- Base en Metepec, Estado de México.
+- Teléfono/WhatsApp: 722 523 2020 · Correo: proyectos@caabsasteel.mx
+- Asesoría, visita técnica y anteproyecto sin costo; respuesta de un ingeniero en menos de 24 h.
+- Hay una página por cada sector y por cada región. El formulario de contacto atiende a
+  CLIENTES (cotizar), PROVEEDORES y EMPLEO; oriéntalos a la opción correspondiente.
 
-NOTA: Es un sitio de demostración con datos de ejemplo; no afirmes casos, clientes ni cifras
+NOTA: Es un sitio con algunos datos de ejemplo; no afirmes casos, clientes ni cifras
 específicas que no estén listados arriba.
 `.trim();
 
