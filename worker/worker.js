@@ -1,12 +1,12 @@
 /* =====================================================================
-   ESTRUCTURAS INDUSTRIALES MX — Cloudflare Worker (proxy del asistente IA)
+   CAABSA STEEL — Cloudflare Worker (proxy del asistente IA)
+   Worker: estructuras-chat  →  https://estructuras-chat.mattera.workers.dev
    ---------------------------------------------------------------------
-   Guarda la API key de DeepSeek como SECRETO del Worker (nunca en el repo):
+   La API key de DeepSeek vive como SECRETO del Worker (nunca en el repo):
        npx wrangler secret put DEEPSEEK_API_KEY
 
-   Despliegue:
+   Despliegue / actualización:
        cd worker && npx wrangler deploy
-   Copia la URL resultante y pégala en  js/chat.js → CHAT_ENDPOINT.
 
    Qué hace: recibe {messages:[{role,content}]}, antepone el "system prompt"
    con la información de la empresa (editable abajo) y transmite en streaming
@@ -14,8 +14,10 @@
    ===================================================================== */
 
 // Orígenes autorizados a llamar al Worker (evita que otros gasten tu key).
-// Agrega/ajusta tu dominio real de GitHub Pages o dominio propio.
+// Al pasar a dominio propio, deja aquí SOLO el dominio final.
 const ALLOWED_ORIGINS = [
+  'https://caabsasteel.mx',
+  'https://www.caabsasteel.mx',
   'https://samuelalexsanche.github.io',
   'http://localhost:8099',
   'http://localhost:8080',
