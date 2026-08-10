@@ -28,10 +28,29 @@
   let busy = false;
   let greeted = false;
 
-  const WELCOME =
-    '¡Hola! 👷 Soy el asistente de CAABSA STEEL. ' +
-    'Puedo resolver dudas sobre lo que hacemos: sectores, fabricación y montaje ' +
-    'de estructura de acero, zonas donde operamos y cómo cotizar. ¿En qué te ayudo?';
+  const LANG = (document.documentElement.lang || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+  const T = {
+    es: {
+      welcome: '¡Hola! 👷 Soy el asistente de CAABSA STEEL. Puedo resolver dudas sobre lo que hacemos: ' +
+        'sectores, regiones donde construimos, nuestro proceso y cómo cotizar. ¿En qué te ayudo?',
+      notWired: '⚙️ El asistente aún no está conectado a un modelo. Falta pegar la URL del Cloudflare ' +
+        'Worker en js/chat.js (CHAT_ENDPOINT). Una vez conectado, responderé con un modelo real en tiempo real.',
+      noAnswer: 'No obtuve respuesta. Intenta de nuevo.',
+      error: 'Ups, hubo un problema al conectar con el asistente. Revisa tu conexión o inténtalo de nuevo ' +
+        'en un momento. Mientras tanto puedes escribirnos por WhatsApp.',
+    },
+    en: {
+      welcome: 'Hi! 👷 I\'m the CAABSA STEEL assistant. I can answer questions about what we do: ' +
+        'industries we serve, regions where we build, our process and how to request a quote. How can I help?',
+      notWired: '⚙️ The assistant is not connected to a model yet. The Cloudflare Worker URL still needs to be ' +
+        'set in js/chat.js (CHAT_ENDPOINT). Once connected, I\'ll answer with a real model in real time.',
+      noAnswer: 'I didn\'t get a response. Please try again.',
+      error: 'Sorry, there was a problem reaching the assistant. Please check your connection or try again ' +
+        'in a moment. In the meantime you can reach us on WhatsApp.',
+    },
+  }[LANG];
+
+  const WELCOME = T.welcome;
 
   /* ---------- Abrir / cerrar ---------- */
   function openPanel() {
@@ -111,12 +130,7 @@
       const typing = addTyping();
       setTimeout(() => {
         typing.remove();
-        addMessage(
-          'bot',
-          '⚙️ El asistente aún no está conectado a un modelo. Falta pegar la URL ' +
-          'del Cloudflare Worker en js/chat.js (CHAT_ENDPOINT). Una vez conectado, ' +
-          'responderé con un modelo real en tiempo real.'
-        );
+        addMessage('bot', T.notWired);
         setBusy(false);
       }, 700);
       return;
@@ -164,15 +178,11 @@
         }
       }
 
-      if (!acc) { typing.remove(); acc = 'No obtuve respuesta. Intenta de nuevo.'; addMessage('bot', acc); }
+      if (!acc) { typing.remove(); acc = T.noAnswer; addMessage('bot', acc); }
       history.push({ role: 'assistant', content: acc });
     } catch (err) {
       typing.remove();
-      addMessage(
-        'bot',
-        'Ups, hubo un problema al conectar con el asistente. Revisa tu conexión o ' +
-        'inténtalo de nuevo en un momento. Mientras tanto puedes escribirnos por WhatsApp.'
-      );
+      addMessage('bot', T.error);
       console.error('[chat] error:', err);
     } finally {
       setBusy(false);

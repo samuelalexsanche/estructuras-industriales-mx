@@ -371,6 +371,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ai-foot__note{margin-top:8px;font-size:.7rem;color:var(--muted-2);text-align:center}
 .ai-foot__note b{color:var(--muted);font-weight:600}
 
+/* ============================ TOGGLE DE IDIOMA ============================ */
+.langtoggle{display:inline-flex;align-items:center;gap:0;border:1px solid rgba(255,255,255,.32);border-radius:999px;overflow:hidden;font-size:.76rem;font-weight:700;letter-spacing:.04em;line-height:1;opacity:1!important}
+.langtoggle span{padding:6px 10px;transition:background .2s,color .2s}
+.langtoggle__on{background:rgba(255,255,255,.92);color:var(--dark)}
+.langtoggle__off{color:#fff;opacity:.85}
+.langtoggle:hover .langtoggle__off{opacity:1;background:rgba(255,255,255,.16)}
+.nav.scrolled .langtoggle{border-color:var(--line-2)}
+.nav.scrolled .langtoggle__on{background:var(--primary);color:#fff}
+.nav.scrolled .langtoggle__off{color:var(--text);opacity:.7}
+.nav.scrolled .langtoggle:hover .langtoggle__off{opacity:1;background:rgba(18,34,64,.06)}
+@media (max-width:960px){
+  .langtoggle{align-self:flex-start;margin:2px 0}
+  .langtoggle{border-color:var(--line-2)}
+  .langtoggle__on{background:var(--primary);color:#fff}
+  .langtoggle__off{color:var(--text);opacity:.7}
+}
+
 /* ============================ LOGO ============================ */
 .brand__logo{height:34px;width:auto;display:block}
 .brand__logo--dark{display:none}

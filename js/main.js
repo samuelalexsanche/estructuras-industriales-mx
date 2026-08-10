@@ -6,6 +6,39 @@
   'use strict';
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Idioma de la página (es | en) ---------- */
+  const LANG = (document.documentElement.lang || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+  const T = {
+    es: {
+      soundOn: 'Ver con sonido', soundOff: 'Silenciar',
+      intent: {
+        cliente:   { msg: 'Cuéntanos del proyecto',              empresa: 'Empresa',                   btn: 'Solicitar cotización' },
+        proveedor: { msg: 'Qué ofreces: capacidad y experiencia', empresa: 'Empresa',                   btn: 'Enviar propuesta' },
+        empleo:    { msg: 'Cuéntanos de ti y tu experiencia',     empresa: 'Empresa actual (opcional)', btn: 'Enviar solicitud' },
+      },
+      errName: 'Escribe tu nombre.',
+      errPhone: 'Teléfono no válido.',
+      errEmail: 'Correo no válido.',
+      formBad: 'Revisa los campos marcados.',
+      formOk: '¡Gracias! Recibimos tu solicitud. Un ingeniero te contactará en menos de 24 h.',
+      locale: 'es-MX',
+    },
+    en: {
+      soundOn: 'Watch with sound', soundOff: 'Mute',
+      intent: {
+        cliente:   { msg: 'Tell us about your project',            empresa: 'Company',                  btn: 'Request a quote' },
+        proveedor: { msg: 'What you offer: capacity and experience', empresa: 'Company',                btn: 'Send proposal' },
+        empleo:    { msg: 'Tell us about yourself and your experience', empresa: 'Current employer (optional)', btn: 'Send application' },
+      },
+      errName: 'Please enter your name.',
+      errPhone: 'Please enter a valid phone number.',
+      errEmail: 'Please enter a valid email address.',
+      formBad: 'Please review the highlighted fields.',
+      formOk: 'Thank you! We received your request. An engineer will contact you within 24 hours.',
+      locale: 'en-US',
+    },
+  }[LANG];
+
   /* ---------- Año dinámico en footer ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -52,7 +85,7 @@
   statEls.forEach((el) => io.observe(el));
 
   /* ---------- Contadores animados ---------- */
-  const fmt = (n) => n.toLocaleString('es-MX');
+  const fmt = (n) => n.toLocaleString(T.locale);
   function animateCount(el) {
     const target = parseFloat(el.dataset.count || '0');
     const suffix = el.dataset.suffix || '';
@@ -142,11 +175,11 @@
         corpVideo.controls = true;
         corpVideo.currentTime = 0;
         corpVideo.play();
-        setLabel('Silenciar');
+        setLabel(T.soundOff);
       } else {
         corpVideo.muted = true;
         corpVideo.controls = false;
-        setLabel('Ver con sonido');
+        setLabel(T.soundOn);
       }
     });
   }
@@ -161,11 +194,7 @@
     const lblMensaje = document.getElementById('lblMensaje');
     const lblEmpresa = document.getElementById('lblEmpresa');
     const submitBtn = document.getElementById('formSubmit');
-    const intentCopy = {
-      cliente:   { msg: 'Cuéntanos del proyecto',            empresa: 'Empresa',                  btn: 'Solicitar cotización' },
-      proveedor: { msg: 'Qué ofreces: capacidad y experiencia', empresa: 'Empresa',               btn: 'Enviar propuesta' },
-      empleo:    { msg: 'Cuéntanos de ti y tu experiencia',   empresa: 'Empresa actual (opcional)', btn: 'Enviar solicitud' },
-    };
+    const intentCopy = T.intent;
     const applyIntent = (val) => {
       groups.forEach((g) => { g.hidden = g.dataset.intent !== val; });
       const c = intentCopy[val] || intentCopy.cliente;
@@ -184,9 +213,9 @@
       if (small) small.textContent = msg || '';
     };
     const validators = {
-      nombre: (v) => (v.trim().length >= 2 ? '' : 'Escribe tu nombre.'),
-      telefono: (v) => (/[0-9]{7,}/.test(v.replace(/\D/g, '')) ? '' : 'Teléfono no válido.'),
-      email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Correo no válido.'),
+      nombre: (v) => (v.trim().length >= 2 ? '' : T.errName),
+      telefono: (v) => (/[0-9]{7,}/.test(v.replace(/\D/g, '')) ? '' : T.errPhone),
+      email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : T.errEmail),
     };
 
     form.querySelectorAll('input,select').forEach((input) => {
@@ -207,14 +236,14 @@
       });
 
       if (!ok) {
-        note.textContent = 'Revisa los campos marcados.';
+        note.textContent = T.formBad;
         note.className = 'form-note bad';
         return;
       }
 
       /* DEMO: no hay backend. Aquí conectarías tu endpoint / servicio de correo.
          Ej: fetch('/api/lead', { method:'POST', body: new FormData(form) }) */
-      note.textContent = '¡Gracias! Recibimos tu solicitud. Un ingeniero te contactará en menos de 24 h.';
+      note.textContent = T.formOk;
       note.className = 'form-note ok';
       form.reset();
       setTimeout(() => { note.textContent = ''; note.className = 'form-note'; }, 6000);
