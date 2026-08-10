@@ -371,6 +371,27 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .ai-foot__note{margin-top:8px;font-size:.7rem;color:var(--muted-2);text-align:center}
 .ai-foot__note b{color:var(--muted);font-weight:600}
 
+/* ============================ LOGO ============================ */
+.brand__logo{height:34px;width:auto;display:block}
+.brand__logo--dark{display:none}
+.nav.scrolled .brand__logo--light{display:none}
+.nav.scrolled .brand__logo--dark{display:block}
+.brand--footer .brand__logo{height:36px}
+@media (max-width:560px){.brand__logo{height:28px}}
+
+/* ============================ FONDOS FOTOGRÁFICOS CON PARALLAX ============================ */
+.pbg{position:relative;background-size:cover;background-position:center;background-attachment:fixed}
+.pbg::before{content:"";position:absolute;inset:0;background:rgba(10,18,40,.82);z-index:0;pointer-events:none}
+.pbg > *{position:relative;z-index:1}
+.pband{position:relative;left:50%;width:100vw;margin-left:-50vw;min-height:420px;display:flex;align-items:center;overflow:hidden;background-size:cover;background-position:center;background-attachment:fixed;background-color:var(--dark)}
+.pband::before{content:"";position:absolute;inset:0;background:rgba(8,14,30,.58)}
+.pband__content{position:relative;z-index:1;width:100%;max-width:var(--maxw);margin:0 auto;padding:64px 24px;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.pband__content .kicker{color:#8fb0ff}
+.pband__content .h2{color:#fff}
+.pband__content p{color:#d8e0ee;max-width:52ch;margin-top:12px}
+.pband__content .btn{margin-top:24px;text-shadow:none}
+@media (max-width:768px){.pbg,.pband{background-attachment:scroll}.pband{min-height:340px}}
+
 /* ============================ REVEAL ============================ */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
