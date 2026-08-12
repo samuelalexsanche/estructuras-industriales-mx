@@ -163,6 +163,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* ============================ CERTIFICACIÓN ============================ */
 .cert{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:center;padding:28px 30px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow-sm)}
 .cert__seal{flex:none;width:88px;height:88px;border-radius:14px;display:grid;place-items:center;background:var(--bg-2);border:1px solid var(--line);color:var(--primary);font-family:var(--display);font-weight:700;font-size:.72rem;text-align:center;line-height:1.2;padding:8px}
+.cert__seal-img{flex:none;width:200px;height:auto;border-radius:10px;background:#fff;border:1px solid var(--line);padding:8px}
 .cert__txt{flex:1;min-width:240px}
 .cert__txt b{font-family:var(--display);font-size:1.15rem}
 .cert__txt p{color:var(--muted);margin-top:6px;font-size:.96rem}

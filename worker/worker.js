@@ -79,8 +79,22 @@ REGIONES (cobertura):
 - Bajío: Querétaro, Guanajuato, San Luis Potosí, Aguascalientes.
 - Sur: Oaxaca y Veracruz (nearshoring y Corredor Interoceánico).
 
-CIFRAS DE REFERENCIA (las que muestra el sitio; no las presentes como exactas):
-- 45 años de experiencia · +850,000 m² construidos · +42,000 toneladas de acero · +240 proyectos.
+CIFRAS REALES (las que muestra el sitio):
+- 45 años de experiencia · más de 1,600,000 m² construidos · más de 80,000 toneladas de
+  estructura metálica · obra ejecutada en 7 estados.
+
+ESTADOS CON OBRA Y PROYECTOS DOCUMENTADOS (cada uno tiene su página en el sitio):
+- Estado de México: Gates (1,500 m²), FINSA·Bosch, La Moderna, Polynt (1,500 m²), Tecnosol (3,000 m²).
+- Morelos (Cuernavaca / Cuautla): Espejos Inteligentes (2,500 m²), Mixing, Saint-Gobain.
+- Querétaro: Martinrea Honsel, Metrocolor, Robin.
+- Puebla: Audi Puebla, thyssenkrupp.
+- Hidalgo: Grupo Sánchez — complejo llave en mano de 25,000 m².
+- Jalisco (Guadalajara): Jugos del Valle.
+- Tlaxcala: obra documentada.
+Si preguntan por un proyecto o por un estado, menciona solo lo listado aquí; no inventes
+superficies, fechas ni clientes adicionales.
+
+REDES SOCIALES: LinkedIn, Facebook (@caabsasteel) e Instagram (@caabsasteelmex).
 
 CONTACTO:
 - Base en Metepec, Estado de México.
