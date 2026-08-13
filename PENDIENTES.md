@@ -70,6 +70,15 @@ La key se compartió por chat durante la instalación, así que conviene cambiar
 
 ---
 
+## 3.b Posible proyecto adicional detectado
+
+Entre las fotos sueltas de Querétaro aparece una nave con el logotipo de
+**Irizar** (`queretaro-general/05.jpg`). Hoy se usa solo como imagen de diseño.
+Si es un proyecto de CAABSA, conviene confirmarlo para darle su propia página
+(cliente, tipo de obra, superficie).
+
+---
+
 ## 4. Antes de salir a producción (dominio propio)
 
 1. **Dominio.** Todo el SEO (canonical, hreflang, sitemap) ya apunta a
