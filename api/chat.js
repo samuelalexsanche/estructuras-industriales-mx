@@ -60,9 +60,10 @@ SECTORES:
 - Corporativo: oficinas y espacios administrativos integrados a complejos industriales.
 - Aeronáutico: hangares y naves de precisión para la industria aeroespacial.
 
-REGIONES (cobertura):
-- Centro del país: Estado de México, Ciudad de México, Puebla.
+REGIONES (cobertura, cada una con su página en el sitio):
+- Centro del país: Estado de México, Ciudad de México, Puebla (y obra en Hidalgo, Morelos y Tlaxcala).
 - Bajío: Querétaro, Guanajuato, San Luis Potosí, Aguascalientes.
+- Occidente: Jalisco (Guadalajara y su zona metropolitana).
 - Sur: Oaxaca y Veracruz (nearshoring y Corredor Interoceánico).
 
 CIFRAS REALES (las que muestra el sitio):
