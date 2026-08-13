@@ -72,6 +72,8 @@ SECTORES:
 - Alimenticio: plantas de alimentos y bebidas con cumplimiento de normas sanitarias.
 - Logístico: centros de distribución y naves de gran claro de alto rendimiento.
 - Corporativo: oficinas y espacios administrativos integrados a complejos industriales.
+- Industrial: naves de proceso, almacenes y ampliaciones para plantas químicas, de impresión,
+  de materiales y manufactura en general (muchas ejecutadas con la planta en operación).
 - Aeronáutico: hangares y naves de precisión para la industria aeroespacial.
 
 REGIONES (cobertura, cada una con su página en el sitio):
