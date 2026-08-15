@@ -1,98 +1,75 @@
 # Pendientes — Sitio CAABSA STEEL
 
-Estado al 10 de agosto de 2026. El sitio está publicado y funcionando
-(82 páginas, español e inglés, 0 enlaces rotos).
+Estado al 15 de agosto de 2026. Sitio publicado: **120 páginas**, español e inglés,
+31 proyectos, 10 estados, 0 enlaces rotos.
 
 ---
 
 ## 1. Acción tuya (técnica) — 2 minutos
 
 ### Redesplegar el asistente IA
-**Verificado hoy: el chat en vivo todavía responde con información vieja.**
-Al preguntarle "¿en qué estados tienen proyectos?" contesta solo Centro/Bajío/Sur,
-sin Occidente, sin los estados reales y con las cifras anteriores.
-
-El código ya está actualizado en el repo; solo falta publicarlo:
+El chat en vivo sigue con información vieja (no conoce los 31 proyectos, las
+4 regiones ni el sector Industrial). El código ya está actualizado en el repo:
 
 ```bash
 cd ~/Downloads/claude/constructora-industrial/worker
 npx wrangler deploy
 ```
 
-No pide contraseña ni la API key (ya están configuradas).
+No pide contraseña ni la API key.
 
 ### Rotar la API key de DeepSeek
-La key se compartió por chat durante la instalación, así que conviene cambiarla:
-1. Generar una nueva en https://platform.deepseek.com y borrar la anterior.
-2. `npx wrangler secret put DEEPSEEK_API_KEY` (pegar la nueva).
+Se compartió por chat durante la instalación. Generar una nueva en
+platform.deepseek.com y luego `npx wrangler secret put DEEPSEEK_API_KEY`.
 
 ---
 
-## 2. Información que falta del cliente
+## 2. Preguntas para el cliente
 
-| # | Qué falta | Dónde impacta | Hoy muestra |
-|---|-----------|---------------|-------------|
-| 1 | **Reseñas reales** (nombre, puesto, empresa y texto de 3 clientes) | Sección "Lo que dicen nuestros clientes" en inicio | `[Nombre]`, `[Puesto]`, `[Empresa]` |
-| 2 | **Misión y Visión** definitivas | Página Nosotros | Borradores marcados "[Pendiente de aprobación]" |
-| 3 | **Brochure en PDF** | Botón "Descargar brochure" (inicio y Nosotros) | El formulario funciona, pero no hay archivo que descargar |
-| 4 | **Proyecto de Tlaxcala**: nombre del cliente y qué se construyó | Página del estado de Tlaxcala | "0 proyectos documentados" (solo hay 2 fotos) |
-| 5 | **Número total de proyectos entregados** | Bloque de cifras | Se sustituyó por "7 estados con obra ejecutada" (dato verificable) |
-| 6 | **Dirección exacta** en Metepec | Mapa de la página de Contacto | El mapa apunta a "Metepec" en general |
-
-### Datos que sí llegaron y ya están aplicados
-- 45 años de experiencia · +1,600,000 m² construidos · +80,000 toneladas de acero
-- Redes sociales reales (LinkedIn, Facebook, Instagram)
-- Sello ISO 9001:2015 de Bureau Veritas
-- Teléfono/WhatsApp 722 523 2020 · proyectos@caabsasteel.mx · Metepec, Edomex
-- 15 proyectos con fotos, en 7 estados
-- 3 artículos de blog
+| # | Tema | Detalle |
+|---|------|---------|
+| 1 | **Proyecto de Tlaxcala** | Hay 2 fotos pero sin nombre de cliente ni tipo de obra. La página del estado existe, sin proyecto. |
+| 2 | **Grupo CIMSA — ubicación** | La presentación dice "Parque Industrial El Coecillo, **Estado de México**", pero El Coecillo está en León, **Guanajuato**. Se publicó como lo escribió el cliente. Confirmar cuál es. |
+| 3 | **Cuatro proyectos sin foto** | Bardahl, Grupo CIMSA, Soriana e Interjet: las únicas imágenes de la presentación eran capturas de pantalla de Google Maps (con barra del navegador). No se publicaron por calidad y por derechos de imagen de Google. Se necesitan fotos propias. |
+| 4 | **Cumplimiento normativo** | El texto publicado menciona REPSE vigente, normas de seguridad e higiene y fianzas de cumplimiento y calidad. **Confirmar la vigencia exacta del REPSE y qué tipo de fianzas manejan** antes de dejarlo definitivo (el propio documento del cliente lo pedía). |
+| 5 | **Posible proyecto Irizar** | Entre las fotos sueltas de Querétaro aparece una nave con logotipo de Irizar. Hoy se usa solo como imagen de fondo. Si es obra de CAABSA, darle su página. |
+| 6 | **Brochure en PDF** | El botón "Descargar brochure" funciona, pero no hay archivo que entregar. |
+| 7 | **Sector de algunos proyectos** | Los que no encajaban en los 5 sectores del brief quedaron como "Industrial" (Metrocolor, Robin, Mixing, Polynt, Tecnosol, Bardahl, Soriana, Ferrostaal, Daewoo, Kimberly-Clark, Química Apollo, TST/TIMCO). Confirmar si alguno debe reclasificarse. |
+| 8 | **Fotos por proyecto** | Varios proyectos nuevos tienen una sola foto. Si hay más, mejoran mucho las páginas. |
 
 ---
 
-## 3. Detalles a confirmar con el cliente
+## 3. Ya aplicado del último lote
 
-1. **Superficies y alcance de 10 proyectos.** Solo 5 traían datos documentados
-   (Gates 1,500 m² · Espejos Inteligentes 2,500 m² · Grupo Sánchez 25,000 m² ·
-   Tecnosol 3,000 m² · Polynt 1,500 m²). Los otros 10 se describen sin cifras
-   para no inventar nada.
-
-2. **Ciudades por estado.** Solo se mencionan las que constan en su material
-   (Cuernavaca, Cuautla, Guadalajara, Metepec). Si confirman más ciudades donde
-   han trabajado, ayudan mucho al posicionamiento local.
-
-3. **Sector de cada proyecto.** Se asignó el más defendible; 6 quedaron en
-   "Industrial" (Mixing, Saint-Gobain, Metrocolor, Robin, Polynt, Tecnosol).
-
-4. **Secciones sin proyectos todavía**, que hoy muestran una invitación a cotizar
-   en lugar de obras:
-   - Sector **Aeronáutico**
-   - Región **Sur** (Oaxaca y Veracruz)
-
----
-
-## 3.b Posible proyecto adicional detectado
-
-Entre las fotos sueltas de Querétaro aparece una nave con el logotipo de
-**Irizar** (`queretaro-general/05.jpg`). Hoy se usa solo como imagen de diseño.
-Si es un proyecto de CAABSA, conviene confirmarlo para darle su propia página
-(cliente, tipo de obra, superficie).
+- **+400 proyectos entregados** en las cifras (junto a 45 años, 1,600,000 m², 80,000 ton).
+- **Números del encabezado más grandes** y visibles sin hacer scroll.
+- **Logo ISO más grande** (Bureau Veritas) en inicio y en Nosotros.
+- **Carrusel de logos** de 23 marcas en banda infinita.
+- **Reseñas reales** tomadas de las 6 cartas de recomendación.
+- **Misión, visión y política de calidad** con la redacción del cliente.
+- **Bloque de cumplimiento normativo** (REPSE, seguridad, fianzas).
+- **Hero**: "grandes corporativos y empresas AAA y AA".
+- **Dirección exacta** en contacto y en el mapa: Vicente Guerrero 2800, Col.
+  Francisco I. Madero, 52172 Toluca de Lerdo.
+- **31 proyectos** con m², ubicación y alcance reales de la presentación.
 
 ---
 
 ## 4. Antes de salir a producción (dominio propio)
 
-1. **Dominio.** Todo el SEO (canonical, hreflang, sitemap) ya apunta a
-   `https://caabsasteel.mx/`. Al publicar ahí, todo queda correcto sin cambios.
-2. **Seguridad del asistente.** En `worker/worker.js`, dejar en `ALLOWED_ORIGINS`
-   únicamente el dominio final y borrar el resto.
-3. **Formulario de contacto.** Hoy valida y confirma en pantalla, pero **no envía
-   los datos a ningún lado**. Falta conectarlo a un correo o CRM.
-4. **Saldo de DeepSeek.** El chat responde mientras la cuenta tenga saldo.
-5. **Google Search Console.** Dar de alta el dominio y enviar `sitemap.xml`.
+1. **Formulario de contacto: hoy NO envía los datos a ningún lado.** Valida y
+   confirma en pantalla, pero falta conectarlo a un correo o CRM. Es lo más
+   importante para no perder prospectos.
+2. **Dominio.** Todo el SEO (canonical, hreflang, sitemap) ya apunta a
+   `https://caabsasteel.mx/`.
+3. **Worker**: dejar en `ALLOWED_ORIGINS` únicamente el dominio final.
+4. **Saldo de DeepSeek** para que el chat siga respondiendo.
+5. **Google Search Console**: dar de alta el dominio y enviar `sitemap.xml`.
 
 ---
 
 ## Nota de mantenimiento
 
-Las páginas se generan con un script (`gen_site_i18n.py`). Si se edita un HTML a
-mano, el siguiente cambio lo sobrescribe: los cambios se hacen en el generador.
+Las páginas se generan con `gen_site_i18n.py` (+ `projects_new.py`, `blog_en.py`).
+Si se edita un HTML a mano, el siguiente cambio lo sobrescribe: los cambios se
+hacen en el generador.
