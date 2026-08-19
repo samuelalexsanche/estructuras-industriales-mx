@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=6" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=7" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -322,7 +322,7 @@ def nav(lang, base, alt_path):
     L = lambda p: base + p
     return f'''  <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="{L(path_of("home",lang))}" class="brand" aria-label="CAABSA STEEL — {u["home"]}"><img class="brand__logo brand__logo--light" src="{base}assets/logo-caabsa-white.png" alt="CAABSA STEEL" width="150" height="34" /><img class="brand__logo brand__logo--dark" src="{base}assets/logo-caabsa-dark.png" alt="CAABSA STEEL" width="150" height="34" /></a>
+      <a href="{L(path_of("home",lang))}" class="brand" aria-label="CAABSA STEEL — {u["home"]}"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="153" height="34" /><img class="brand__logo brand__logo--dark" src="{base}assets/logo-grupo-dark.png" alt="Grupo CAABSA Steel" width="153" height="34" /></a>
       <nav class="nav__links" id="navLinks">
         <a href="{L(path_of("home",lang))}#sectores">{u["nav_sectors"]}</a>
         <a href="{L(path_of("home",lang))}#regiones">{u["nav_regions"]}</a>
@@ -348,7 +348,7 @@ def footer(lang, base):
     return f'''  <footer class="footer">
     <div class="container footer__grid">
       <div>
-        <a href="{L(path_of("home",lang))}" class="brand brand--footer"><img class="brand__logo brand__logo--light" src="{base}assets/logo-caabsa-white.png" alt="CAABSA STEEL" width="158" height="36" /></a>
+        <a href="{L(path_of("home",lang))}" class="brand brand--footer"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="162" height="36" /></a>
         <p class="footer__desc">{u["foot_desc"]}</p>
         <div class="footer__social">
           <a href="https://www.linkedin.com/in/grupo-caabsa-steel-m%C3%A9xico-089055197/" target="_blank" rel="noopener" aria-label="LinkedIn">{li}</a><a href="https://www.facebook.com/caabsasteel/" target="_blank" rel="noopener" aria-label="Facebook">{fb}</a><a href="https://www.instagram.com/caabsasteelmex/" target="_blank" rel="noopener" aria-label="Instagram">{ig}</a>
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=6"></script>
-  <script src="{base}js/chat.js?v=6"></script>
+    return f'''  <script src="{base}js/main.js?v=7"></script>
+  <script src="{base}js/chat.js?v=7"></script>
 </body>
 </html>
 '''
