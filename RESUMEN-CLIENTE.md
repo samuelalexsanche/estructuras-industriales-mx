@@ -84,7 +84,7 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 ## 6. Lo que falta de su parte
 
 1. ~~Nombre del proyecto de Tlaxcala~~ — **resuelto**: es Vetrotex Saint-Gobain (Parque Industrial Xicohténcatl). Ya tiene su página. Solo falta la superficie en m², que el CV no indica.
-2. **Fotografías** de Bardahl, Soriana y Grupo CIMSA (las que teníamos eran capturas de mapas, no fotos propias).
+2. **Fotografías de obra** de Bardahl, Soriana y Grupo CIMSA. Ya están publicadas con las imágenes que nos enviaron, pero son vistas aéreas y de Street View de Google —la de Soriana incluso conserva la marca de agua de Google sobre la imagen—. Con fotos propias de la obra se verían mucho mejor.
 3. **Ubicación de Grupo CIMSA**: en el documento aparece como Estado de México, pero la colonia El Coecillo corresponde a León, Guanajuato. ¿Cuál es la correcta?
 4. **Proyecto Irizar**: el CV confirma dos obras en el P. Ind. Bernardo Quintana, Querétaro (4,574 y 4,570 m²). ¿Las publicamos como una página o como dos?
 5. **Correo donde deben llegar los mensajes** del formulario de contacto.
