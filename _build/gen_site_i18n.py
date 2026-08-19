@@ -211,6 +211,7 @@ UI = {
    foot_desc="Construcción industrial y estructura de acero para empresas AAA y AA. 45 años de experiencia · ISO 9001:2015.",
    foot_sectors="Sectores", foot_regions="Regiones", foot_contact="Contacto",
    foot_rights="Todos los derechos reservados.", foot_tag="Construcción industrial · ISO 9001:2015",
+   foot_cv="Descargar CV de la empresa (PDF)",
    phone_lbl="Tel / WhatsApp", address="Metepec, Estado de México",
    wa_aria="Escríbenos por WhatsApp", wa_label="¿Cotizamos tu proyecto?",
    ai_open="Abrir asistente con inteligencia artificial", ai_title="Asistente IA",
@@ -246,6 +247,7 @@ UI = {
    foot_desc="Industrial construction and structural steel for AAA and AA companies. 45 years of experience · ISO 9001:2015.",
    foot_sectors="Industries", foot_regions="Regions", foot_contact="Contact",
    foot_rights="All rights reserved.", foot_tag="Industrial construction · ISO 9001:2015",
+   foot_cv="Download company CV (PDF)",
    phone_lbl="Phone / WhatsApp", address="Metepec, State of Mexico",
    wa_aria="Message us on WhatsApp", wa_label="Shall we quote your project?",
    ai_open="Open the AI assistant", ai_title="AI Assistant",
@@ -302,7 +304,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=4" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=5" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -350,6 +352,7 @@ def footer(lang, base):
         <a href="tel:+52{WA_NUM[2:]}">{u["phone_lbl"]}: {TEL}</a>
         <a href="mailto:{EMAIL}">{EMAIL}</a>
         <span>{u["address"]}</span>
+        <a href="{base}assets/docs/cv-caabsa-steel.pdf" download>{u["foot_cv"]}</a>
       </div>
     </div>
     <div class="footer__bottom container">
@@ -395,8 +398,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=4"></script>
-  <script src="{base}js/chat.js?v=4"></script>
+    return f'''  <script src="{base}js/main.js?v=5"></script>
+  <script src="{base}js/chat.js?v=5"></script>
 </body>
 </html>
 '''
@@ -617,12 +620,13 @@ def build_lang(lang):
             vid_k="Video institucional", vid_t="Conoce cómo trabajamos",
             vid_p="Un recorrido por nuestras obras: fabricación en taller, izaje y montaje de estructura de acero.",
             vid_btn="Ver con sonido", vid_hint="Se reproduce en silencio automáticamente",
-            br_k="Portafolio", br_t="Conoce nuestro portafolio completo",
+            br_k="Portafolio", br_t="Descarga nuestro brochure y CV",
             br_s="Descarga nuestro brochure con el detalle de proyectos, sectores de especialización y capacidades técnicas.",
             br_btn="Descargar brochure",
             br_role="Puesto o posición", br_role_ph="Ej. Director de Operaciones",
             br_mail="Correo electrónico empresarial", br_mail_hint="Usa el correo de tu empresa; no aceptamos correos personales (gmail, hotmail, etc.).",
             cv_txt="¿Buscas el currículum de obra completo?", cv_link="Descargar CV de la empresa",
+            cv_note="Descarga directa en PDF, sin necesidad de registro.",
             title="Nosotros — 45 años de construcción industrial | CAABSA STEEL",
             desc="CAABSA STEEL: 45 años construyendo obra industrial para empresas AAA y AA en el centro, Bajío, occidente y sur de México. Certificación ISO 9001:2015."),
          "en":dict(
@@ -639,12 +643,13 @@ def build_lang(lang):
             vid_k="Company video", vid_t="See how we work",
             vid_p="A walkthrough of our projects: shop fabrication, lifting and steel erection on site.",
             vid_btn="Watch with sound", vid_hint="Plays muted automatically",
-            br_k="Portfolio", br_t="Explore our full portfolio",
+            br_k="Portfolio", br_t="Download our brochure and company CV",
             br_s="Download our brochure with details on our projects, areas of specialization and technical capabilities.",
             br_btn="Download brochure",
             br_role="Role or position", br_role_ph="e.g. Operations Director",
             br_mail="Business email address", br_mail_hint="Please use your company email; personal addresses (gmail, hotmail, etc.) are not accepted.",
             cv_txt="Looking for the full project record?", cv_link="Download the company CV",
+            cv_note="Direct PDF download, no registration required.",
             title="About us — 45 years of industrial construction | CAABSA STEEL",
             desc="CAABSA STEEL: 45 years building industrial projects for AAA and AA companies in Central Mexico, the Bajío, the west and the south. ISO 9001:2015 certified.")}[lang]
     body = f'''  <section class="subhead">
@@ -708,9 +713,12 @@ def build_lang(lang):
         <button type="submit" class="btn btn--primary btn--lg btn--block" id="brochureSubmit">{A["br_btn"]}</button>
         <p class="form-note" id="brochureNote" role="status"></p>
       </form>
-      <p style="font-size:.86rem;color:var(--muted);text-align:center;margin-top:18px">
-        {A["cv_txt"]} <a href="{base_root}assets/docs/cv-caabsa-steel.pdf" target="_blank" rel="noopener" class="post__more">{A["cv_link"]} →</a>
-      </p>
+      <div class="dl-alt reveal">
+        <p class="dl-alt__txt">{A["cv_txt"]}</p>
+        <a class="btn btn--ghost" href="{base_root}assets/docs/cv-caabsa-steel.pdf" download>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:-3px"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>{A["cv_link"]}</a>
+        <p class="dl-alt__note">{A["cv_note"]}</p>
+      </div>
     </div>
   </section>'''
     open(os.path.join(ROOT, self_p),"w",encoding="utf-8").write(

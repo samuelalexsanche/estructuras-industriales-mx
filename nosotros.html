@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/styles.css?v=5" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -87,7 +87,7 @@
 
   <section class="section section--alt" id="brochure">
     <div class="container" style="max-width:760px;text-align:center">
-      <div class="section-head center reveal"><div class="kicker">Portafolio</div><h2 class="h2">Conoce nuestro portafolio completo</h2><p class="section-head__sub">Descarga nuestro brochure con el detalle de proyectos, sectores de especialización y capacidades técnicas.</p></div>
+      <div class="section-head center reveal"><div class="kicker">Portafolio</div><h2 class="h2">Descarga nuestro brochure y CV</h2><p class="section-head__sub">Descarga nuestro brochure con el detalle de proyectos, sectores de especialización y capacidades técnicas.</p></div>
       <form class="contacto__form reveal" id="brochureForm" novalidate style="max-width:520px;margin:0 auto;text-align:left"
             data-file="assets/docs/brochure-caabsa-steel-2026.pdf">
         <div class="field"><label for="bnombre">Nombre completo</label><input id="bnombre" name="nombre" type="text" placeholder="Tu nombre" required /><small class="err"></small></div>
@@ -98,9 +98,12 @@
         <button type="submit" class="btn btn--primary btn--lg btn--block" id="brochureSubmit">Descargar brochure</button>
         <p class="form-note" id="brochureNote" role="status"></p>
       </form>
-      <p style="font-size:.86rem;color:var(--muted);text-align:center;margin-top:18px">
-        ¿Buscas el currículum de obra completo? <a href="assets/docs/cv-caabsa-steel.pdf" target="_blank" rel="noopener" class="post__more">Descargar CV de la empresa →</a>
-      </p>
+      <div class="dl-alt reveal">
+        <p class="dl-alt__txt">¿Buscas el currículum de obra completo?</p>
+        <a class="btn btn--ghost" href="assets/docs/cv-caabsa-steel.pdf" download>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:-3px"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>Descargar CV de la empresa</a>
+        <p class="dl-alt__note">Descarga directa en PDF, sin necesidad de registro.</p>
+      </div>
     </div>
   </section>
   <footer class="footer">
@@ -118,6 +121,7 @@
         <a href="tel:+527225232020">Tel / WhatsApp: 722 523 2020</a>
         <a href="mailto:proyectos@caabsasteel.mx">proyectos@caabsasteel.mx</a>
         <span>Metepec, Estado de México</span>
+        <a href="assets/docs/cv-caabsa-steel.pdf" download>Descargar CV de la empresa (PDF)</a>
       </div>
     </div>
     <div class="footer__bottom container">
@@ -155,7 +159,7 @@
       <p class="ai-foot__note">Respuestas generadas por <b>IA</b> · pueden contener imprecisiones</p>
     </footer>
   </section>
-  <script src="js/main.js?v=4"></script>
-  <script src="js/chat.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
+  <script src="js/chat.js?v=5"></script>
 </body>
 </html>
