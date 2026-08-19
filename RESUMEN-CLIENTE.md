@@ -71,6 +71,9 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 - Las **políticas de calidad** ahora mencionan todos sus registros y certificaciones.
 - El **blog** ya lleva fotografías de obra: Andenes en el artículo de centros logísticos, Tintas Sánchez en el de complejos industriales y Bridgestone en el de proyectos industriales especiales.
 - **Se revisó una por una que cada fotografía corresponda a su proyecto.**
+- El **CV ya se descarga de verdad**: antes solo abría el PDF en otra pestaña y estaba únicamente en la página Nosotros. Ahora tiene su propio botón de descarga y un enlace en el pie de **todas** las páginas del sitio.
+
+> **Nota sobre el CV:** lo dejamos como descarga libre, sin formulario. El brochure sí pide los datos, porque es la pieza comercial que sirve para captar prospectos; el CV de obra suele pedirse dentro de procesos de licitación y ponerle un registro de por medio puede frenar a un cliente serio. Si prefieren que el CV también pida datos, lo cambiamos.
 
 ---
 
