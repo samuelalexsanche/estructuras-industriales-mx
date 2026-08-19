@@ -80,7 +80,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* ============================ NAV ============================ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(18,34,64,.4)}
-.nav__inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;height:82px}
 .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.01em;color:#fff}
 .brand__mark{color:var(--primary-2);display:grid;place-items:center}
 .brand__name b{color:#fff;font-weight:700}
@@ -104,7 +104,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .nav__toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ============================ HERO (banda oscura) ============================ */
-.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;padding-top:72px;background:var(--dark);color:var(--on-dark)}
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;padding-top:82px;background:var(--dark);color:var(--on-dark)}
 .hero__bg{position:absolute;inset:0;z-index:0}
 .hero__photo{position:absolute;inset:-18%;background-size:cover;background-position:center;opacity:.42;will-change:transform}
 .hero__bg .grid-layer{position:absolute;inset:-10%;background-image:linear-gradient(rgba(120,150,220,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,220,.12) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 30%,transparent 80%)}
@@ -318,7 +318,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 /* ============================ SUBPÁGINAS ============================ */
-.subhead{position:relative;padding:130px 0 52px;overflow:hidden;background:var(--dark);color:var(--on-dark)}
+.subhead{position:relative;padding:140px 0 52px;overflow:hidden;background:var(--dark);color:var(--on-dark)}
 .subhead__bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(120,150,220,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,220,.10) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 72% 0%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 72% 0%,#000,transparent 70%)}
 .subhead__photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.28}
 .subhead__scrim{position:absolute;inset:0;background:rgba(10,20,45,.55)}
@@ -417,12 +417,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 
 /* ============================ LOGO ============================ */
-.brand__logo{height:34px;width:auto;display:block}
+.brand__logo{height:46px;width:auto;display:block}
 .brand__logo--dark{display:none}
 .nav.scrolled .brand__logo--light{display:none}
 .nav.scrolled .brand__logo--dark{display:block}
-.brand--footer .brand__logo{height:36px}
-@media (max-width:560px){.brand__logo{height:28px}}
+.brand--footer .brand__logo{height:48px}
+@media (max-width:560px){.brand__logo{height:34px}}
 
 /* ============================ FONDOS FOTOGRÁFICOS CON PARALLAX ============================ */
 .pbg{position:relative;background-size:cover;background-position:center;background-attachment:fixed}
@@ -449,7 +449,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .stats__grid{grid-template-columns:repeat(2,1fr)}
   .sectores__grid,.proyectos__grid,.reviews__grid,.regions__grid,.blog__grid{grid-template-columns:repeat(2,1fr)}
   .footer__grid{grid-template-columns:1fr 1fr}
-  .nav__links{position:fixed;inset:72px 0 auto 0;flex-direction:column;background:rgba(255,255,255,.98);backdrop-filter:blur(14px);padding:22px;gap:16px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .4s var(--ease);align-items:stretch}
+  .nav__links{position:fixed;inset:82px 0 auto 0;flex-direction:column;background:rgba(255,255,255,.98);backdrop-filter:blur(14px);padding:22px;gap:16px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .4s var(--ease);align-items:stretch}
   .nav__links.open{transform:none}
   .nav__links a{padding:8px 0;color:var(--text);opacity:.85}
   .nav__links .btn--primary{color:#fff}
@@ -523,3 +523,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .doccard{padding:28px 22px}
   .cvband__box{grid-template-columns:1fr;gap:28px;padding:32px 24px}
 }
+
+/* Proyectos sin fotografía propia: nunca se usa la imagen de otra obra */
+.proj__media--blank{display:grid;place-content:center;gap:10px;justify-items:center;padding-bottom:112px;
+  background:var(--dark);
+  background-image:repeating-linear-gradient(135deg,rgba(120,150,220,.08) 0 1px,transparent 1px 11px),
+                   radial-gradient(ellipse 80% 70% at 50% 0%,rgba(28,70,207,.30),transparent 70%)}
+.proj__media--blank::after{background:linear-gradient(180deg,transparent 42%,rgba(8,16,32,.78))}
+.proj__blankmark{width:74px;height:auto;color:rgba(190,208,238,.55)}
+.proj__blanktxt{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(190,208,238,.46)}

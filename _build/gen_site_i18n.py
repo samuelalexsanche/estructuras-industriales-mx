@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=7" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=8" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -322,7 +322,7 @@ def nav(lang, base, alt_path):
     L = lambda p: base + p
     return f'''  <header class="nav" id="nav">
     <div class="nav__inner container">
-      <a href="{L(path_of("home",lang))}" class="brand" aria-label="CAABSA STEEL — {u["home"]}"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="153" height="34" /><img class="brand__logo brand__logo--dark" src="{base}assets/logo-grupo-dark.png" alt="Grupo CAABSA Steel" width="153" height="34" /></a>
+      <a href="{L(path_of("home",lang))}" class="brand" aria-label="CAABSA STEEL — {u["home"]}"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="207" height="46" /><img class="brand__logo brand__logo--dark" src="{base}assets/logo-grupo-dark.png" alt="Grupo CAABSA Steel" width="207" height="46" /></a>
       <nav class="nav__links" id="navLinks">
         <a href="{L(path_of("home",lang))}#sectores">{u["nav_sectors"]}</a>
         <a href="{L(path_of("home",lang))}#regiones">{u["nav_regions"]}</a>
@@ -348,7 +348,7 @@ def footer(lang, base):
     return f'''  <footer class="footer">
     <div class="container footer__grid">
       <div>
-        <a href="{L(path_of("home",lang))}" class="brand brand--footer"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="162" height="36" /></a>
+        <a href="{L(path_of("home",lang))}" class="brand brand--footer"><img class="brand__logo brand__logo--light" src="{base}assets/logo-grupo-white.png" alt="Grupo CAABSA Steel" width="216" height="48" /></a>
         <p class="footer__desc">{u["foot_desc"]}</p>
         <div class="footer__social">
           <a href="https://www.linkedin.com/in/grupo-caabsa-steel-m%C3%A9xico-089055197/" target="_blank" rel="noopener" aria-label="LinkedIn">{li}</a><a href="https://www.facebook.com/caabsasteel/" target="_blank" rel="noopener" aria-label="Facebook">{fb}</a><a href="https://www.instagram.com/caabsasteelmex/" target="_blank" rel="noopener" aria-label="Instagram">{ig}</a>
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=7"></script>
-  <script src="{base}js/chat.js?v=7"></script>
+    return f'''  <script src="{base}js/main.js?v=8"></script>
+  <script src="{base}js/chat.js?v=8"></script>
 </body>
 </html>
 '''
@@ -486,7 +486,7 @@ def sector_projects_block(lang, base, sector_key):
     if not projs:
         return noproj_block(lang, base)
     cards = "\n".join(f'''        <article class="proj reveal">
-          <div class="proj__media"><img src="{base}{pmain(p)}" alt="{p["client"]} — {p["kind"][lang]}" loading="lazy" /></div>
+          {pmedia(p, base, lang)}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
           <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
           <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
@@ -511,7 +511,7 @@ def region_projects_block(lang, base, region_key):
     if not projs:
         return noproj_block(lang, base)
     cards = "\n".join(f'''        <article class="proj reveal">
-          <div class="proj__media"><img src="{base}{pmain(p)}" alt="{p["client"]} — {p["kind"][lang]}" loading="lazy" /></div>
+          {pmedia(p, base, lang)}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
           <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
           <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
@@ -1302,10 +1302,31 @@ def clients_marquee(lang, base):
   </section>'''
 
 FALLBACK_PHOTO = "images/proyectos/edomex-general/01.jpg"
+
+def pphoto(p):
+    """Foto propia del proyecto, o None si el cliente aún no la envía."""
+    return f'images/proyectos/{p["slug"]}/01.jpg' if p["photos"] > 0 else None
+
 def pmain(p):
-    """Imagen principal del proyecto; si no tiene foto propia, usa una del estado."""
-    if p["photos"] > 0: return f'images/proyectos/{p["slug"]}/01.jpg'
-    return DESIGN.get(p["state"],{}).get("hero") or FALLBACK_PHOTO
+    """Imagen para contextos de estado o región, donde no se atribuye a un proyecto."""
+    return pphoto(p) or DESIGN.get(p["state"],{}).get("hero") or FALLBACK_PHOTO
+
+# Marca para los proyectos sin fotografía: nunca se usa la foto de otra obra,
+# porque en la tarjeta quedaría atribuida a este cliente.
+BLANK_MARK = ('<svg class="proj__blankmark" viewBox="0 0 64 40" fill="none" stroke="currentColor" '
+  'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+  '<path d="M2 38h60"/><path d="M6 38V16l14-8 14 8v22"/><path d="M34 38V22h24v16"/>'
+  '<path d="M13 38v-9h7v9"/><path d="M41 29h4M50 29h4"/><path d="M6 16l14 8 14-8"/></svg>')
+
+def pmedia(p, base, lang, alt=None):
+    """Bloque de imagen de una tarjeta de proyecto."""
+    alt = alt or f'{p["client"]} — {p["kind"][lang]}'
+    ph = pphoto(p)
+    if ph:
+        return f'<div class="proj__media"><img src="{base}{ph}" alt="{alt}" loading="lazy" /></div>'
+    lbl = "Fotografía pendiente" if lang == "es" else "Photograph pending"
+    return (f'<div class="proj__media proj__media--blank" role="img" aria-label="{alt} — {lbl}">'
+            f'{BLANK_MARK}<span class="proj__blanktxt">{lbl}</span></div>')
 
 SECTOR_BY_KEY = {s["key"]: s for s in SECTORS}
 REGION_BY_KEY = {r["key"]: r for r in REGIONS}
@@ -1370,7 +1391,7 @@ def build_projects(lang):
         reglink = (f'<a href="{base}{path_of("region",lang,reg["slug"][lang])}">{reg["name"][lang]}</a>' if reg else "—")
         jsonld = f'''<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Project","name":"{p["client"]} — {p["kind"][lang]}","description":"{p["kind"][lang]} · {loc}","location":{{"@type":"Place","address":{{"@type":"PostalAddress","addressRegion":"{stname}","addressCountry":"MX"}}}},"provider":{{"@type":"Organization","name":"CAABSA STEEL","url":"{SITE_URL}"}}}}</script>'''
         body = f'''  <section class="subhead">
-    <div class="subhead__photo" style="background-image:url('{base}{pmain(p)}')"></div>
+    {f'<div class="subhead__photo" style="background-image:url({chr(39)}{base}{pphoto(p)}{chr(39)})"></div>' if pphoto(p) else ''}
     <div class="subhead__scrim"></div><div class="subhead__bg"></div>
     <div class="container">
       <div class="breadcrumb"><a href="{base}{path_of("home",lang)}">{u["home"]}</a><span class="sep">/</span><a href="{base}{state_path(p["state"],lang)}">{stname}</a><span class="sep">/</span> {p["client"]}</div>
@@ -1423,7 +1444,7 @@ def build_states(lang):
                  if lang=="es" else
                  f'We build industrial facilities, plants and corporate spaces in {stname}, with projects delivered in {st["cities"][lang]}. Every project is completed under ISO 9001:2015 certified processes.')
         cards = "\n".join(f'''        <article class="proj reveal">
-          <div class="proj__media"><img src="{base}{pmain(p)}" alt="{p["client"]} — {p["kind"][lang]}" loading="lazy" /></div>
+          {pmedia(p, base, lang)}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3><p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
           <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
         </article>''' for p in projs)
@@ -1437,7 +1458,7 @@ def build_states(lang):
                   f'<article class="proj reveal"><div class="proj__media"><img src="{base}images/proyectos/{skey}/{i:02d}.jpg" alt="{stname} {i}" loading="lazy" /></div></article>'
                   for i in range(1,extra+1)) + '</div>'
         body = f'''  <section class="subhead">
-    <div class="subhead__photo" style="background-image:url('{base}{DESIGN.get(skey,{}).get("hero") or (pmain(projs[0]) if projs else f"images/proyectos/{skey}/01.jpg")}')"></div>
+    <div class="subhead__photo" style="background-image:url('{base}{DESIGN.get(skey,{}).get("hero") or next((pphoto(x) for x in projs if pphoto(x)), None) or FALLBACK_PHOTO}')"></div>
     <div class="subhead__scrim"></div><div class="subhead__bg"></div>
     <div class="container">
       <div class="breadcrumb"><a href="{base}{path_of("home",lang)}">{u["home"]}</a><span class="sep">/</span><a href="{base}{('estados/index.html' if lang=='es' else 'en/states/index.html')}">{pu["states"]}</a><span class="sep">/</span> {stname}</div>
@@ -1509,7 +1530,7 @@ def build_states(lang):
     self_p = ("proyectos/index.html" if lang=="es" else "en/projects/index.html")
     alt_p  = ("en/projects/index.html" if lang=="es" else "proyectos/index.html")
     cards = "\n".join(f'''        <article class="proj reveal">
-          <div class="proj__media"><img src="{base}{pmain(p)}" alt="{p["client"]}" loading="lazy" /></div>
+          {pmedia(p, base, lang, p["client"])}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3>
           <p>{p["kind"][lang]} · {STATES[p["state"]]["name"][lang]}</p>
           <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
