@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="css/styles.css?v=5" />
+  <link rel="stylesheet" href="css/styles.css?v=6" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
@@ -85,24 +85,43 @@
     </div>
   </div>
 
-  <section class="section section--alt" id="brochure">
-    <div class="container" style="max-width:760px;text-align:center">
-      <div class="section-head center reveal"><div class="kicker">Portafolio</div><h2 class="h2">Descarga nuestro brochure y CV</h2><p class="section-head__sub">Descarga nuestro brochure con el detalle de proyectos, sectores de especialización y capacidades técnicas.</p></div>
-      <form class="contacto__form reveal" id="brochureForm" novalidate style="max-width:520px;margin:0 auto;text-align:left"
-            data-file="assets/docs/brochure-caabsa-steel-2026.pdf">
-        <div class="field"><label for="bnombre">Nombre completo</label><input id="bnombre" name="nombre" type="text" placeholder="Tu nombre" required /><small class="err"></small></div>
-        <div class="field"><label for="bempresa">Empresa</label><input id="bempresa" name="empresa" type="text" placeholder="Nombre de la empresa" required /><small class="err"></small></div>
-        <div class="field"><label for="bpuesto">Puesto o posición</label><input id="bpuesto" name="puesto" type="text" placeholder="Ej. Director de Operaciones" required /><small class="err"></small></div>
-        <div class="field"><label for="bemail">Correo electrónico empresarial</label><input id="bemail" name="email" type="email" placeholder="nombre@empresa.com" required /><small class="err"></small>
-          <small style="display:block;font-size:.78rem;color:var(--muted-2);margin-top:6px">Usa el correo de tu empresa; no aceptamos correos personales (gmail, hotmail, etc.).</small></div>
-        <button type="submit" class="btn btn--primary btn--lg btn--block" id="brochureSubmit">Descargar brochure</button>
-        <p class="form-note" id="brochureNote" role="status"></p>
-      </form>
-      <div class="dl-alt reveal">
-        <p class="dl-alt__txt">¿Buscas el currículum de obra completo?</p>
-        <a class="btn btn--ghost" href="assets/docs/cv-caabsa-steel.pdf" download>
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:-3px"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>Descargar CV de la empresa</a>
-        <p class="dl-alt__note">Descarga directa en PDF, sin necesidad de registro.</p>
+  <section class="section section--alt" id="documentos">
+    <div class="container">
+      <div class="section-head center reveal"><div class="kicker">Documentación</div><h2 class="h2">Nuestra documentación técnica</h2><p class="section-head__sub">Todo nuestro historial de obra y nuestras capacidades, listos para tu área de compras o licitaciones.</p></div>
+      <div class="docs__grid">
+
+        <article class="doccard doccard--feat reveal">
+          <div class="doccard__top">
+            <span class="doccard__ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
+            <span class="doccard__tag doccard__tag--feat">PDF · 54 páginas</span>
+          </div>
+          <h3 class="doccard__t">Currículum de obra</h3>
+          <p class="doccard__p">45 años de trayectoria documentados: cada proyecto con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que solicitan las áreas de compras y los comités de licitación.</p>
+          <ul class="doccard__list">
+            <li>Más de 400 proyectos entregados, por sector</li><li>Clientes AAA y AA: Bosch, Ford, Bridgestone, Coca-Cola FEMSA y más</li><li>Superficies, tonelajes y alcance de cada obra</li><li>Certificación ISO 9001:2015 y registros vigentes</li>
+          </ul>
+          <a class="btn btn--primary btn--lg btn--block doccard__btn" href="assets/docs/cv-caabsa-steel.pdf" download><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:9px;vertical-align:-4px"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>Descargar CV de la empresa</a>
+          <p class="doccard__note">Descarga directa · 15 MB · sin registro</p>
+        </article>
+
+        <article class="doccard reveal reveal-d1">
+          <div class="doccard__top">
+            <span class="doccard__ic doccard__ic--soft"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></span>
+            <span class="doccard__tag">PDF · 5 páginas</span>
+          </div>
+          <h3 class="doccard__t">Brochure corporativo</h3>
+          <p class="doccard__p">Presentación breve de la empresa, sectores de especialización y capacidades técnicas. Ideal para una primera revisión.</p>
+          <form class="contacto__form" id="brochureForm" novalidate data-file="assets/docs/brochure-caabsa-steel-2026.pdf">
+            <div class="field"><label for="bnombre">Nombre completo</label><input id="bnombre" name="nombre" type="text" placeholder="Tu nombre" required /><small class="err"></small></div>
+            <div class="field"><label for="bempresa">Empresa</label><input id="bempresa" name="empresa" type="text" placeholder="Nombre de la empresa" required /><small class="err"></small></div>
+            <div class="field"><label for="bpuesto">Puesto o posición</label><input id="bpuesto" name="puesto" type="text" placeholder="Ej. Director de Operaciones" required /><small class="err"></small></div>
+            <div class="field"><label for="bemail">Correo electrónico empresarial</label><input id="bemail" name="email" type="email" placeholder="nombre@empresa.com" required /><small class="err"></small>
+              <small class="field__hint">Usa el correo de tu empresa; no aceptamos correos personales (gmail, hotmail, etc.).</small></div>
+            <button type="submit" class="btn btn--ghost btn--block" id="brochureSubmit">Descargar brochure</button>
+            <p class="form-note" id="brochureNote" role="status"></p>
+          </form>
+        </article>
+
       </div>
     </div>
   </section>
@@ -159,7 +178,7 @@
       <p class="ai-foot__note">Respuestas generadas por <b>IA</b> · pueden contener imprecisiones</p>
     </footer>
   </section>
-  <script src="js/main.js?v=5"></script>
-  <script src="js/chat.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
+  <script src="js/chat.js?v=6"></script>
 </body>
 </html>

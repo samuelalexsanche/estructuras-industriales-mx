@@ -12,6 +12,14 @@ SITE_URL = "https://caabsasteel.mx/"
 WA_NUM = "527225232020"
 TEL = "722 523 2020"
 EMAIL = "proyectos@caabsasteel.mx"
+
+# Iconos de la sección de documentación
+DOC_IC = ('<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" '
+          'stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/>'
+          '<path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>')
+DL_IC  = ('<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" '
+          'stroke-linecap="round" stroke-linejoin="round" style="margin-right:9px;vertical-align:-4px">'
+          '<path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>')
 WA_TXT = {
  "es": "Hola%2C%20quiero%20cotizar%20un%20proyecto%20industrial%20con%20CAABSA%20STEEL",
  "en": "Hello%2C%20I%27d%20like%20a%20quote%20for%20an%20industrial%20project%20with%20CAABSA%20STEEL",
@@ -304,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=5" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=6" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -398,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=5"></script>
-  <script src="{base}js/chat.js?v=5"></script>
+    return f'''  <script src="{base}js/main.js?v=6"></script>
+  <script src="{base}js/chat.js?v=6"></script>
 </body>
 </html>
 '''
@@ -620,13 +628,21 @@ def build_lang(lang):
             vid_k="Video institucional", vid_t="Conoce cómo trabajamos",
             vid_p="Un recorrido por nuestras obras: fabricación en taller, izaje y montaje de estructura de acero.",
             vid_btn="Ver con sonido", vid_hint="Se reproduce en silencio automáticamente",
-            br_k="Portafolio", br_t="Descarga nuestro brochure y CV",
-            br_s="Descarga nuestro brochure con el detalle de proyectos, sectores de especialización y capacidades técnicas.",
+            br_k="Documentación", br_t="Nuestra documentación técnica",
+            br_s="Todo nuestro historial de obra y nuestras capacidades, listos para tu área de compras o licitaciones.",
             br_btn="Descargar brochure",
             br_role="Puesto o posición", br_role_ph="Ej. Director de Operaciones",
             br_mail="Correo electrónico empresarial", br_mail_hint="Usa el correo de tu empresa; no aceptamos correos personales (gmail, hotmail, etc.).",
-            cv_txt="¿Buscas el currículum de obra completo?", cv_link="Descargar CV de la empresa",
-            cv_note="Descarga directa en PDF, sin necesidad de registro.",
+            cv_tag="PDF · 54 páginas", cv_t="Currículum de obra",
+            cv_p="45 años de trayectoria documentados: cada proyecto con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que solicitan las áreas de compras y los comités de licitación.",
+            cv_l1="Más de 400 proyectos entregados, por sector",
+            cv_l2="Clientes AAA y AA: Bosch, Ford, Bridgestone, Coca-Cola FEMSA y más",
+            cv_l3="Superficies, tonelajes y alcance de cada obra",
+            cv_l4="Certificación ISO 9001:2015 y registros vigentes",
+            cv_link="Descargar CV de la empresa",
+            cv_note="Descarga directa · 15 MB · sin registro",
+            br_tag="PDF · 5 páginas", br_t2="Brochure corporativo",
+            br_p="Presentación breve de la empresa, sectores de especialización y capacidades técnicas. Ideal para una primera revisión.",
             title="Nosotros — 45 años de construcción industrial | CAABSA STEEL",
             desc="CAABSA STEEL: 45 años construyendo obra industrial para empresas AAA y AA en el centro, Bajío, occidente y sur de México. Certificación ISO 9001:2015."),
          "en":dict(
@@ -643,13 +659,21 @@ def build_lang(lang):
             vid_k="Company video", vid_t="See how we work",
             vid_p="A walkthrough of our projects: shop fabrication, lifting and steel erection on site.",
             vid_btn="Watch with sound", vid_hint="Plays muted automatically",
-            br_k="Portfolio", br_t="Download our brochure and company CV",
-            br_s="Download our brochure with details on our projects, areas of specialization and technical capabilities.",
+            br_k="Documentation", br_t="Our technical documentation",
+            br_s="Our full project record and capabilities, ready for your procurement or tender team.",
             br_btn="Download brochure",
             br_role="Role or position", br_role_ph="e.g. Operations Director",
             br_mail="Business email address", br_mail_hint="Please use your company email; personal addresses (gmail, hotmail, etc.) are not accepted.",
-            cv_txt="Looking for the full project record?", cv_link="Download the company CV",
-            cv_note="Direct PDF download, no registration required.",
+            cv_tag="PDF · 54 pages", cv_t="Company project record (CV)",
+            cv_p="45 years documented: every project with its client, location, floor area and scope, with photographs from site. This is the document procurement departments and tender committees ask for.",
+            cv_l1="Over 400 delivered projects, broken down by industry",
+            cv_l2="AAA and AA clients: Bosch, Ford, Bridgestone, Coca-Cola FEMSA and more",
+            cv_l3="Floor areas, tonnage and scope for each project",
+            cv_l4="ISO 9001:2015 certification and current registrations",
+            cv_link="Download the company CV",
+            cv_note="Direct download · 15 MB · no registration",
+            br_tag="PDF · 5 pages", br_t2="Corporate brochure",
+            br_p="A short company presentation with our areas of specialization and technical capabilities. Ideal for a first review.",
             title="About us — 45 years of industrial construction | CAABSA STEEL",
             desc="CAABSA STEEL: 45 years building industrial projects for AAA and AA companies in Central Mexico, the Bajío, the west and the south. ISO 9001:2015 certified.")}[lang]
     body = f'''  <section class="subhead">
@@ -700,24 +724,43 @@ def build_lang(lang):
     </div>
   </div>
 
-  <section class="section section--alt" id="brochure">
-    <div class="container" style="max-width:760px;text-align:center">
+  <section class="section section--alt" id="documentos">
+    <div class="container">
       <div class="section-head center reveal"><div class="kicker">{A["br_k"]}</div><h2 class="h2">{A["br_t"]}</h2><p class="section-head__sub">{A["br_s"]}</p></div>
-      <form class="contacto__form reveal" id="brochureForm" novalidate style="max-width:520px;margin:0 auto;text-align:left"
-            data-file="{base_root}assets/docs/brochure-caabsa-steel-2026.pdf">
-        <div class="field"><label for="bnombre">{u["f_name"]}</label><input id="bnombre" name="nombre" type="text" placeholder="{u["f_name_ph"]}" required /><small class="err"></small></div>
-        <div class="field"><label for="bempresa">{u["f_company"]}</label><input id="bempresa" name="empresa" type="text" placeholder="{u["f_company_ph"]}" required /><small class="err"></small></div>
-        <div class="field"><label for="bpuesto">{A["br_role"]}</label><input id="bpuesto" name="puesto" type="text" placeholder="{A["br_role_ph"]}" required /><small class="err"></small></div>
-        <div class="field"><label for="bemail">{A["br_mail"]}</label><input id="bemail" name="email" type="email" placeholder="nombre@empresa.com" required /><small class="err"></small>
-          <small style="display:block;font-size:.78rem;color:var(--muted-2);margin-top:6px">{A["br_mail_hint"]}</small></div>
-        <button type="submit" class="btn btn--primary btn--lg btn--block" id="brochureSubmit">{A["br_btn"]}</button>
-        <p class="form-note" id="brochureNote" role="status"></p>
-      </form>
-      <div class="dl-alt reveal">
-        <p class="dl-alt__txt">{A["cv_txt"]}</p>
-        <a class="btn btn--ghost" href="{base_root}assets/docs/cv-caabsa-steel.pdf" download>
-          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;vertical-align:-3px"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>{A["cv_link"]}</a>
-        <p class="dl-alt__note">{A["cv_note"]}</p>
+      <div class="docs__grid">
+
+        <article class="doccard doccard--feat reveal">
+          <div class="doccard__top">
+            <span class="doccard__ic">{DOC_IC}</span>
+            <span class="doccard__tag doccard__tag--feat">{A["cv_tag"]}</span>
+          </div>
+          <h3 class="doccard__t">{A["cv_t"]}</h3>
+          <p class="doccard__p">{A["cv_p"]}</p>
+          <ul class="doccard__list">
+            <li>{A["cv_l1"]}</li><li>{A["cv_l2"]}</li><li>{A["cv_l3"]}</li><li>{A["cv_l4"]}</li>
+          </ul>
+          <a class="btn btn--primary btn--lg btn--block doccard__btn" href="{base_root}assets/docs/cv-caabsa-steel.pdf" download>{DL_IC}{A["cv_link"]}</a>
+          <p class="doccard__note">{A["cv_note"]}</p>
+        </article>
+
+        <article class="doccard reveal reveal-d1">
+          <div class="doccard__top">
+            <span class="doccard__ic doccard__ic--soft">{DOC_IC}</span>
+            <span class="doccard__tag">{A["br_tag"]}</span>
+          </div>
+          <h3 class="doccard__t">{A["br_t2"]}</h3>
+          <p class="doccard__p">{A["br_p"]}</p>
+          <form class="contacto__form" id="brochureForm" novalidate data-file="{base_root}assets/docs/brochure-caabsa-steel-2026.pdf">
+            <div class="field"><label for="bnombre">{u["f_name"]}</label><input id="bnombre" name="nombre" type="text" placeholder="{u["f_name_ph"]}" required /><small class="err"></small></div>
+            <div class="field"><label for="bempresa">{u["f_company"]}</label><input id="bempresa" name="empresa" type="text" placeholder="{u["f_company_ph"]}" required /><small class="err"></small></div>
+            <div class="field"><label for="bpuesto">{A["br_role"]}</label><input id="bpuesto" name="puesto" type="text" placeholder="{A["br_role_ph"]}" required /><small class="err"></small></div>
+            <div class="field"><label for="bemail">{A["br_mail"]}</label><input id="bemail" name="email" type="email" placeholder="nombre@empresa.com" required /><small class="err"></small>
+              <small class="field__hint">{A["br_mail_hint"]}</small></div>
+            <button type="submit" class="btn btn--ghost btn--block" id="brochureSubmit">{A["br_btn"]}</button>
+            <p class="form-note" id="brochureNote" role="status"></p>
+          </form>
+        </article>
+
       </div>
     </div>
   </section>'''
@@ -795,6 +838,11 @@ def build_lang(lang):
             band_p="Naves, plantas y espacios corporativos en acero, con calidad certificada ISO 9001:2015 para empresas AAA y AA.",
             band_btn="Cotiza tu proyecto",
             rv_k="Lo que dicen nuestros clientes", rv_t="Cartas de recomendación de quienes ya construyeron con nosotros",
+            cvb_k="Currículum de obra", cvb_t="45 años de obra industrial, en un solo documento",
+            cvb_p="Nuestro currículum reúne más de 400 proyectos entregados: cada uno con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que piden las áreas de compras y los comités de licitación.",
+            cvb_btn="Descargar CV de la empresa",
+            cvb_meta="PDF · 54 páginas · descarga directa, sin registro",
+            cvb_alt="Ver también el brochure corporativo",
             vid_k="Video corporativo", vid_t="CAABSA STEEL en movimiento",
             vid_p="Un recorrido por nuestras obras: fabricación en taller, izaje y montaje de estructura de acero.",
             vid_btn="Ver con sonido", vid_hint="Se reproduce en silencio automáticamente",
@@ -822,6 +870,11 @@ def build_lang(lang):
             band_p="Steel facilities, plants and corporate spaces, with ISO 9001:2015 certified quality for AAA and AA companies.",
             band_btn="Request a quote",
             rv_k="What our clients say", rv_t="Recommendation letters from companies that have built with us",
+            cvb_k="Project record", cvb_t="45 years of industrial construction, in a single document",
+            cvb_p="Our company CV brings together more than 400 delivered projects: each one with its client, location, floor area and scope, with photographs from site. This is the document procurement departments and tender committees ask for.",
+            cvb_btn="Download the company CV",
+            cvb_meta="PDF · 54 pages · direct download, no registration",
+            cvb_alt="See the corporate brochure as well",
             vid_k="Company video", vid_t="CAABSA STEEL in motion",
             vid_p="A walkthrough of our projects: shop fabrication, lifting and steel erection on site.",
             vid_btn="Watch with sound", vid_hint="Plays muted automatically",
@@ -978,6 +1031,23 @@ def build_lang(lang):
       <div class="section-head center reveal"><div class="kicker">{H["rv_k"]}</div><h2 class="h2">{H["rv_t"]}</h2></div>
       <div class="reviews__grid">
 {rev_cards}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cvband" id="cv">
+    <div class="container">
+      <div class="cvband__box reveal">
+        <div class="cvband__main">
+          <div class="kicker">{H["cvb_k"]}</div>
+          <h2 class="h2">{H["cvb_t"]}</h2>
+          <p class="cvband__p">{H["cvb_p"]}</p>
+        </div>
+        <div class="cvband__side">
+          <a class="btn btn--primary btn--lg cvband__btn" href="{base_root}assets/docs/cv-caabsa-steel.pdf" download>{DL_IC}{H["cvb_btn"]}</a>
+          <span class="cvband__meta">{H["cvb_meta"]}</span>
+          <a class="cvband__alt" href="{base_root}{path_of("about",lang)}#documentos">{H["cvb_alt"]} &rarr;</a>
+        </div>
       </div>
     </div>
   </section>
