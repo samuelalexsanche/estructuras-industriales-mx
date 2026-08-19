@@ -55,7 +55,7 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 
 - **Formulario de contacto y botón de WhatsApp directo en todas las páginas.** El formulario distingue si escribe un cliente, un proveedor o alguien que busca empleo.
 - **Descarga del brochure con registro:** para bajarlo hay que dejar nombre completo, empresa, puesto y **correo empresarial** (el sistema rechaza gmail, hotmail y similares). Así cada descarga se convierte en un prospecto identificado.
-- **CV de la empresa** en descarga directa, sin registro: botón en la sección de portafolio y enlace en el pie de **todas** las páginas.
+- **CV de la empresa (54 páginas)** como pieza principal: banda propia en la página de inicio y tarjeta destacada en Nosotros, con descarga directa y sin registro. También está enlazado en el pie de **todas** las páginas.
 - **Asistente con inteligencia artificial** que responde dudas de los visitantes las 24 horas, únicamente sobre CAABSA STEEL.
 - Redes sociales, teléfono, correo, dirección exacta y mapa: Vicente Guerrero 2800, Col. Francisco I. Madero, Toluca de Lerdo.
 
@@ -72,6 +72,10 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 - El **blog** ya lleva fotografías de obra: Andenes en el artículo de centros logísticos, Tintas Sánchez en el de complejos industriales y Bridgestone en el de proyectos industriales especiales.
 - **Se revisó una por una que cada fotografía corresponda a su proyecto.**
 - El **CV ya se descarga de verdad**: antes solo abría el PDF en otra pestaña y estaba únicamente en la página Nosotros. Ahora tiene su propio botón de descarga y un enlace en el pie de **todas** las páginas del sitio.
+- **Le dimos al CV el lugar que merece.** Es un documento de 54 páginas con todo el historial de obra, así que dejó de ser un enlace secundario:
+  - En la **página de inicio** hay una banda dedicada, entre las reseñas y el video, con el botón de descarga.
+  - En **Nosotros**, la sección se llama ahora "Documentación" y muestra dos tarjetas: el **CV destacado** (con lo que contiene: más de 400 proyectos por sector, clientes AAA y AA, superficies y tonelajes, certificación ISO) y el brochure a un lado.
+  - El texto explica por qué importa: es el documento que piden las áreas de compras y los comités de licitación. Se indica el número de páginas y el peso del archivo antes de descargarlo.
 
 > **Nota sobre el CV:** lo dejamos como descarga libre, sin formulario. El brochure sí pide los datos, porque es la pieza comercial que sirve para captar prospectos; el CV de obra suele pedirse dentro de procesos de licitación y ponerle un registro de por medio puede frenar a un cliente serio. Si prefieren que el CV también pida datos, lo cambiamos.
 
