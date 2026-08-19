@@ -5,3 +5,4 @@ Thumbs.db
 
 # Archivos fuente crudos (fotos/video sin optimizar) — no subir
 assets/drive-download-*/
+__pycache__/

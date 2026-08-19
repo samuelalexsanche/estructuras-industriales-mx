@@ -468,3 +468,15 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---- Galería dentro de un artículo del blog ---- */
+.artgal{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:34px 0 6px}
+.artgal img{width:100%;height:230px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+@media (max-width:560px){.artgal img{height:190px}}
+
+/* ---- Distintivos de registros y certificaciones ---- */
+.badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.badge{font-size:.82rem;font-weight:600;color:var(--primary);background:rgba(28,70,207,.07);
+  border:1px solid rgba(28,70,207,.22);border-radius:999px;padding:8px 15px;white-space:nowrap}
+.badge::before{content:"✓";margin-right:7px;color:var(--accent);font-weight:800}
+@media (max-width:560px){.badge{font-size:.76rem;padding:7px 12px}}

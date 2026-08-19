@@ -7,12 +7,13 @@
   <url><loc>https://caabsasteel.mx/sectores/alimenticio.html</loc></url>
   <url><loc>https://caabsasteel.mx/sectores/logistico.html</loc></url>
   <url><loc>https://caabsasteel.mx/sectores/corporativo.html</loc></url>
+  <url><loc>https://caabsasteel.mx/sectores/farmaceutico.html</loc></url>
   <url><loc>https://caabsasteel.mx/sectores/industrial.html</loc></url>
   <url><loc>https://caabsasteel.mx/sectores/aeronautico.html</loc></url>
   <url><loc>https://caabsasteel.mx/regiones/centro.html</loc></url>
   <url><loc>https://caabsasteel.mx/regiones/bajio.html</loc></url>
   <url><loc>https://caabsasteel.mx/regiones/occidente.html</loc></url>
-  <url><loc>https://caabsasteel.mx/regiones/sur.html</loc></url>
+  <url><loc>https://caabsasteel.mx/regiones/otros-estados.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/index.html</loc></url>
   <url><loc>https://caabsasteel.mx/estados/index.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/bosch.html</loc></url>
@@ -25,6 +26,7 @@
   <url><loc>https://caabsasteel.mx/proyectos/cimsa.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/quimica-apollo.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/dalton-honda.html</loc></url>
+  <url><loc>https://caabsasteel.mx/proyectos/aventis-pharma.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/gates.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/polynt.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/tecnosol.html</loc></url>
@@ -38,7 +40,7 @@
   <url><loc>https://caabsasteel.mx/proyectos/saint-gobain.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/bridgestone.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/espejos-inteligentes.html</loc></url>
-  <url><loc>https://caabsasteel.mx/proyectos/mixing.html</loc></url>
+  <url><loc>https://caabsasteel.mx/proyectos/bridgestone-mixing.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/tintas-sanchez.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/thyssenkrupp.html</loc></url>
   <url><loc>https://caabsasteel.mx/proyectos/audi-puebla.html</loc></url>
@@ -67,12 +69,13 @@
   <url><loc>https://caabsasteel.mx/en/sectors/food-beverage.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/sectors/logistics.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/sectors/corporate.html</loc></url>
+  <url><loc>https://caabsasteel.mx/en/sectors/pharmaceutical.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/sectors/industrial.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/sectors/aerospace.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/regions/central-mexico.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/regions/bajio.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/regions/western-mexico.html</loc></url>
-  <url><loc>https://caabsasteel.mx/en/regions/southern-mexico.html</loc></url>
+  <url><loc>https://caabsasteel.mx/en/regions/other-states.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/index.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/states/index.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/bosch.html</loc></url>
@@ -85,6 +88,7 @@
   <url><loc>https://caabsasteel.mx/en/projects/cimsa.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/quimica-apollo.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/dalton-honda.html</loc></url>
+  <url><loc>https://caabsasteel.mx/en/projects/aventis-pharma.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/gates.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/polynt.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/tecnosol.html</loc></url>
@@ -98,7 +102,7 @@
   <url><loc>https://caabsasteel.mx/en/projects/saint-gobain.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/bridgestone.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/espejos-inteligentes.html</loc></url>
-  <url><loc>https://caabsasteel.mx/en/projects/mixing.html</loc></url>
+  <url><loc>https://caabsasteel.mx/en/projects/bridgestone-mixing.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/tintas-sanchez.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/thyssenkrupp.html</loc></url>
   <url><loc>https://caabsasteel.mx/en/projects/audi-puebla.html</loc></url>

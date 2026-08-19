@@ -249,4 +249,48 @@
       setTimeout(() => { note.textContent = ''; note.className = 'form-note'; }, 6000);
     });
   }
+
+  /* ---------- Brochure: pide datos antes de descargar ---------- */
+  const bForm = document.getElementById('brochureForm');
+  if (bForm) {
+    const bNote = document.getElementById('brochureNote');
+    const FREE = ['gmail.','hotmail.','outlook.','yahoo.','live.','icloud.','proton.','aol.'];
+    const T2 = {
+      es: { bad:'Revisa los campos marcados.', free:'Usa tu correo empresarial, no uno personal.',
+            ok:'¡Listo! Tu descarga comenzará en un momento.' },
+      en: { bad:'Please review the highlighted fields.', free:'Please use your business email, not a personal one.',
+            ok:'Done! Your download will start in a moment.' },
+    }[LANG];
+    const mark = (input, msg) => {
+      const field = input.closest('.field');
+      const small = field && field.querySelector('.err');
+      if (field) field.classList.toggle('invalid', !!msg);
+      if (small) small.textContent = msg || '';
+      return !msg;
+    };
+    bForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nom = bForm.elements['nombre'], emp = bForm.elements['empresa'],
+            pue = bForm.elements['puesto'], mail = bForm.elements['email'];
+      let ok = true;
+      ok = mark(nom, nom.value.trim().length >= 2 ? '' : T.errName) && ok;
+      ok = mark(emp, emp.value.trim().length >= 2 ? '' : (LANG === 'es' ? 'Escribe el nombre de la empresa.' : 'Please enter your company name.')) && ok;
+      ok = mark(pue, pue.value.trim().length >= 2 ? '' : (LANG === 'es' ? 'Escribe tu puesto.' : 'Please enter your role.')) && ok;
+      const v = mail.value.trim().toLowerCase();
+      let mailMsg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : T.errEmail;
+      if (!mailMsg && FREE.some((d) => v.includes('@' + d))) mailMsg = T2.free;
+      ok = mark(mail, mailMsg) && ok;
+      if (!ok) { bNote.textContent = T2.bad; bNote.className = 'form-note bad'; return; }
+
+      /* DEMO: aquí se enviarían los datos al CRM/correo antes de entregar el archivo. */
+      bNote.textContent = T2.ok;
+      bNote.className = 'form-note ok';
+      const file = bForm.dataset.file;
+      const a = document.createElement('a');
+      a.href = file; a.download = ''; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); a.remove();
+      bForm.reset();
+      setTimeout(() => { bNote.textContent = ''; bNote.className = 'form-note'; }, 8000);
+    });
+  }
 })();
