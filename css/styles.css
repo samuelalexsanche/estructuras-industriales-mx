@@ -470,9 +470,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 
 /* ---- Galería dentro de un artículo del blog ---- */
-.artgal{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:34px 0 6px}
-.artgal img{width:100%;height:230px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
-@media (max-width:560px){.artgal img{height:190px}}
+.artgal{columns:2;column-gap:16px;margin:34px 0 6px}
+.artgal img{display:block;width:100%;height:auto;margin:0 0 16px;break-inside:avoid;
+  border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+@media (max-width:700px){.artgal{columns:1}}
+
+/* Galería de la ficha de proyecto: se ve la foto completa, sin recortar */
+.pgal{columns:2;column-gap:20px}
+.pgal img{display:block;width:100%;height:auto;margin:0 0 20px;break-inside:avoid;
+  border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+@media (max-width:700px){.pgal{columns:1}}
 
 /* ---- Distintivos de registros y certificaciones ---- */
 .badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
