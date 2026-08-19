@@ -83,9 +83,10 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 
 ## 6. Lo que falta de su parte
 
-1. **Nombre del proyecto de Tlaxcala.**
+1. ~~Nombre del proyecto de Tlaxcala~~ — **resuelto**: es Vetrotex Saint-Gobain (Parque Industrial Xicohténcatl). Ya tiene su página. Solo falta la superficie en m², que el CV no indica.
 2. **Fotografías** de Bardahl, Soriana y Grupo CIMSA (las que teníamos eran capturas de mapas, no fotos propias).
 3. **Ubicación de Grupo CIMSA**: en el documento aparece como Estado de México, pero la colonia El Coecillo corresponde a León, Guanajuato. ¿Cuál es la correcta?
-4. **Proyecto Irizar**: aparecen fotos en la carpeta de Querétaro. ¿Lo publicamos?
+4. **Proyecto Irizar**: el CV confirma dos obras en el P. Ind. Bernardo Quintana, Querétaro (4,574 y 4,570 m²). ¿Las publicamos como una página o como dos?
 5. **Correo donde deben llegar los mensajes** del formulario de contacto.
 6. **Dominio definitivo** (por ejemplo caabsasteel.mx) para publicar el sitio ahí.
+7. **¿Publicamos los 74 proyectos del CV?** El sitio muestra 33; el currículum documenta 74 con cliente, superficie y ubicación. Publicarlos multiplicaría la presencia en buscadores, aunque la mayoría iría sin fotografías.

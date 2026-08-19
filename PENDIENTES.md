@@ -28,14 +28,15 @@ platform.deepseek.com y luego `npx wrangler secret put DEEPSEEK_API_KEY`.
 
 | # | Tema | Detalle |
 |---|------|---------|
-| 1 | **Proyecto de Tlaxcala** | Hay 2 fotos pero sin nombre de cliente ni tipo de obra. La página del estado existe, sin proyecto. |
-| 2 | **Grupo CIMSA — ubicación** | La presentación dice "Parque Industrial El Coecillo, **Estado de México**", pero El Coecillo está en León, **Guanajuato**. Se publicó como lo escribió el cliente. Confirmar cuál es. |
+| 1 | ~~**Proyecto de Tlaxcala**~~ **RESUELTO** | Es **Vetrotex Saint-Gobain**, nave industrial en el Parque Industrial Xicohténcatl, Tlaxcala. Aparece en el CV de la empresa (no en el documento del blog). Ya tiene página propia con 3 fotos. Falta la superficie en m², que el CV no indica. |
+| 2 | **Grupo CIMSA — ubicación** | La presentación **y el CV** dicen "P. Ind. El Coecillo, **Estado de México**" (36,000 m²), pero El Coecillo está en León, **Guanajuato**. Al repetirse en dos documentos, se publicó como ellos lo escriben. Confirmar de todos modos. |
 | 3 | **Cuatro proyectos sin foto** | Bardahl, Grupo CIMSA, Soriana e Interjet: las únicas imágenes de la presentación eran capturas de pantalla de Google Maps (con barra del navegador). No se publicaron por calidad y por derechos de imagen de Google. Se necesitan fotos propias. |
 | 4 | **Cumplimiento normativo** | El texto publicado menciona REPSE vigente, normas de seguridad e higiene y fianzas de cumplimiento y calidad. **Confirmar la vigencia exacta del REPSE y qué tipo de fianzas manejan** antes de dejarlo definitivo (el propio documento del cliente lo pedía). |
-| 5 | **Posible proyecto Irizar** | Entre las fotos sueltas de Querétaro aparece una nave con logotipo de Irizar. Hoy se usa solo como imagen de fondo. Si es obra de CAABSA, darle su página. |
-| 6 | **Brochure en PDF** | El botón "Descargar brochure" funciona, pero no hay archivo que entregar. |
+| 5 | **Proyecto Irizar — confirmado en el CV** | El CV lista **dos** obras para Irizar en el P. Ind. Bernardo Quintana, Querétaro (4,574 m² y 4,570 m²). Sí es obra de CAABSA. Falta que el cliente diga si se publican como una o dos páginas y si hay más fotos. |
+| 6 | ~~**Brochure en PDF**~~ **RESUELTO** | El brochure 2026 ya está publicado y se entrega tras el registro. |
 | 7 | **Sector de algunos proyectos** | Los que no encajaban en los 5 sectores del brief quedaron como "Industrial" (Metrocolor, Robin, Mixing, Polynt, Tecnosol, Bardahl, Soriana, Ferrostaal, Daewoo, Kimberly-Clark, Química Apollo, TST/TIMCO). Confirmar si alguno debe reclasificarse. |
 | 8 | **Fotos por proyecto** | Varios proyectos nuevos tienen una sola foto. Si hay más, mejoran mucho las páginas. |
+| 9 | **El CV documenta 74 proyectos; el sitio publica 33** | El CV de la empresa trae la lista completa con cliente, parque industrial, estado, superficie y alcance de cada obra (Mars, Kiekert, Brose, Hitachi, Ventramex, Fernández Editores, Grupo Modelo, Cargill, Warner Lambert, Sealy, Legrand, Firmenich y más). **Decidir con el cliente si se publican todos**: son páginas nuevas con SEO propio por estado y sector, pero la mayoría no tiene fotos. |
 
 ---
 

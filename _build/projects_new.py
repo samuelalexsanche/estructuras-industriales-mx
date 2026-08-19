@@ -229,6 +229,15 @@ _p("audi-puebla","Audi Puebla","puebla","automotive",3,
    "Trabajos para la planta de Audi en Puebla, dentro del clúster automotriz del estado.",
    "Works for the Audi plant in Puebla, within the state's automotive cluster."),
 
+# ─────────── TLAXCALA ───────────
+_p("vetrotex-saint-gobain","Vetrotex Saint-Gobain","tlaxcala","industrial",3,
+   "Nave industrial","Industrial facility",None,
+   ["Nave industrial","Estructura metálica","Obra civil"],
+   ["Industrial facility","Structural steel","Civil works"],
+   "Nave industrial para Vetrotex Saint-Gobain, fabricante de fibra de vidrio, en el Parque Industrial Xicohténcatl, Tlaxcala. La obra se ejecutó dentro de una planta manufacturera en operación.",
+   "Industrial facility for Vetrotex Saint-Gobain, a fibreglass manufacturer, in the Xicohténcatl Industrial Park, Tlaxcala. The work was carried out inside an operating manufacturing plant.",
+   city="Parque Industrial Xicohténcatl"),
+
 # ─────────── JALISCO ───────────
 _p("jugos-del-valle","Jugos del Valle","jalisco","food",3,
    "Nueva nave industrial","New industrial facility","22,000 m²",
