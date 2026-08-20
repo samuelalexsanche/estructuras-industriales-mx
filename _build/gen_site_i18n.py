@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=9" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=10" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=9"></script>
-  <script src="{base}js/chat.js?v=9"></script>
+    return f'''  <script src="{base}js/main.js?v=10"></script>
+  <script src="{base}js/chat.js?v=10"></script>
 </body>
 </html>
 '''
@@ -1378,8 +1378,12 @@ def build_projects(lang):
         desc = (f'{p["kind"][lang]} para {p["client"]} en {loc}{m2txt}. Construcción industrial y estructura de acero por CAABSA STEEL, certificación ISO 9001:2015.'
                 if lang=="es" else
                 f'{p["kind"][lang]} for {p["client"]} in {loc}{m2txt}. Industrial construction and structural steel by CAABSA STEEL, ISO 9001:2015 certified.')
+        bidx = p.get("banner")
         gallery = "\n".join(f'''        <img src="{base}images/proyectos/{p["slug"]}/{i:02d}.jpg" alt="{p["client"]} — {p["kind"][lang]} ({loc}) {i}" loading="lazy" />'''
-                            for i in range(1, p["photos"]+1))
+                            for i in range(1, p["photos"]+1) if i != bidx)
+        band = (f'''  <div class="photoband reveal" role="img" aria-label="{p["client"]} — {p["kind"][lang]} ({loc})"
+       style="background-image:url(\'{base}images/proyectos/{p["slug"]}/{bidx:02d}.jpg\')"></div>''' if bidx else "")
+        ngal = p["photos"] - (1 if bidx else 0)
         scope = "".join(f"<li>{s}</li>" for s in p["scope"][lang])
         facts = f'''<div class="build-list">
           <span><b>{pu["client"]}:</b> {p["client"]}</span>
@@ -1413,6 +1417,8 @@ def build_projects(lang):
     </div>
   </section>
 
+{band}
+
 {f'''  <section class="section section--alt">
     <div class="container">
       <div class="section-head reveal"><div class="kicker">{pu["gallery"]}</div><h2 class="h2">{p["client"]}</h2></div>
@@ -1420,7 +1426,7 @@ def build_projects(lang):
 {gallery}
       </div>
     </div>
-  </section>''' if p["photos"] > 0 else ""}
+  </section>''' if ngal > 0 else ""}
 
 {contact_section(lang, base, sec if p["sector"] in SECTOR_BY_KEY else "", simple=True, alt=False)}
   {jsonld}'''

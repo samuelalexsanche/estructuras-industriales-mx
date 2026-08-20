@@ -13,12 +13,15 @@ EXTRA_STATES = {
 }
 
 def _p(slug, client, state, sector, photos, kind_es, kind_en, m2=None,
-       scope_es=None, scope_en=None, about_es=None, about_en=None, city=None, article=None):
+       scope_es=None, scope_en=None, about_es=None, about_en=None, city=None, article=None,
+       banner=None):
+    """banner: índice de la foto panorámica; se muestra como banda a todo lo ancho
+    en vez de quedar comprimida dentro de la galería."""
     return dict(slug=slug, client=client, state=state, sector=sector, photos=photos,
                 kind={"es":kind_es,"en":kind_en}, m2=m2,
                 scope={"es":scope_es or [], "en":scope_en or []},
                 about={"es":about_es or "", "en":about_en or ""},
-                city={"es":city,"en":city} if city else {}, article=article)
+                city={"es":city,"en":city} if city else {}, article=article, banner=banner)
 
 E = ["Estructura metálica","Obra civil"]
 EE = ["Structural steel","Civil works"]
@@ -238,7 +241,7 @@ _p("thyssenkrupp-metalurgica","thyssenkrupp Metalúrgica","puebla","industrial",
    ["Industrial facility","Structural steel","Civil works","Roofing and cladding"],
    "Segunda obra para thyssenkrupp en Puebla, una nave industrial independiente de la del Parque Industrial Xoxtla.",
    "A second project for thyssenkrupp in Puebla, an industrial facility separate from the one in the Xoxtla Industrial Park.",
-   city="Puebla"),
+   city="Puebla", banner=2),
 _p("audi-puebla","Audi Puebla","puebla","automotive",3,
    "Obra industrial para planta automotriz","Industrial works for an automotive plant",None,
    ["Estructura metálica","Obra industrial"], ["Structural steel","Industrial construction"],

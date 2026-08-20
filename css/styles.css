@@ -540,3 +540,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .proj__blankmark{width:74px;height:auto;color:rgba(190,208,238,.55)}
 .proj__blanktxt{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(190,208,238,.46)}
+
+/* Foto panorámica de un proyecto, a todo lo ancho */
+.photoband{position:relative;left:50%;width:100vw;margin-left:-50vw;
+  aspect-ratio:5/1;min-height:150px;max-height:340px;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  border-block:1px solid var(--line)}
