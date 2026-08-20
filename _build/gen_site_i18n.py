@@ -1245,16 +1245,16 @@ REVIEWS_REAL = PN.REVIEWS
 
 # Fotos sueltas del cliente (fuera de carpetas de proyecto) usadas como DISEÑO
 DESIGN = {
- "queretaro":       dict(hero="images/proyectos/queretaro-general/03.jpg", band="images/proyectos/queretaro-general/05.jpg"),
+ "queretaro":       dict(hero="images/proyectos/queretaro-general/01.jpg", band="images/proyectos/queretaro-general/03.jpg"),
  "estado-de-mexico":dict(hero="images/proyectos/edomex-general/01.jpg",    band="images/proyectos/edomex-general/02.jpg"),
  "tlaxcala":        dict(hero="images/proyectos/tlaxcala/01.jpg",          band="images/proyectos/tlaxcala/02.jpg"),
 }
 DESIGN_REGION = {
- "bajio":     "images/proyectos/queretaro-general/09.jpg",
+ "bajio":     "images/proyectos/queretaro-general/02.jpg",
  "central":   "images/proyectos/andenes/01.jpg",
  "occidente": "images/proyectos/jugos-del-valle/02.jpg",
 }
-TEAM_PHOTO = "images/proyectos/queretaro-general/19.jpg"
+TEAM_PHOTO = "images/equipo/01.jpg"
 
 def design_band(lang, base, photo, kicker, title, text):
     """Banda parallax de ancho completo con foto real del cliente."""
