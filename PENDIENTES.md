@@ -36,7 +36,10 @@ platform.deepseek.com y luego `npx wrangler secret put DEEPSEEK_API_KEY`.
 | 6 | ~~**Brochure en PDF**~~ **RESUELTO** | El brochure 2026 ya está publicado y se entrega tras el registro. |
 | 7 | **Sector de algunos proyectos** | Los que no encajaban en los 5 sectores del brief quedaron como "Industrial" (Metrocolor, Robin, Mixing, Polynt, Tecnosol, Bardahl, Soriana, Ferrostaal, Daewoo, Kimberly-Clark, Química Apollo, TST/TIMCO). Confirmar si alguno debe reclasificarse. |
 | 8 | **Fotos por proyecto** | Varios proyectos nuevos tienen una sola foto. Si hay más, mejoran mucho las páginas. |
-| 9 | **El CV documenta 74 proyectos; el sitio publica 33** | El CV de la empresa trae la lista completa con cliente, parque industrial, estado, superficie y alcance de cada obra (Mars, Kiekert, Brose, Hitachi, Ventramex, Fernández Editores, Grupo Modelo, Cargill, Warner Lambert, Sealy, Legrand, Firmenich y más). **Decidir con el cliente si se publican todos**: son páginas nuevas con SEO propio por estado y sector, pero la mayoría no tiene fotos. |
+| 9 | **El CV documenta 74 proyectos; el sitio publica 36** | Van 36 publicados. El CV trae la lista completa con cliente, parque industrial, estado, superficie y alcance de cada obra (Mars, Kiekert, Brose, Hitachi, Ventramex, Fernández Editores, Grupo Modelo, Cargill, Warner Lambert, Sealy, Legrand, Firmenich y más). **Decidir con el cliente si se publican todos**: son páginas nuevas con SEO propio por estado y sector, pero la mayoría no tiene fotos. |
+| 10 | **ThyssenKrupp: ¿son una o dos obras?** | En la carpeta hay dos folders del mismo cliente en Puebla: "Thyssenkrupp" y "ThyssenKrupp (Metalúrgica)". El CV lista una sola obra (18,695 m², P. Ind. Xoxtla), así que las 5 fotos quedaron en un solo proyecto. Si son dos obras distintas, hay que separarlas con sus propias cifras. |
+| 11 | **Fotos de Brose y Baleros Mexicanos** | Las únicas que hay miden 420×221 y 415×166 px. Se publicaron a su tamaño real para no falsear la nitidez, pero se ven pequeñas. Si existen los originales, mejoran mucho. |
+| 12 | **Superficie de Vetrotex Saint-Gobain** | Es el único proyecto publicado sin metros cuadrados: el CV no los indica para esa obra. |
 
 ---
 
