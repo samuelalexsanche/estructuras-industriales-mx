@@ -4,6 +4,8 @@
 
 # estados nuevos que aparecen en la presentación
 EXTRA_STATES = {
+ "san-luis-potosi":dict(name={"es":"San Luis Potosí","en":"San Luis Potosí"}, region="bajio",
+    cities={"es":"el Parque Industrial Tres Naciones","en":"the Tres Naciones Industrial Park"}),
  "michoacan":     dict(name={"es":"Michoacán","en":"Michoacán"}, region="occidente",
     cities={"es":"Morelia","en":"Morelia"}),
  "aguascalientes":dict(name={"es":"Aguascalientes","en":"Aguascalientes"}, region="bajio",
@@ -180,6 +182,20 @@ _p("robin","Robin","queretaro","industrial",5,
    "Nave industrial de producción construida en el corredor industrial de Querétaro.",
    "Industrial production facility built in the Querétaro industrial corridor."),
 
+_p("irizar","Irizar","queretaro","automotive",0,
+   "Dos naves industriales","Two industrial facilities","9,144 m²",
+   ["Proyecto ejecutivo","Obra civil","Estructura metálica","Laminación","Acabados"],
+   ["Detailed design","Civil works","Structural steel","Roofing and cladding","Finishes"],
+   "Dos naves industriales que suman 9,144 m² para Irizar, fabricante de autobuses, en el Parque Industrial Bernardo Quintana, Querétaro.",
+   "Two industrial facilities totalling 9,144 m² for Irizar, a bus manufacturer, in the Bernardo Quintana Industrial Park, Querétaro.",
+   city="Parque Industrial Bernardo Quintana"),
+_p("mann-hummel","Mann+Hummel","queretaro","automotive",0,
+   "Nave industrial","Industrial facility","4,000 m²",
+   ["Proyecto ejecutivo","Terracerías","Obra civil","Estructura metálica","Laminación","Acabados"],
+   ["Detailed design","Earthworks","Civil works","Structural steel","Roofing and cladding","Finishes"],
+   "Nave industrial de 4,000 m² para Mann+Hummel, fabricante de sistemas de filtración para la industria automotriz, en Querétaro. Obra ejecutada de las terracerías a los acabados.",
+   "A 4,000 m² industrial facility for Mann+Hummel, a manufacturer of filtration systems for the automotive industry, in Querétaro. Delivered from earthworks through finishes."),
+
 # ─────────── MORELOS ───────────
 _p("saint-gobain","Saint-Gobain Glass","morelos","industrial",2,
    "Planta industrial","Industrial plant","15,000 m²",
@@ -263,13 +279,20 @@ _p("baleros-mexicanos","Baleros Mexicanos","puebla","industrial",1,
    "A 19,986 m² industrial facility for Baleros Mexicanos in Huejotzingo, Puebla, on the Mexico-Puebla federal highway.",
    city="Huejotzingo"),
 
+_p("rubau","Rubau","puebla","industrial",0,
+   "Nave industrial","Industrial facility","23,200 m²",
+   ["Estructura metálica","Techumbre","Laminación"],
+   ["Structural steel","Roofing","Cladding"],
+   "Nave industrial de 23,200 m² para Rubau, desarrolladora inmobiliaria industrial, en Puebla.",
+   "A 23,200 m² industrial facility for Rubau, an industrial real-estate developer, in Puebla."),
+
 # ─────────── TLAXCALA ───────────
 _p("vetrotex-saint-gobain","Vetrotex Saint-Gobain","tlaxcala","industrial",1,
-   "Nave industrial","Industrial facility",None,
-   ["Nave industrial","Estructura metálica","Obra civil"],
-   ["Industrial facility","Structural steel","Civil works"],
-   "Nave industrial para Vetrotex Saint-Gobain, fabricante de fibra de vidrio, en el Parque Industrial Xicohténcatl, Tlaxcala. La obra se ejecutó dentro de una planta manufacturera en operación.",
-   "Industrial facility for Vetrotex Saint-Gobain, a fibreglass manufacturer, in the Xicohténcatl Industrial Park, Tlaxcala. The work was carried out inside an operating manufacturing plant.",
+   "Nave industrial de 3 niveles para producción","Three-level production facility","2,000 m²",
+   ["Nave industrial de 3 niveles","Estructura metálica","Obra civil"],
+   ["Three-level industrial facility","Structural steel","Civil works"],
+   "Nave industrial de 2,000 m² y tres niveles para producción, construida para Vetrotex, fabricante de fibra de vidrio, en el Parque Industrial Xicohténcatl, Tlaxcala.",
+   "A 2,000 m² three-level production facility built for Vetrotex, a fibreglass manufacturer, in the Xicohténcatl Industrial Park, Tlaxcala.",
    city="Parque Industrial Xicohténcatl"),
 
 # ─────────── JALISCO ───────────
@@ -279,6 +302,15 @@ _p("jugos-del-valle","Jugos del Valle","jalisco","food",3,
    "Construcción de la nueva nave industrial de 22,000 m² de Jugos del Valle en Lagos de Moreno, Jalisco, bajo los requisitos del sector alimenticio.",
    "Construction of Jugos del Valle's new 22,000 m² industrial facility in Lagos de Moreno, Jalisco, built to food-industry requirements.",
    city="Lagos de Moreno"),
+
+# ─────────── SAN LUIS POTOSÍ ───────────
+_p("vesta-san-luis-potosi","Vesta","san-luis-potosi","industrial",0,
+   "Nave industrial y oficinas","Industrial facility and offices","12,000 m²",
+   ["Obra civil","Estructura metálica","Laminación","Acabados"],
+   ["Civil works","Structural steel","Roofing and cladding","Finishes"],
+   "Nave industrial y oficinas de 12,000 m² para Vesta, desarrolladora inmobiliaria industrial, en el Parque Industrial Tres Naciones, San Luis Potosí.",
+   "A 12,000 m² industrial facility with offices for Vesta, an industrial real-estate developer, in the Tres Naciones Industrial Park, San Luis Potosí.",
+   city="Parque Industrial Tres Naciones"),
 
 # ─────────── MICHOACÁN ───────────
 _p("ford","Ford","michoacan","automotive",1,
