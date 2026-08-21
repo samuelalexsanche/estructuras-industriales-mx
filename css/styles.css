@@ -318,9 +318,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.55)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
 /* ============================ SUBPÁGINAS ============================ */
-.subhead{position:relative;padding:140px 0 52px;overflow:hidden;background:var(--dark);color:var(--on-dark)}
+.subhead{position:relative;padding:150px 0 66px;min-height:330px;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark);color:var(--on-dark)}
 .subhead__bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(120,150,220,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,220,.10) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 80% at 72% 0%,#000,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 72% 0%,#000,transparent 70%)}
-.subhead__photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.28}
+.subhead__photo{position:absolute;inset:0;background-size:cover;background-position:center 42%;opacity:.32}
 .subhead__scrim{position:absolute;inset:0;background:rgba(10,20,45,.55)}
 .breadcrumb{position:relative;z-index:2;font-size:.85rem;color:var(--on-dark-mut);margin-bottom:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .breadcrumb a{color:var(--on-dark-mut)}

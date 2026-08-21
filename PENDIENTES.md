@@ -42,6 +42,7 @@ platform.deepseek.com y luego `npx wrangler secret put DEEPSEEK_API_KEY`.
 | 13 | ~~**Cuatro proyectos nuevos sin fotografía**~~ **RESUELTO** | La carpeta actualizada trae fotos de Irizar (2), Mann+Hummel (2), Rubau (1) y Vesta San Luis Potosí (1). |
 | 14 | ~~**Euroquip**~~ **PUBLICADO** | La carpeta actualizada ya le hizo folder propio con sus 3 fotos. Datos del CV: 5,050 m², P. Ind. Bernardo Quintana, sector alimenticio. |
 | 15 | **Cosmetic Colors: faltan datos** | La carpeta actualizada le hizo folder propio con una foto, pero no aparece en el CV, ni en la presentación, ni en la lista "Obras en la web". Se publicó solo con nombre, estado y sector. Faltan superficie, ubicación y alcance. |
+| 16 | **Faltan 4 logotipos** | El carrusel pasó de 23 a 36 marcas; los que faltan son **Audi, Robin, Mann+Hummel y Cosmetic Colors**, que no aparecen ni en la presentación ni en el currículum. Si los mandan, se suman. |
 | 11 | **Fotos de Brose y Baleros Mexicanos** | Las únicas que hay miden 420×221 y 415×166 px. Se publicaron a su tamaño real para no falsear la nitidez, pero se ven pequeñas. Si existen los originales, mejoran mucho. |
 | 12 | ~~**Superficie de Vetrotex**~~ **RESUELTO** | El documento nuevo la da: 2,000 m², nave industrial de 3 niveles para producción. |
 

@@ -16,14 +16,14 @@ EXTRA_STATES = {
 
 def _p(slug, client, state, sector, photos, kind_es, kind_en, m2=None,
        scope_es=None, scope_en=None, about_es=None, about_en=None, city=None, article=None,
-       banner=None):
+       banner=None, hero=None):
     """banner: índice de la foto panorámica; se muestra como banda a todo lo ancho
     en vez de quedar comprimida dentro de la galería."""
     return dict(slug=slug, client=client, state=state, sector=sector, photos=photos,
                 kind={"es":kind_es,"en":kind_en}, m2=m2,
                 scope={"es":scope_es or [], "en":scope_en or []},
                 about={"es":about_es or "", "en":about_en or ""},
-                city={"es":city,"en":city} if city else {}, article=article, banner=banner)
+                city={"es":city,"en":city} if city else {}, article=article, banner=banner, hero=hero)
 
 E = ["Estructura metálica","Obra civil"]
 EE = ["Structural steel","Civil works"]
@@ -265,7 +265,7 @@ _p("thyssenkrupp-metalurgica","thyssenkrupp Metalúrgica","puebla","automotive",
    ["Architectural design","Engineering","Civil works","Structural steel","Roofing and cladding","Finishes","Auxiliary services"],
    "Proyecto llave en mano de 18,600 m² para thyssenkrupp Metalúrgica en el Parque Industrial Xoxtla, Puebla, ejecutado desde el diseño arquitectónico y la ingeniería hasta los servicios auxiliares.",
    "An 18,600 m² turnkey project for thyssenkrupp Metalúrgica in the Xoxtla Industrial Park, Puebla, delivered from architectural design and engineering through to auxiliary services.",
-   city="Parque Industrial Xoxtla", banner=2),
+   city="Parque Industrial Xoxtla", hero=2),
 _p("audi-puebla","Audi Puebla","puebla","automotive",3,
    "Obra industrial para planta automotriz","Industrial works for an automotive plant",None,
    ["Estructura metálica","Obra industrial"], ["Structural steel","Industrial construction"],

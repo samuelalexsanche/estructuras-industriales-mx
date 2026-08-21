@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=10" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=11" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=10"></script>
-  <script src="{base}js/chat.js?v=10"></script>
+    return f'''  <script src="{base}js/main.js?v=11"></script>
+  <script src="{base}js/chat.js?v=11"></script>
 </body>
 </html>
 '''
@@ -573,6 +573,7 @@ def build_lang(lang):
     </div>
   </section>
 {sector_projects_block(lang, base_sub, s["key"])}
+{cta_band(lang, base_sub, sector_band_photo(s["key"]), (f"Construimos para el sector {s['name'][lang].lower()}" if lang=="es" else f"We build for the {s['name'][lang].lower()} sector"))}
 {contact_section(lang, base_sub, s["name"][lang], simple=True, alt=False)}'''
         html = page(lang, base_sub, f'{s["h1"][lang]} | CAABSA STEEL', s["meta"][lang], self_p, alt_p, body)
         open(os.path.join(ROOT, self_p), "w", encoding="utf-8").write(html)
@@ -1128,6 +1129,7 @@ def build_articles(lang):
     </div>
   </section>
 
+{cta_band(lang, base, M.get("photo"))}
 {contact_section(lang, base, "", simple=True, alt=True)}
   <script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{title}","description":"{M["desc"][lang]}","inLanguage":"{lang}","author":{{"@type":"Organization","name":"CAABSA STEEL"}},"publisher":{{"@type":"Organization","name":"CAABSA STEEL"}}}}</script>'''
         open(os.path.join(ROOT, self_p), "w", encoding="utf-8").write(
@@ -1256,6 +1258,28 @@ DESIGN_REGION = {
 }
 TEAM_PHOTO = "images/equipo/01.jpg"
 
+CTA_BAND = {
+ "es": dict(k="CAABSA STEEL", t="Construimos donde opera tu industria",
+            p="45 años construyendo naves, plantas y espacios corporativos para empresas AAA y AA, con procesos certificados ISO 9001:2015."),
+ "en": dict(k="CAABSA STEEL", t="We build where your industry operates",
+            p="45 years building facilities, plants and corporate spaces for AAA and AA companies, under ISO 9001:2015 certified processes."),
+}
+def sector_band_photo(sector_key):
+    """Una foto real de un proyecto del sector, para la banda de cierre."""
+    for pr in PROJECTS:
+        if pr["sector"] == sector_key and pr["photos"] >= 2:
+            return f'images/proyectos/{pr["slug"]}/02.jpg'
+    for pr in PROJECTS:
+        if pr["sector"] == sector_key and pr["photos"] >= 1:
+            return f'images/proyectos/{pr["slug"]}/01.jpg'
+    return None
+
+def cta_band(lang, base, photo, title=None):
+    """Banda parallax de cierre; va al final de cada página, antes del contacto."""
+    if not photo: return ""
+    c = CTA_BAND[lang]
+    return design_band(lang, base, photo, c["k"], title or c["t"], c["p"])
+
 def design_band(lang, base, photo, kicker, title, text):
     """Banda parallax de ancho completo con foto real del cliente."""
     return f'''  <div class="pband" style="background-image:url(\'{base}{photo}\')">
@@ -1276,6 +1300,11 @@ CLIENT_LOGOS = [
  ("daewoo","Daewoo"),("bardahl","Bardahl"),("grupo-sanchez","Grupo Sánchez"),("ferrostaal","Ferrostaal"),
  ("quimica-apollo","Química Apollo"),("tst-timco","TST Inc · TIMCO"),("cimsa","Grupo CIMSA"),
  ("dalton-honda","Dalton Honda"),
+ # añadidos del currículum de obra
+ ("gates","Gates"),("brose","Brose"),("dart","Dart de México"),("irizar","Irizar"),
+ ("euroquip","Euroquip"),("rubau","Rubau"),("metrocolor","Metrocolor"),("polynt","Polynt"),
+ ("tecnosol","Tecnosol"),("vetrotex","Vetrotex"),("aventis","Aventis Pharma"),
+ ("baleros-mexicanos","Baleros Mexicanos"),("espejos-inteligentes","Espejos Inteligentes"),
 ]
 
 def clients_marquee(lang, base):
@@ -1303,9 +1332,25 @@ def clients_marquee(lang, base):
 
 FALLBACK_PHOTO = "images/proyectos/edomex-general/01.jpg"
 
-def pphoto(p):
+def pphoto(p, idx=1):
     """Foto propia del proyecto, o None si el cliente aún no la envía."""
-    return f'images/proyectos/{p["slug"]}/01.jpg' if p["photos"] > 0 else None
+    return f'images/proyectos/{p["slug"]}/{idx:02d}.jpg' if p["photos"] >= idx else None
+
+def phero(p):
+    """Foto del encabezado: la que el proyecto declare, o la primera."""
+    return pphoto(p, p.get("hero") or 1)
+
+def pband_photo(p):
+    """Foto para la banda de cierre: una del propio proyecto si le sobran,
+    si no la del estado o la de la región, para no repetir la de la galería."""
+    if p["photos"] >= 3:
+        h = p.get("hero") or 1
+        for i in range(p["photos"], 0, -1):
+            if i != h and i != p.get("banner"): return pphoto(p, i)
+    st = STATES.get(p["state"], {})
+    return (DESIGN.get(p["state"],{}).get("band")
+            or DESIGN_REGION.get(st.get("region"))
+            or FALLBACK_PHOTO)
 
 def pmain(p):
     """Imagen para contextos de estado o región, donde no se atribuye a un proyecto."""
@@ -1381,6 +1426,7 @@ def build_projects(lang):
         bidx = p.get("banner")
         gallery = "\n".join(f'''        <img src="{base}images/proyectos/{p["slug"]}/{i:02d}.jpg" alt="{p["client"]} — {p["kind"][lang]} ({loc}) {i}" loading="lazy" />'''
                             for i in range(1, p["photos"]+1) if i != bidx)
+        bandphoto = pband_photo(p) or DESIGN.get(p["state"],{}).get("band")
         band = (f'''  <div class="photoband reveal" role="img" aria-label="{p["client"]} — {p["kind"][lang]} ({loc})"
        style="background-image:url(\'{base}images/proyectos/{p["slug"]}/{bidx:02d}.jpg\')"></div>''' if bidx else "")
         ngal = p["photos"] - (1 if bidx else 0)
@@ -1395,7 +1441,7 @@ def build_projects(lang):
         reglink = (f'<a href="{base}{path_of("region",lang,reg["slug"][lang])}">{reg["name"][lang]}</a>' if reg else "—")
         jsonld = f'''<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Project","name":"{p["client"]} — {p["kind"][lang]}","description":"{p["kind"][lang]} · {loc}","location":{{"@type":"Place","address":{{"@type":"PostalAddress","addressRegion":"{stname}","addressCountry":"MX"}}}},"provider":{{"@type":"Organization","name":"CAABSA STEEL","url":"{SITE_URL}"}}}}</script>'''
         body = f'''  <section class="subhead">
-    {f'<div class="subhead__photo" style="background-image:url({chr(39)}{base}{pphoto(p)}{chr(39)})"></div>' if pphoto(p) else ''}
+    {f'<div class="subhead__photo" style="background-image:url({chr(39)}{base}{phero(p)}{chr(39)})"></div>' if phero(p) else ''}
     <div class="subhead__scrim"></div><div class="subhead__bg"></div>
     <div class="container">
       <div class="breadcrumb"><a href="{base}{path_of("home",lang)}">{u["home"]}</a><span class="sep">/</span><a href="{base}{state_path(p["state"],lang)}">{stname}</a><span class="sep">/</span> {p["client"]}</div>
@@ -1428,6 +1474,7 @@ def build_projects(lang):
     </div>
   </section>''' if ngal > 0 else ""}
 
+{cta_band(lang, base, bandphoto, ("¿Tienes un proyecto así?" if lang=="es" else "Have a project like this?"))}
 {contact_section(lang, base, sec if p["sector"] in SECTOR_BY_KEY else "", simple=True, alt=False)}
   {jsonld}'''
         open(os.path.join(ROOT,self_p),"w",encoding="utf-8").write(
