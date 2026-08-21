@@ -819,7 +819,7 @@ def build_lang(lang):
     self_p = path_of("home", lang); alt_p = path_of("home", other)
     H = {"es":dict(
             eyebrow="Construcción industrial &middot; ISO 9001:2015",
-            h1='Construcción industrial para grandes corporativos y empresas <span class="grad">AAA y AA</span>',
+            h1='Construcción Industrial para Corporativos y Empresas <span class="grad">AAA y AA</span>',
             sub="Naves industriales, plantas y edificios comerciales en el centro de México, el Bajío, el occidente y el sur. Respaldamos a nuestros clientes en costo, tiempo, calidad e innovación. Certificados ISO 9001:2015.",
             cta1="Solicita una cotización", cta2="Descarga nuestro brochure",
             m1="años de experiencia", m2="m² construidos", m3="toneladas de acero", m4="proyectos entregados",
@@ -851,7 +851,7 @@ def build_lang(lang):
             desc="Constructora industrial con 45 años de experiencia. Naves, plantas y espacios corporativos para empresas AAA y AA en el centro de México, Bajío, occidente y sur. ISO 9001:2015."),
          "en":dict(
             eyebrow="Industrial construction &middot; ISO 9001:2015",
-            h1='Industrial construction for major corporations and <span class="grad">AAA and AA</span> companies',
+            h1='Industrial Construction for Corporations and <span class="grad">AAA and AA</span> Companies',
             sub="Industrial facilities, plants and commercial buildings across Central Mexico, the Bajío, the west and the south. We back our clients on cost, schedule, quality and innovation. ISO 9001:2015 certified.",
             cta1="Request a quote", cta2="Download our brochure",
             m1="years of experience", m2="m² built", m3="tons of steel", m4="projects delivered",
