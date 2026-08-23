@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=11" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=12" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=11"></script>
-  <script src="{base}js/chat.js?v=11"></script>
+    return f'''  <script src="{base}js/main.js?v=12"></script>
+  <script src="{base}js/chat.js?v=12"></script>
 </body>
 </html>
 '''
@@ -1307,12 +1307,22 @@ CLIENT_LOGOS = [
  ("baleros-mexicanos","Baleros Mexicanos"),("espejos-inteligentes","Espejos Inteligentes"),
 ]
 
+def _logo_w(slug, h=46):
+    """Ancho real del logo a la altura de la banda; si se declara mal, el track
+    cambia de tamaño al cargar la imagen y la animación da un salto."""
+    try:
+        from PIL import Image
+        im = Image.open(os.path.join(ROOT, "images", "logos", slug + ".png"))
+        return max(1, round(im.width * h / im.height))
+    except Exception:
+        return 150
+
 def clients_marquee(lang, base):
     """Banda infinita con los logos de las empresas que han construido con CAABSA."""
     mid = (len(CLIENT_LOGOS)+1)//2
     def band(items, rev=False):
         imgs = "".join(
-          f'<img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" width="150" height="46" loading="lazy" />'
+          f'<img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" width="{_logo_w(sl)}" height="46" decoding="async" />'
           for sl,nm in items*2)
         return f'<div class="mq"><div class="mq__track{" mq__track--rev" if rev else ""}">{imgs}</div></div>'
     t = ({"kicker":"Confianza","h2":"Empresas que han construido con nosotros",

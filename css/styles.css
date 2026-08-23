@@ -238,17 +238,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mq + .mq{margin-top:26px}
-.mq__track{display:flex;align-items:center;gap:64px;width:max-content;animation:mqScroll 42s linear infinite}
+.mq__track{display:flex;align-items:center;width:max-content;animation:mqScroll 42s linear infinite;
+  will-change:transform;backface-visibility:hidden}
 .mq__track--rev{animation-direction:reverse;animation-duration:52s}
 .mq:hover .mq__track{animation-play-state:paused}
 @keyframes mqScroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
-.mq__logo{height:46px;width:auto;flex:none;object-fit:contain;
+@media (prefers-reduced-motion:reduce){.mq__track{animation:none}.mq{overflow-x:auto}}
+.mq__logo{height:46px;width:auto;flex:none;object-fit:contain;margin-right:64px;
   filter:grayscale(1);opacity:.58;transition:filter .35s var(--ease),opacity .35s var(--ease),transform .35s var(--ease)}
 .mq__logo:hover{filter:none;opacity:1;transform:scale(1.06)}
 @media (max-width:560px){
   .clients{padding:48px 0}
-  .mq__track{gap:40px;animation-duration:30s}
-  .mq__logo{height:36px}
+  .mq__track{animation-duration:30s}
+  .mq__logo{height:36px;margin-right:40px}
 }
 @media (prefers-reduced-motion:reduce){
   .mq__track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:34px}
