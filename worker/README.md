@@ -31,7 +31,21 @@ npx wrangler deploy
   spam y se vea profesional.
 - El `Reply-To` del correo es el del visitante: responder desde el buzón contesta
   directo al prospecto.
+- `SITE_URL` — de dónde toma el correo el logotipo del membrete.
 - No se guarda nada en el Worker: recibe, envía y responde.
+
+### Diseño del correo
+El aviso llega con el membrete de CAABSA STEEL: barra azul marino con el
+logotipo, distintivo de color según el tipo de contacto (Cliente, Proveedor,
+Empleo o Descarga de brochure), botones de **Responder / WhatsApp / Llamar**,
+la ficha de datos en tabla y el mensaje en bloque citado. Maquetado con tablas
+y estilos en línea, que es lo único que respetan Outlook, Gmail y Apple Mail por
+igual, y con versión en texto plano para clientes que no muestran HTML.
+
+Para verlo sin desplegar nada:
+```bash
+node /tmp/preview.mjs     # genera _mail_contacto.html y _mail_brochure.html
+```
 
 ### Protecciones
 - Solo acepta peticiones desde los orígenes de `ALLOWED_ORIGINS`.

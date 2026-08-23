@@ -238,22 +238,131 @@ function esc(v) {
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function leadHtml(title, rows) {
-  const tr = rows
-    .map(([k, v]) => `<tr>
-        <td style="padding:9px 14px;border-bottom:1px solid #e6eaf2;color:#5b6577;font:600 13px/1.4 system-ui,sans-serif;white-space:nowrap;vertical-align:top">${esc(k)}</td>
-        <td style="padding:9px 14px;border-bottom:1px solid #e6eaf2;color:#16233f;font:400 14px/1.55 system-ui,sans-serif">${esc(v).replace(/\n/g, '<br>')}</td>
-      </tr>`)
-    .join('');
-  return `<div style="background:#f4f6fa;padding:26px">
-  <div style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #e6eaf2;border-radius:14px;overflow:hidden">
-    <div style="background:#16233f;padding:18px 22px">
-      <div style="color:#8fb0ff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase">CAABSA STEEL · Sitio web</div>
-      <div style="color:#fff;font:700 19px/1.3 system-ui,sans-serif;margin-top:7px">${esc(title)}</div>
-    </div>
-    <table style="width:100%;border-collapse:collapse">${tr}</table>
-  </div>
-</div>`;
+const BRAND = {
+  ink:    '#16233f',
+  navy:   '#0c1a3a',
+  blue:   '#1c46cf',
+  green:  '#12a056',
+  line:   '#e3e8f1',
+  soft:   '#f4f6fa',
+  muted:  '#5b6577',
+};
+const CHIP_COLOR = { cliente: BRAND.blue, proveedor: BRAND.green, empleo: '#6b7688' };
+
+function fechaMx() {
+  try {
+    return new Intl.DateTimeFormat('es-MX', {
+      timeZone: 'America/Mexico_City', dateStyle: 'long', timeStyle: 'short',
+    }).format(new Date()) + ' (hora del centro)';
+  } catch { return new Date().toISOString(); }
+}
+
+function btn(href, label, bg) {
+  return `<a href="${esc(href)}" style="display:inline-block;margin:0 8px 8px 0;padding:11px 20px;
+     border-radius:8px;background:${bg};color:#ffffff;text-decoration:none;
+     font:600 14px/1.25 system-ui,-apple-system,'Segoe UI',sans-serif">${esc(label)}</a>`;
+}
+
+/* Correo del lead: maquetado con tablas y estilos en línea, que es lo único
+   que respetan Outlook y Gmail por igual. */
+function leadHtml({ titulo, rows, intent, mensaje, email, telefono, siteUrl, esBrochure }) {
+  const logo = `${siteUrl.replace(/\/+$/, '')}/assets/logo-grupo-white.png`;
+  const chipCol = CHIP_COLOR[intent] || BRAND.blue;
+  const chip = esBrochure
+    ? `<span style="display:inline-block;padding:5px 12px;border-radius:99px;background:${BRAND.green};
+         color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase">Descarga de brochure</span>`
+    : `<span style="display:inline-block;padding:5px 12px;border-radius:99px;background:${chipCol};
+         color:#fff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase">${esc(INTENT_LABEL[intent] || 'Cliente')}</span>`;
+
+  const filas = rows.map(([k, v], n) => `
+    <tr>
+      <td class="lbl" style="padding:12px 16px;background:${n % 2 ? '#ffffff' : BRAND.soft};border-bottom:1px solid ${BRAND.line};
+                 color:${BRAND.muted};font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.03em;
+                 text-transform:uppercase;vertical-align:top;width:34%">${esc(k)}</td>
+      <td class="val" style="padding:12px 16px;background:${n % 2 ? '#ffffff' : BRAND.soft};border-bottom:1px solid ${BRAND.line};
+                 color:${BRAND.ink};font:400 15px/1.55 system-ui,sans-serif;word-break:break-word">${esc(v).replace(/\n/g, '<br>')}</td>
+    </tr>`).join('');
+
+  const bloqueMensaje = mensaje ? `
+    <tr><td colspan="2" style="padding:18px 16px 6px;background:#ffffff">
+      <div style="color:${BRAND.muted};font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.03em;text-transform:uppercase;margin-bottom:8px">Mensaje</div>
+      <div style="border-left:3px solid ${BRAND.blue};padding:10px 0 10px 14px;color:${BRAND.ink};
+                  font:400 15px/1.65 system-ui,sans-serif">${esc(mensaje).replace(/\n/g, '<br>')}</div>
+    </td></tr>` : '';
+
+  const wa = telefono ? String(telefono).replace(/\D/g, '') : '';
+  const acciones =
+    btn('mailto:' + email, 'Responder por correo', BRAND.blue) +
+    (wa ? btn('https://wa.me/52' + wa, 'WhatsApp', BRAND.green) : '') +
+    (telefono ? btn('tel:' + String(telefono).replace(/\s/g, ''), 'Llamar', '#6b7688') : '');
+
+  return `<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light only"><title>${esc(titulo)}</title>
+<style>
+  @media only screen and (max-width:520px){
+    .lbl,.val{display:block!important;width:auto!important}
+    .lbl{padding-bottom:0!important;border-bottom:0!important}
+    .val{padding-top:2px!important}
+  }
+</style></head>
+<body style="margin:0;padding:0;background:${BRAND.soft}">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0">${esc(titulo)} · ${esc(rows[0] ? rows[0][1] : '')}</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BRAND.soft}" bgcolor="${BRAND.soft}">
+    <tr><td align="center" style="padding:28px 14px">
+      <table role="presentation" cellpadding="0" cellspacing="0"
+             style="width:100%;max-width:600px;background:#ffffff;border:1px solid ${BRAND.line};border-radius:14px;overflow:hidden">
+
+        <!-- membrete -->
+        <tr><td style="background:${BRAND.navy};padding:22px 24px" bgcolor="${BRAND.navy}">
+          <img src="${logo}" alt="Grupo CAABSA Steel" width="185" height="41"
+               style="display:block;border:0;height:auto;width:185px;max-width:60%" />
+        </td></tr>
+        <tr><td style="height:4px;background:${BRAND.blue};font-size:0;line-height:0" bgcolor="${BRAND.blue}">&nbsp;</td></tr>
+
+        <!-- encabezado del aviso -->
+        <tr><td style="padding:24px 24px 6px">
+          ${chip}
+          <div style="color:${BRAND.ink};font:700 23px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;margin-top:12px">${esc(titulo)}</div>
+          <div style="color:${BRAND.muted};font:400 13px/1.5 system-ui,sans-serif;margin-top:6px">${esc(fechaMx())}</div>
+        </td></tr>
+
+        <!-- acciones rápidas -->
+        <tr><td style="padding:16px 24px 20px">${acciones}</td></tr>
+
+        <!-- datos -->
+        <tr><td style="padding:0 24px 24px">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                 style="border:1px solid ${BRAND.line};border-radius:10px;overflow:hidden;border-collapse:separate">
+            ${filas}${bloqueMensaje}
+          </table>
+        </td></tr>
+
+        <!-- pie -->
+        <tr><td style="background:${BRAND.soft};padding:18px 24px;border-top:1px solid ${BRAND.line}" bgcolor="${BRAND.soft}">
+          <div style="color:${BRAND.muted};font:400 12px/1.6 system-ui,sans-serif">
+            Enviado automáticamente desde el sitio web de <b style="color:${BRAND.ink}">CAABSA STEEL</b>.<br>
+            Al responder este correo le contestas directamente a quien escribió.
+          </div>
+        </td></tr>
+      </table>
+
+      <div style="color:#98a1b3;font:400 11px/1.6 system-ui,sans-serif;margin-top:14px">
+        CAABSA STEEL MÉXICO S.A. de C.V. · Metepec, Estado de México · ISO 9001:2015
+      </div>
+    </td></tr>
+  </table>
+</body></html>`;
+}
+
+/* Versión en texto, para clientes que no muestran HTML. */
+function leadText({ titulo, rows, mensaje }) {
+  const l = [titulo, '='.repeat(titulo.length), ''];
+  rows.forEach(([k, v]) => l.push(`${k}: ${v}`));
+  if (mensaje) l.push('', 'Mensaje:', mensaje);
+  l.push('', 'Enviado desde el sitio web de CAABSA STEEL.', fechaMx());
+  return l.join('\n');
 }
 
 async function handleLead(request, env, cors, origin) {
@@ -285,13 +394,22 @@ async function handleLead(request, env, cors, origin) {
     : ['nombre', 'empresa', 'telefono', 'email', 'sector', 'intent', 'mensaje', 'pagina'];
 
   const rows = campos
-    .map((k) => [LEAD_LABELS[k] || k, k === 'intent' ? (INTENT_LABEL[intent] || intent) : get(k)])
+    .filter((k) => k !== 'mensaje' && k !== 'intent')
+    .map((k) => [LEAD_LABELS[k] || k, get(k)])
     .filter(([, v]) => v);
 
   const titulo = esBrochure
     ? 'Descarga del brochure'
     : `Nuevo contacto · ${INTENT_LABEL[intent] || 'Cliente'}`;
   const asunto = `${titulo}${empresa ? ' · ' + empresa : ''} — ${nombre}`;
+
+  const datosCorreo = {
+    titulo, rows, intent, esBrochure,
+    mensaje: get('mensaje'),
+    email,
+    telefono: get('telefono', 40),
+    siteUrl: env.SITE_URL || 'https://samuelalexsanche.github.io/estructuras-industriales-mx',
+  };
 
   if (!env.RESEND_API_KEY) {
     return json({ error: 'Falta configurar RESEND_API_KEY como secreto del Worker.' }, 500, cors);
@@ -313,7 +431,8 @@ async function handleLead(request, env, cors, origin) {
         to,
         reply_to: email,          // responder le contesta al visitante
         subject: asunto,
-        html: leadHtml(titulo, rows),
+        html: leadHtml(datosCorreo),
+        text: leadText(datosCorreo),
       }),
     });
   } catch {

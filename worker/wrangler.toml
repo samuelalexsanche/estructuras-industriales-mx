@@ -15,3 +15,7 @@ LEAD_TO = "CAMBIAR@caabsasteel.mx"
 # pruebas de Resend. Con caabsasteel.mx verificado, cambiar a:
 #   LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"
 LEAD_FROM = "CAABSA STEEL <onboarding@resend.dev>"
+
+# Desde dónde toma el correo el logotipo del membrete. Cambiar al dominio
+# final cuando esté publicado allí.
+SITE_URL = "https://samuelalexsanche.github.io/estructuras-industriales-mx"
