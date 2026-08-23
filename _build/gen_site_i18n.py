@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=12" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=13" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=12"></script>
-  <script src="{base}js/chat.js?v=12"></script>
+    return f'''  <script src="{base}js/main.js?v=13"></script>
+  <script src="{base}js/chat.js?v=13"></script>
 </body>
 </html>
 '''
@@ -717,7 +717,7 @@ def build_lang(lang):
   </section>
 
   <div class="videoband" id="video">
-    <video class="videoband__media" id="corpVideo" autoplay muted loop playsinline preload="metadata" poster="{base_root}assets/video/poster.jpg"><source src="{base_root}assets/video/caabsa-corporativo.mp4" type="video/mp4" /></video>
+    <video class="videoband__media" id="corpVideo" autoplay muted loop playsinline preload="metadata" poster="{base_root}assets/video/poster{"-en" if lang=="en" else ""}.jpg"><source src="{base_root}assets/video/caabsa-corporativo{"-en" if lang=="en" else ""}.mp4" type="video/mp4" /></video>
     <div class="videoband__overlay"></div>
     <div class="videoband__content reveal">
       <div class="kicker">{A["vid_k"]}</div><h2 class="h2">{A["vid_t"]}</h2><p>{A["vid_p"]}</p>
@@ -932,7 +932,9 @@ def build_lang(lang):
 
     body = f'''  <section class="hero" id="inicio">
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero__photo" data-parallax="0.14" style="background-image:url('{base_root}images/proyectos/gates/01.jpg')"></div>
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+             poster="{base_root}assets/video/hero-metalicas-poster.jpg"><source src="{base_root}assets/video/hero-metalicas.mp4" type="video/mp4" /></video>
+      <div class="hero__photo" data-parallax="0.14" style="background-image:url('{base_root}assets/video/hero-metalicas-poster.jpg')"></div>
       <div class="grid-layer" data-parallax="0.22"></div>
       <div class="blueprint-layer" data-parallax="0.3"><svg class="blueprint" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs><linearGradient id="beam" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--primary-2)" stop-opacity="0.9"/><stop offset="1" stop-color="var(--primary-2)" stop-opacity="0.15"/></linearGradient></defs>
@@ -1054,7 +1056,7 @@ def build_lang(lang):
   </section>
 
   <div class="videoband" id="video">
-    <video class="videoband__media" id="corpVideo" autoplay muted loop playsinline preload="metadata" poster="{base_root}assets/video/poster.jpg"><source src="{base_root}assets/video/caabsa-corporativo.mp4" type="video/mp4" /></video>
+    <video class="videoband__media" id="corpVideo" autoplay muted loop playsinline preload="metadata" poster="{base_root}assets/video/poster{"-en" if lang=="en" else ""}.jpg"><source src="{base_root}assets/video/caabsa-corporativo{"-en" if lang=="en" else ""}.mp4" type="video/mp4" /></video>
     <div class="videoband__overlay"></div>
     <div class="videoband__content reveal">
       <div class="kicker">{H["vid_k"]}</div><h2 class="h2">{H["vid_t"]}</h2><p>{H["vid_p"]}</p>
