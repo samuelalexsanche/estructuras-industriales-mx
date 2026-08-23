@@ -603,12 +603,12 @@ def build_lang(lang):
     </div>
   </section>
 {region_projects_block(lang, base_sub, r["key"])}
-{design_band(lang, base_sub, DESIGN_REGION[r["key"]],
+{design_band(lang, base_sub, region_band_photo(r["key"]),
    (UI[lang]["coverage_pre"]+" · "+r["name"][lang]),
    ("Construimos donde opera tu industria" if lang=="es" else "We build where your industry operates"),
    ("Naves, plantas y espacios corporativos en "+r["states"][lang]+", con procesos certificados ISO 9001:2015."
     if lang=="es" else
-    "Facilities, plants and corporate spaces in "+r["states"][lang]+", under ISO 9001:2015 certified processes.")) if r["key"] in DESIGN_REGION else ""}
+    "Facilities, plants and corporate spaces in "+r["states"][lang]+", under ISO 9001:2015 certified processes."))}
 {contact_section(lang, base_sub, "", simple=True, alt=False)}'''
         html = page(lang, base_sub, f'{r["h1"][lang]} | CAABSA STEEL', r["meta"][lang], self_p, alt_p, body)
         open(os.path.join(ROOT, self_p), "w", encoding="utf-8").write(html)
@@ -764,7 +764,9 @@ def build_lang(lang):
 
       </div>
     </div>
-  </section>'''
+  </section>
+
+{cta_band(lang, base_root, generic_band_photo("nosotros"))}'''
     open(os.path.join(ROOT, self_p),"w",encoding="utf-8").write(
         page(lang, base_root, A["title"], A["desc"], self_p, alt_p, body))
 
@@ -812,7 +814,10 @@ def build_lang(lang):
       </div>
 {form(lang, "", simple=False)}
     </div>
-  </section>'''
+  </section>
+
+{cta_band(lang, base_root, generic_band_photo("contacto"),
+          ("45 años construyendo la industria de México" if lang=="es" else "45 years building Mexico's industry"))}'''
     open(os.path.join(ROOT, self_p),"w",encoding="utf-8").write(
         page(lang, base_root, C["title"], C["desc"], self_p, alt_p, body))
 
@@ -1132,6 +1137,7 @@ def build_articles(lang):
   </section>
 
 {cta_band(lang, base, M.get("photo"))}
+{cta_band(lang, base, generic_band_photo("blog"))}
 {contact_section(lang, base, "", simple=True, alt=True)}
   <script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{title}","description":"{M["desc"][lang]}","inLanguage":"{lang}","author":{{"@type":"Organization","name":"CAABSA STEEL"}},"publisher":{{"@type":"Organization","name":"CAABSA STEEL"}}}}</script>'''
         open(os.path.join(ROOT, self_p), "w", encoding="utf-8").write(
@@ -1214,7 +1220,9 @@ def build_blog(lang):
 {cards}
       </div>
     </div>
-  </section>'''
+  </section>
+
+{cta_band(lang, base, generic_band_photo("blog-index"))}'''
     open(os.path.join(ROOT, self_p),"w",encoding="utf-8").write(
         page(lang, base, t[4], t[5], self_p, alt_p, body))
 
@@ -1266,6 +1274,39 @@ CTA_BAND = {
  "en": dict(k="CAABSA STEEL", t="We build where your industry operates",
             p="45 years building facilities, plants and corporate spaces for AAA and AA companies, under ISO 9001:2015 certified processes."),
 }
+def state_band_photo(skey):
+    """Foto para la banda de un estado: la suya de diseño, o la de un proyecto de ahí."""
+    d = DESIGN.get(skey,{}).get("band")
+    if d: return d
+    for pr in PROJECTS:
+        if pr["state"] == skey and pr["photos"] >= 2:
+            return f'images/proyectos/{pr["slug"]}/02.jpg'
+    for pr in PROJECTS:
+        if pr["state"] == skey and pr["photos"] >= 1:
+            return f'images/proyectos/{pr["slug"]}/01.jpg'
+    st = STATES.get(skey, {})
+    return DESIGN_REGION.get(st.get("region")) or FALLBACK_PHOTO
+
+def region_band_photo(rkey):
+    d = DESIGN_REGION.get(rkey)
+    if d: return d
+    for pr in PROJECTS:
+        if STATES.get(pr["state"],{}).get("region") == rkey and pr["photos"] >= 1:
+            return f'images/proyectos/{pr["slug"]}/01.jpg'
+    return FALLBACK_PHOTO
+
+# fotos amplias para las páginas que no tratan de un proyecto concreto
+GENERIC_BANDS = [
+ "images/proyectos/gates/01.jpg",
+ "images/proyectos/espejos-inteligentes/02.jpg",
+ "images/proyectos/jugos-del-valle/01.jpg",
+ "images/proyectos/andenes/01.jpg",
+ "images/proyectos/tintas-sanchez/01.jpg",
+ "images/proyectos/martinrea-honsel/02.jpg",
+]
+def generic_band_photo(seed):
+    return GENERIC_BANDS[abs(hash(seed)) % len(GENERIC_BANDS)]
+
 def sector_band_photo(sector_key):
     """Una foto real de un proyecto del sector, para la banda de cierre."""
     for pr in PROJECTS:
@@ -1552,12 +1593,12 @@ def build_states(lang):
     </div>
   </section>
 
-{design_band(lang, base, DESIGN[skey]["band"],
+{design_band(lang, base, state_band_photo(skey),
    (u["coverage_pre"]+" · "+stname),
    ("Obra industrial en "+stname if lang=="es" else "Industrial construction in "+stname),
    ("Estructura de acero, naves y ampliaciones ejecutadas en "+st["cities"][lang]+", con calidad certificada ISO 9001:2015."
     if lang=="es" else
-    "Structural steel, industrial facilities and expansions delivered in "+st["cities"][lang]+", with ISO 9001:2015 certified quality.")) if skey in DESIGN else ""}
+    "Structural steel, industrial facilities and expansions delivered in "+st["cities"][lang]+", with ISO 9001:2015 certified quality."))}
 
 {contact_section(lang, base, "", simple=True, alt=False)}'''
         open(os.path.join(ROOT,self_p),"w",encoding="utf-8").write(
@@ -1584,6 +1625,7 @@ def build_states(lang):
 {cards}
     </div></div>
   </section>
+{cta_band(lang, base, generic_band_photo("proyectos"))}
 {contact_section(lang, base, "", simple=True, alt=True)}'''
     open(os.path.join(ROOT,self_p),"w",encoding="utf-8").write(
         page(lang, base, ("Estados donde construimos | CAABSA STEEL" if lang=="es" else "States where we build | CAABSA STEEL"),
@@ -1615,6 +1657,7 @@ def build_states(lang):
 {cards}
     </div></div>
   </section>
+{cta_band(lang, base, generic_band_photo("estados"))}
 {contact_section(lang, base, "", simple=True, alt=True)}'''
     open(os.path.join(ROOT,self_p),"w",encoding="utf-8").write(
         page(lang, base, ("Proyectos — Portafolio de construcción industrial | CAABSA STEEL" if lang=="es" else "Projects — Industrial construction portfolio | CAABSA STEEL"),
