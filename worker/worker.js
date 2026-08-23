@@ -132,6 +132,11 @@ export default {
     if (request.method !== 'POST') {
       return json({ error: 'Method not allowed' }, 405, cors);
     }
+
+    // Los formularios del sitio entran por /lead; el resto es el chat.
+    if (new URL(request.url).pathname.replace(/\/+$/, '') === '/lead') {
+      return handleLead(request, env, cors, origin);
+    }
     if (!env.DEEPSEEK_API_KEY) {
       return json({ error: 'Falta configurar DEEPSEEK_API_KEY como secreto del Worker.' }, 500, cors);
     }
@@ -200,4 +205,124 @@ function json(obj, status, cors) {
     status,
     headers: { ...cors, 'Content-Type': 'application/json' },
   });
+}
+
+/* =====================================================================
+   FORMULARIOS DEL SITIO  →  correo
+   ---------------------------------------------------------------------
+   Recibe los dos formularios (contacto y brochure) y los manda por correo
+   con Resend. El destinatario y el remitente se configuran en wrangler.toml
+   ([vars] LEAD_TO / LEAD_FROM); la API key va como secreto:
+
+       npx wrangler secret put RESEND_API_KEY
+       cd worker && npx wrangler deploy
+
+   Nada se guarda en el Worker: recibe, envía y responde.
+   ===================================================================== */
+
+const LEAD_LABELS = {
+  nombre:   'Nombre',
+  empresa:  'Empresa',
+  puesto:   'Puesto',
+  telefono: 'Teléfono',
+  email:    'Correo',
+  sector:   'Sector',
+  intent:   'Tipo de contacto',
+  mensaje:  'Mensaje',
+  pagina:   'Página de origen',
+};
+const INTENT_LABEL = { cliente: 'Cliente', proveedor: 'Proveedor', empleo: 'Empleo' };
+
+function esc(v) {
+  return String(v == null ? '' : v).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function leadHtml(title, rows) {
+  const tr = rows
+    .map(([k, v]) => `<tr>
+        <td style="padding:9px 14px;border-bottom:1px solid #e6eaf2;color:#5b6577;font:600 13px/1.4 system-ui,sans-serif;white-space:nowrap;vertical-align:top">${esc(k)}</td>
+        <td style="padding:9px 14px;border-bottom:1px solid #e6eaf2;color:#16233f;font:400 14px/1.55 system-ui,sans-serif">${esc(v).replace(/\n/g, '<br>')}</td>
+      </tr>`)
+    .join('');
+  return `<div style="background:#f4f6fa;padding:26px">
+  <div style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #e6eaf2;border-radius:14px;overflow:hidden">
+    <div style="background:#16233f;padding:18px 22px">
+      <div style="color:#8fb0ff;font:700 11px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase">CAABSA STEEL · Sitio web</div>
+      <div style="color:#fff;font:700 19px/1.3 system-ui,sans-serif;margin-top:7px">${esc(title)}</div>
+    </div>
+    <table style="width:100%;border-collapse:collapse">${tr}</table>
+  </div>
+</div>`;
+}
+
+async function handleLead(request, env, cors, origin) {
+  // Solo desde el propio sitio.
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    return json({ error: 'Origen no autorizado.' }, 403, cors);
+  }
+
+  let d;
+  try { d = await request.json(); } catch { return json({ error: 'JSON inválido.' }, 400, cors); }
+
+  // Trampa para bots: campo oculto que una persona nunca llena. Se responde
+  // "ok" a propósito, para no enseñarle al bot que fue detectado.
+  if (d.hp) return json({ ok: true }, 200, cors);
+
+  const get = (k, max = 2000) => String(d[k] == null ? '' : d[k]).trim().slice(0, max);
+  const email = get('email', 160);
+  const nombre = get('nombre', 120);
+  if (nombre.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return json({ error: 'Datos incompletos.' }, 400, cors);
+  }
+
+  const esBrochure = get('form', 20) === 'brochure';
+  const intent = get('intent', 20);
+  const empresa = get('empresa', 160);
+
+  const campos = esBrochure
+    ? ['nombre', 'empresa', 'puesto', 'email', 'pagina']
+    : ['nombre', 'empresa', 'telefono', 'email', 'sector', 'intent', 'mensaje', 'pagina'];
+
+  const rows = campos
+    .map((k) => [LEAD_LABELS[k] || k, k === 'intent' ? (INTENT_LABEL[intent] || intent) : get(k)])
+    .filter(([, v]) => v);
+
+  const titulo = esBrochure
+    ? 'Descarga del brochure'
+    : `Nuevo contacto · ${INTENT_LABEL[intent] || 'Cliente'}`;
+  const asunto = `${titulo}${empresa ? ' · ' + empresa : ''} — ${nombre}`;
+
+  if (!env.RESEND_API_KEY) {
+    return json({ error: 'Falta configurar RESEND_API_KEY como secreto del Worker.' }, 500, cors);
+  }
+
+  const to = (env.LEAD_TO || '').split(',').map((x) => x.trim()).filter(Boolean);
+  if (!to.length) return json({ error: 'Falta configurar LEAD_TO en wrangler.toml.' }, 500, cors);
+
+  let r;
+  try {
+    r = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: env.LEAD_FROM || 'CAABSA STEEL <onboarding@resend.dev>',
+        to,
+        reply_to: email,          // responder le contesta al visitante
+        subject: asunto,
+        html: leadHtml(titulo, rows),
+      }),
+    });
+  } catch {
+    return json({ error: 'No se pudo enviar el correo.' }, 502, cors);
+  }
+
+  if (!r.ok) {
+    const detalle = await r.text().catch(() => '');
+    return json({ error: 'El servicio de correo rechazó el envío.', detalle: detalle.slice(0, 300) }, 502, cors);
+  }
+  return json({ ok: true }, 200, cors);
 }

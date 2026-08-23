@@ -1,54 +1,48 @@
-# Asistente IA — Cloudflare Worker (proxy DeepSeek)
+# Worker de CAABSA STEEL
 
-Este Worker hace de intermediario seguro entre la página estática y el modelo real
-(**DeepSeek**). La API key vive aquí como **secreto cifrado**, nunca en el sitio público.
+Un solo Worker atiende dos cosas:
 
-```
-Navegador (js/chat.js)  →  Cloudflare Worker (esta carpeta)  →  DeepSeek API
-                            (guarda DEEPSEEK_API_KEY)            (modelo real)
-```
+| Ruta | Qué hace |
+|------|----------|
+| `/` (cualquier otra) | Proxy del asistente de IA (DeepSeek), en streaming |
+| `/lead` | Recibe los formularios del sitio y los manda por correo (Resend) |
 
-## Requisitos
-- Cuenta gratis en https://dash.cloudflare.com
-- Node.js instalado (para `npx wrangler`)
-- Una API key de DeepSeek: https://platform.deepseek.com → API Keys
-
-## Despliegue (una sola vez)
+## Puesta en marcha
 
 ```bash
 cd worker
 
-# 1) Inicia sesión en Cloudflare (abre el navegador)
-npx wrangler login
+# 1) Claves (nunca van en el repo; quedan cifradas en Cloudflare)
+npx wrangler secret put DEEPSEEK_API_KEY     # asistente de IA
+npx wrangler secret put RESEND_API_KEY       # envío de formularios
 
-# 2) Guarda tu API key de DeepSeek como secreto (te la pedirá al ejecutar)
-npx wrangler secret put DEEPSEEK_API_KEY
+# 2) Destinatario: editar LEAD_TO en wrangler.toml
 
-# 3) Publica el Worker
+# 3) Publicar
 npx wrangler deploy
 ```
 
-Al terminar, `wrangler` imprime una URL tipo:
+## Correo de los formularios
 
+- `LEAD_TO` — a dónde llegan. Admite varios separados por coma.
+- `LEAD_FROM` — remitente. Con el dominio sin verificar se usa el de pruebas de
+  Resend. Una vez verificado `caabsasteel.mx` en Resend (dos registros DNS),
+  cambiar a `Sitio web CAABSA STEEL <web@caabsasteel.mx>` para que no caiga en
+  spam y se vea profesional.
+- El `Reply-To` del correo es el del visitante: responder desde el buzón contesta
+  directo al prospecto.
+- No se guarda nada en el Worker: recibe, envía y responde.
+
+### Protecciones
+- Solo acepta peticiones desde los orígenes de `ALLOWED_ORIGINS`.
+- Campo trampa oculto (`website`): si viene lleno, se responde `ok` y no se
+  envía nada, para no avisarle al bot que fue detectado.
+- Valida nombre y formato de correo; recorta los campos largos.
+
+### Prueba rápida (después de desplegar)
+```bash
+curl -X POST https://estructuras-chat.mattera.workers.dev/lead \
+  -H 'Content-Type: application/json' \
+  -H 'Origin: https://samuelalexsanche.github.io' \
+  -d '{"form":"contacto","nombre":"Prueba","email":"tu@correo.com","telefono":"7225232020","mensaje":"probando"}'
 ```
-https://estructuras-chat.TU-SUBDOMINIO.workers.dev
-```
-
-## Conectar la página
-
-1. Copia esa URL.
-2. Ábrela en `../js/chat.js` y pégala en la constante:
-   ```js
-   const CHAT_ENDPOINT = 'https://estructuras-chat.TU-SUBDOMINIO.workers.dev';
-   ```
-3. Commit + push. Listo: el chat ya responde con el modelo real.
-
-## Personalizar
-- **Info de la empresa** que usa el asistente → variable `SYSTEM_PROMPT` en `worker.js`.
-- **Orígenes permitidos** (qué dominios pueden usar tu key) → `ALLOWED_ORIGINS` en `worker.js`.
-  Incluye tu dominio real de GitHub Pages / dominio propio antes de producción.
-- **Modelo / creatividad** → `model`, `temperature`, `max_tokens` en `worker.js`.
-
-## Costo
-DeepSeek es muy económico y Cloudflare Workers tiene una capa gratuita amplia
-(100k solicitudes/día). Para un demo o tráfico bajo, el costo es prácticamente nulo.

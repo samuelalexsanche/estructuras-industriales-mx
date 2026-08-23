@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=13" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=14" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -406,8 +406,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    return f'''  <script src="{base}js/main.js?v=13"></script>
-  <script src="{base}js/chat.js?v=13"></script>
+    return f'''  <script src="{base}js/main.js?v=14"></script>
+  <script src="{base}js/chat.js?v=14"></script>
 </body>
 </html>
 '''
@@ -422,6 +422,7 @@ def form(lang, sector_default="", simple=True):
         </div>'''
     opts = "".join(f'<option{" selected" if sector_default==s["name"][lang] else ""}>{s["name"][lang]}</option>' for s in SECTORS)
     return f'''      <form class="contacto__form reveal" id="leadForm" novalidate>{seg}
+        <div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
         <div class="field"><label for="nombre">{u["f_name"]}</label><input id="nombre" name="nombre" type="text" placeholder="{u["f_name_ph"]}" required /><small class="err"></small></div>
         <div class="field field--half">
           <div><label for="empresa" id="lblEmpresa">{u["f_company"]}</label><input id="empresa" name="empresa" type="text" placeholder="{u["f_company_ph"]}" /><small class="err"></small></div>
@@ -752,6 +753,7 @@ def build_lang(lang):
           <h3 class="doccard__t">{A["br_t2"]}</h3>
           <p class="doccard__p">{A["br_p"]}</p>
           <form class="contacto__form" id="brochureForm" novalidate data-file="{base_root}assets/docs/brochure-caabsa-steel-2026.pdf">
+            <div class="hp" aria-hidden="true"><label>No llenar<input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
             <div class="field"><label for="bnombre">{u["f_name"]}</label><input id="bnombre" name="nombre" type="text" placeholder="{u["f_name_ph"]}" required /><small class="err"></small></div>
             <div class="field"><label for="bempresa">{u["f_company"]}</label><input id="bempresa" name="empresa" type="text" placeholder="{u["f_company_ph"]}" required /><small class="err"></small></div>
             <div class="field"><label for="bpuesto">{A["br_role"]}</label><input id="bpuesto" name="puesto" type="text" placeholder="{A["br_role_ph"]}" required /><small class="err"></small></div>

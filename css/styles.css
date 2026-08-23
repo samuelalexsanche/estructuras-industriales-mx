@@ -556,3 +556,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hero__video + .hero__photo{opacity:.42}
 @media (prefers-reduced-motion:reduce){.hero__video{display:none}}
 @media (max-width:700px){.hero__video{display:none}}
+
+/* Campo trampa para bots: fuera de pantalla, nunca visible ni enfocable */
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}

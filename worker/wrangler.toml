@@ -2,5 +2,16 @@ name = "estructuras-chat"
 main = "worker.js"
 compatibility_date = "2024-11-01"
 
-# La API key NO va aquí. Se guarda como secreto cifrado:
-#   npx wrangler secret put DEEPSEEK_API_KEY
+# Las claves NO van aquí. Se guardan como secretos cifrados:
+#   npx wrangler secret put DEEPSEEK_API_KEY     (asistente de IA)
+#   npx wrangler secret put RESEND_API_KEY       (envío de formularios)
+
+[vars]
+# A dónde llegan los formularios del sitio. Se pueden poner varios
+# separados por coma:  "proyectos@caabsasteel.mx, ventas@caabsasteel.mx"
+LEAD_TO = "CAMBIAR@caabsasteel.mx"
+
+# Remitente. Mientras no esté verificado el dominio en Resend, se deja el de
+# pruebas de Resend. Con caabsasteel.mx verificado, cambiar a:
+#   LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"
+LEAD_FROM = "CAABSA STEEL <onboarding@resend.dev>"

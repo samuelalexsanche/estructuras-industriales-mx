@@ -4,6 +4,19 @@
    ===================================================================== */
 (function () {
   'use strict';
+
+  /* Punto de entrada de los formularios: el mismo Worker del asistente, ruta /lead */
+  const LEAD_ENDPOINT = 'https://estructuras-chat.mattera.workers.dev/lead';
+  const sendLead = async (payload) => {
+    const r = await fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!r.ok) throw new Error('lead');
+    return r.json().catch(() => ({}));
+  };
+
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Idioma de la página (es | en) ---------- */
@@ -21,6 +34,8 @@
       errEmail: 'Correo no válido.',
       formBad: 'Revisa los campos marcados.',
       formOk: '¡Gracias! Recibimos tu solicitud. Un ingeniero te contactará en menos de 24 h.',
+      formSending: 'Enviando…',
+      formErr: 'No pudimos enviar el mensaje. Escríbenos por WhatsApp al 722 523 2020 o a proyectos@caabsasteel.mx.',
       locale: 'es-MX',
     },
     en: {
@@ -35,6 +50,8 @@
       errEmail: 'Please enter a valid email address.',
       formBad: 'Please review the highlighted fields.',
       formOk: 'Thank you! We received your request. An engineer will contact you within 24 hours.',
+      formSending: 'Sending…',
+      formErr: 'We could not send your message. Reach us on WhatsApp at +52 722 523 2020 or at proyectos@caabsasteel.mx.',
       locale: 'en-US',
     },
   }[LANG];
@@ -241,12 +258,29 @@
         return;
       }
 
-      /* DEMO: no hay backend. Aquí conectarías tu endpoint / servicio de correo.
-         Ej: fetch('/api/lead', { method:'POST', body: new FormData(form) }) */
-      note.textContent = T.formOk;
-      note.className = 'form-note ok';
-      form.reset();
-      setTimeout(() => { note.textContent = ''; note.className = 'form-note'; }, 6000);
+      const btn = form.querySelector('button[type="submit"]');
+      const btnTxt = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = T.formSending; }
+      note.textContent = ''; note.className = 'form-note';
+
+      const data = { form: 'contacto', hp: (form.elements.website ? form.elements.website.value : ''),
+                     pagina: location.href };
+      ['nombre','empresa','telefono','email','sector','intent','mensaje'].forEach((k) => {
+        if (form.elements[k]) data[k] = form.elements[k].value;
+      });
+
+      sendLead(data)
+        .then(() => {
+          note.textContent = T.formOk;
+          note.className = 'form-note ok';
+          form.reset();
+          setTimeout(() => { note.textContent = ''; note.className = 'form-note'; }, 6000);
+        })
+        .catch(() => {
+          note.textContent = T.formErr;
+          note.className = 'form-note bad';
+        })
+        .finally(() => { if (btn) { btn.disabled = false; btn.textContent = btnTxt; } });
     });
   }
 
@@ -282,15 +316,28 @@
       ok = mark(mail, mailMsg) && ok;
       if (!ok) { bNote.textContent = T2.bad; bNote.className = 'form-note bad'; return; }
 
-      /* DEMO: aquí se enviarían los datos al CRM/correo antes de entregar el archivo. */
-      bNote.textContent = T2.ok;
-      bNote.className = 'form-note ok';
-      const file = bForm.dataset.file;
-      const a = document.createElement('a');
-      a.href = file; a.download = ''; a.rel = 'noopener';
-      document.body.appendChild(a); a.click(); a.remove();
-      bForm.reset();
-      setTimeout(() => { bNote.textContent = ''; bNote.className = 'form-note'; }, 8000);
+      const bBtn = document.getElementById('brochureSubmit');
+      const bTxt = bBtn ? bBtn.textContent : '';
+      if (bBtn) { bBtn.disabled = true; bBtn.textContent = T.formSending; }
+      bNote.textContent = ''; bNote.className = 'form-note';
+
+      const entregar = () => {
+        const a = document.createElement('a');
+        a.href = bForm.dataset.file; a.download = ''; a.rel = 'noopener';
+        document.body.appendChild(a); a.click(); a.remove();
+        bForm.reset();
+        setTimeout(() => { bNote.textContent = ''; bNote.className = 'form-note'; }, 8000);
+      };
+
+      sendLead({ form: 'brochure', hp: (bForm.elements.website ? bForm.elements.website.value : ''),
+                 pagina: location.href,
+                 nombre: nom.value, empresa: emp.value, puesto: pue.value, email: mail.value })
+        .then(() => { bNote.textContent = T2.ok; bNote.className = 'form-note ok'; entregar(); })
+        .catch(() => {
+          // Si falla el aviso, no se le niega el archivo a quien ya dejó sus datos.
+          bNote.textContent = T2.ok; bNote.className = 'form-note ok'; entregar();
+        })
+        .finally(() => { if (bBtn) { bBtn.disabled = false; bBtn.textContent = bTxt; } });
     });
   }
 })();
