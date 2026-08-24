@@ -381,6 +381,22 @@ function leadText({ titulo, rows, mensaje }) {
   return l.join('\n');
 }
 
+const RE_CORREO = /^[^\s@<>",;]+@[^\s@<>",;]+\.[^\s@<>",;]+$/;
+
+/* Acepta "a@b.com", 'a@b.com, c@d.com', 'a@b.com; c@d.com', con o sin comillas,
+   y también la forma 'Nombre <a@b.com>'. Devuelve solo lo que Resend acepta. */
+function parseDestinatarios(raw) {
+  return String(raw || '')
+    .split(/[,;\n]+/)
+    .map((x) => {
+      const t = x.trim();
+      const m = t.match(/<([^>]+)>/);          // "Nombre <correo>" primero
+      return (m ? m[1] : t).trim();
+    })
+    .map((x) => x.replace(/^["'<]+|["'>]+$/g, '').trim())
+    .filter((x) => RE_CORREO.test(x));
+}
+
 async function handleLead(request, env, cors, origin) {
   // Solo desde el propio sitio.
   if (origin && !ALLOWED_ORIGINS.includes(origin)) {
@@ -431,9 +447,17 @@ async function handleLead(request, env, cors, origin) {
     return json({ error: 'Falta configurar RESEND_API_KEY como secreto del Worker.' }, 500, cors);
   }
 
-  const to = (env.LEAD_TO || '').split(',').map((x) => x.trim()).filter(Boolean);
+  const to = parseDestinatarios(env.LEAD_TO);
   if (!to.length) {
-    return json({ error: 'Falta configurar el destinatario: npx wrangler secret put LEAD_TO' }, 500, cors);
+    // Se informa qué se recibió, pero nunca la dirección: el mensaje puede verse
+    // desde el navegador de cualquiera.
+    const crudo = String(env.LEAD_TO || '');
+    return json({
+      error: 'El destinatario configurado no es una dirección válida.',
+      pista: crudo
+        ? `LEAD_TO trae ${crudo.length} caracteres y ninguno de sus ${crudo.split(/[,;]/).length} fragmentos parece un correo. Revisa que no lleve comillas ni espacios: npx wrangler secret put LEAD_TO`
+        : 'LEAD_TO está vacío. Configúralo con: npx wrangler secret put LEAD_TO',
+    }, 500, cors);
   }
 
   let r;
