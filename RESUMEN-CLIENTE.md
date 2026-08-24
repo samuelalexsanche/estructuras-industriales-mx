@@ -13,8 +13,8 @@ Pasamos de una sola página a un **sitio completo de 124 páginas**, cada una pe
 | **Inicio** | Presentación, cifras, sectores, proyectos, video, reseñas y contacto |
 | **7 sectores** | Automotriz · Alimenticio · Logístico · Corporativo · **Farmacéutico** · Industrial · Aeronáutico |
 | **4 regiones** | Centro · Bajío · Occidente · **Otros estados** |
-| **10 estados** | Una página por estado: "Construcción industrial en Querétaro", "…en Jalisco", etc. |
-| **32 proyectos** | Cada obra con su propia página: cliente, ubicación, alcance y fotos |
+| **11 estados** | Una página por estado: "Construcción industrial en Querétaro", "…en Jalisco", etc. |
+| **43 proyectos** | Cada obra con su propia página: cliente, ubicación, alcance y fotos |
 | **Blog** | 3 artículos técnicos con fotos de obra |
 | **Nosotros / Contacto** | Historia, certificaciones, ubicación y formulario |
 
@@ -61,32 +61,42 @@ ISO 9001:2015 (Bureau Veritas) · REPSE vigente · Fianzas de cumplimiento y cal
 
 ---
 
-## 5. Ajustes de esta última ronda
+## 5. Lo más reciente
 
-- Se agregó el **logo oficial** de Grupo CAABSA Steel, el **brochure** y el **CV**.
-- Se creó el **sector Farmacéutico**, ahora también visible en la página principal, con **Aventis Pharma**.
-- Se sumó **Interjet** con sus fotografías.
-- El proyecto **"Mixing" quedó identificado como obra de Bridgestone** y se unificó bajo ese nombre en todas sus fichas.
-- **"Sur" se cambió a "Otros estados"**.
-- Las **políticas de calidad** ahora mencionan todos sus registros y certificaciones.
-- El **blog** ya lleva fotografías de obra: Andenes en el artículo de centros logísticos, Tintas Sánchez en el de complejos industriales y Bridgestone en el de proyectos industriales especiales.
-- **Se revisó una por una que cada fotografía corresponda a su proyecto.**
-- El **CV ya se descarga de verdad**: antes solo abría el PDF en otra pestaña y estaba únicamente en la página Nosotros. Ahora tiene su propio botón de descarga y un enlace en el pie de **todas** las páginas del sitio.
-- **Le dimos al CV el lugar que merece.** Es un documento de 54 páginas con todo el historial de obra, así que dejó de ser un enlace secundario:
-  - En la **página de inicio** hay una banda dedicada, entre las reseñas y el video, con el botón de descarga.
-  - En **Nosotros**, la sección se llama ahora "Documentación" y muestra dos tarjetas: el **CV destacado** (con lo que contiene: más de 400 proyectos por sector, clientes AAA y AA, superficies y tonelajes, certificación ISO) y el brochure a un lado.
-  - El texto explica por qué importa: es el documento que piden las áreas de compras y los comités de licitación. Se indica el número de páginas y el peso del archivo antes de descargarlo.
+**Proyectos**
+- El sitio pasó de 32 a **43 proyectos** y de 10 a **11 estados**, con San Luis Potosí como estado nuevo.
+- Se sumaron Vesta San Luis Potosí, Mann+Hummel, Dart de México, Brose, Baleros Mexicanos, Irizar, Rubau, Euroquip, Cosmetic Colors y los dos ThyssenKrupp.
+- **ThyssenKrupp quedó separado en sus dos obras**: Metalúrgica (Parque Industrial Xoxtla, 18,600 m²) y Presta de México (Parque Industrial Ciudad Textil, 1,500 m²).
+- Vetrotex ya lleva su superficie: 2,000 m², nave de tres niveles para producción.
 
-> **Nota sobre el CV:** lo dejamos como descarga libre, sin formulario. El brochure sí pide los datos, porque es la pieza comercial que sirve para captar prospectos; el CV de obra suele pedirse dentro de procesos de licitación y ponerle un registro de por medio puede frenar a un cliente serio. Si prefieren que el CV también pida datos, lo cambiamos.
+**Fotografía**
+- Con la carpeta actualizada, cada foto quedó asignada a la obra que muestra. Irizar, Euroquip, Daewoo, Ferrostaal, Metrocolor, Robin y Martinrea recuperaron imágenes que estaban sueltas.
+- **Ningún proyecto queda ya sin fotografía.**
+- Se eliminaron fotos repetidas y una que no correspondía a su proyecto.
 
----
+**Video**
+- El video corporativo ahora se sirve **en el idioma de la página**: la versión en inglés para el sitio en inglés.
+- La portada abre con una **toma aérea de una nave en montaje**, en bucle continuo y sin cortes. No se carga en celular, para no gastar datos del visitante.
+
+**Diseño**
+- Logotipo de Grupo CAABSA Steel **más grande** en el encabezado y el pie.
+- El carrusel de marcas pasó de 23 a **36 logotipos**.
+- **Banda con efecto parallax al cierre de las 148 páginas**, cada una con una foto real de la obra o del estado que trata.
+- Las galerías muestran las fotos **completas**, sin recortarlas.
+
+**Formulario de contacto**
+- Los mensajes del formulario y las descargas del brochure **ya llegan por correo**, con el membrete de CAABSA STEEL, distintivo según el tipo de contacto y botones para responder, escribir por WhatsApp o llamar con un toque.
+- Al responder ese correo se le contesta directamente a quien escribió.
+- Incluye protección contra correo basura automatizado.
 
 ## 6. Lo que falta de su parte
 
-1. ~~Nombre del proyecto de Tlaxcala~~ — **resuelto**: es Vetrotex Saint-Gobain (Parque Industrial Xicohténcatl). Ya tiene su página. Solo falta la superficie en m², que el CV no indica.
-2. **Fotografías de obra** de Bardahl, Soriana y Grupo CIMSA. Ya están publicadas con las imágenes que nos enviaron, pero son vistas aéreas y de Street View de Google —la de Soriana incluso conserva la marca de agua de Google sobre la imagen—. Con fotos propias de la obra se verían mucho mejor.
-3. **Ubicación de Grupo CIMSA**: en el documento aparece como Estado de México, pero la colonia El Coecillo corresponde a León, Guanajuato. ¿Cuál es la correcta?
-4. **Proyecto Irizar**: el CV confirma dos obras en el P. Ind. Bernardo Quintana, Querétaro (4,574 y 4,570 m²). ¿Las publicamos como una página o como dos?
-5. **Correo donde deben llegar los mensajes** del formulario de contacto.
-6. **Dominio definitivo** (por ejemplo caabsasteel.mx) para publicar el sitio ahí.
-7. **¿Publicamos los 74 proyectos del CV?** El sitio muestra 33; el currículum documenta 74 con cliente, superficie y ubicación. Publicarlos multiplicaría la presencia en buscadores, aunque la mayoría iría sin fotografías.
+1. **Datos de Cosmetic Colors.** Nos mandaron su carpeta con una foto, pero el proyecto no aparece en el currículum, ni en la presentación, ni en la lista "Obras en la web". Está publicado solo con nombre, estado y foto: faltan superficie, ubicación y alcance.
+2. **Ubicación de Grupo CIMSA.** Tanto la presentación como el currículum dicen "Parque Industrial El Coecillo, Estado de México", pero El Coecillo está en León, Guanajuato. Lo dejamos como ustedes lo escriben; solo confirmen cuál es la correcta.
+3. **Fotografías propias de Bardahl, Soriana y Grupo CIMSA.** Las que tenemos son vistas aéreas y de Street View de Google — la de Soriana conserva la marca de agua de Google sobre la imagen. Con fotos de obra se verían mucho mejor.
+4. **Fotos originales de Brose y Baleros Mexicanos.** Las únicas que hay miden apenas 420 y 415 píxeles de ancho; parecen recortes de un documento.
+5. **Logotipos de Audi, Robin, Mann+Hummel y Cosmetic Colors**, los únicos cuatro que faltan en el carrusel de marcas.
+6. **REPSE y fianzas.** El sitio ya menciona REPSE vigente, normas de seguridad e higiene y fianzas de cumplimiento y calidad. Confírmennos la vigencia del REPSE y qué tipo de fianzas manejan, para dejar ese texto definitivo.
+7. **Correo donde deben llegar los formularios.**
+8. **Dominio definitivo** (caabsasteel.mx) y acceso a su DNS. Es lo que falta para publicar el sitio ahí y para que los correos salgan del dominio de la empresa.
+9. **¿Publicamos los 74 proyectos del currículum?** El sitio muestra 43; el currículum documenta 74 con cliente, superficie y ubicación. Publicarlos multiplicaría la presencia en buscadores, aunque la mayoría iría sin fotografía.
