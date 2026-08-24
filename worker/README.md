@@ -12,19 +12,29 @@ Un solo Worker atiende dos cosas:
 ```bash
 cd worker
 
-# 1) Claves (nunca van en el repo; quedan cifradas en Cloudflare)
+# 1) Secretos (nunca van en el repo; quedan cifrados en Cloudflare)
 npx wrangler secret put DEEPSEEK_API_KEY     # asistente de IA
 npx wrangler secret put RESEND_API_KEY       # envío de formularios
+npx wrangler secret put LEAD_TO              # a dónde llegan los formularios
 
-# 2) Destinatario: editar LEAD_TO en wrangler.toml
-
-# 3) Publicar
+# 2) Publicar
 npx wrangler deploy
 ```
 
+> `LEAD_TO` va como secreto y no como variable porque **este repositorio es
+> público**: un correo escrito en `wrangler.toml` quedaría a la vista de los
+> rastreadores de spam. Admite varios separados por coma.
+
 ## Correo de los formularios
 
-- `LEAD_TO` — a dónde llegan. Admite varios separados por coma.
+- `LEAD_TO` — a dónde llegan (secreto). Admite varios separados por coma.
+
+### Modo de pruebas de Resend
+Mientras no haya un dominio verificado, Resend **solo entrega al correo de la
+cuenta** y responde 403 `validation_error` para cualquier otro destinatario.
+Para probar de punta a punta antes de tener el dominio, pon tu propio correo en
+`LEAD_TO`. Al verificar el dominio en resend.com/domains (dos registros DNS) se
+levanta la restricción y `LEAD_FROM` pasa a `web@caabsasteel.mx`.
 - `LEAD_FROM` — remitente. Con el dominio sin verificar se usa el de pruebas de
   Resend. Una vez verificado `caabsasteel.mx` en Resend (dos registros DNS),
   cambiar a `Sitio web CAABSA STEEL <web@caabsasteel.mx>` para que no caiga en

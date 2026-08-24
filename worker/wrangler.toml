@@ -6,11 +6,12 @@ compatibility_date = "2024-11-01"
 #   npx wrangler secret put DEEPSEEK_API_KEY     (asistente de IA)
 #   npx wrangler secret put RESEND_API_KEY       (envío de formularios)
 
-[vars]
-# A dónde llegan los formularios del sitio. Se pueden poner varios
-# separados por coma:  "proyectos@caabsasteel.mx, ventas@caabsasteel.mx"
-LEAD_TO = "CAMBIAR@caabsasteel.mx"
+# El destinatario NO va aquí: este repositorio es público y el correo quedaría
+# expuesto a los rastreadores de spam. Se guarda como secreto, igual que las keys:
+#   npx wrangler secret put LEAD_TO
+# Admite varios separados por coma:  proyectos@caabsasteel.mx,ventas@caabsasteel.mx
 
+[vars]
 # Remitente. Mientras no esté verificado el dominio en Resend, se deja el de
 # pruebas de Resend. Con caabsasteel.mx verificado, cambiar a:
 #   LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"

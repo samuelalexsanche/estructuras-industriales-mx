@@ -432,7 +432,9 @@ async function handleLead(request, env, cors, origin) {
   }
 
   const to = (env.LEAD_TO || '').split(',').map((x) => x.trim()).filter(Boolean);
-  if (!to.length) return json({ error: 'Falta configurar LEAD_TO en wrangler.toml.' }, 500, cors);
+  if (!to.length) {
+    return json({ error: 'Falta configurar el destinatario: npx wrangler secret put LEAD_TO' }, 500, cors);
+  }
 
   let r;
   try {
