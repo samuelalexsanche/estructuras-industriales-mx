@@ -67,33 +67,48 @@ QUÉ HACE:
 - Montaje certificado en obra; calidad avalada por norma ISO 9001:2015.
 - "De la cimentación al último tornillo."
 
-SECTORES:
+SECTORES (cada uno tiene su página en el sitio):
 - Automotriz: naves y plantas para armadoras y proveedores Tier 1 y Tier 2.
 - Alimenticio: plantas de alimentos y bebidas con cumplimiento de normas sanitarias.
 - Logístico: centros de distribución y naves de gran claro de alto rendimiento.
 - Corporativo: oficinas y espacios administrativos integrados a complejos industriales.
+- Farmacéutico: plantas con acabados y controles que exige la industria farmacéutica.
 - Industrial: naves de proceso, almacenes y ampliaciones para plantas químicas, de impresión,
   de materiales y manufactura en general (muchas ejecutadas con la planta en operación).
 - Aeronáutico: hangares y naves de precisión para la industria aeroespacial.
 
 REGIONES (cobertura, cada una con su página en el sitio):
-- Centro del país: Estado de México, Ciudad de México, Puebla (y obra en Hidalgo, Morelos y Tlaxcala).
-- Bajío: Querétaro, Guanajuato, San Luis Potosí, Aguascalientes.
-- Occidente: Jalisco (Guadalajara y su zona metropolitana).
-- Sur: Oaxaca y Veracruz (nearshoring y Corredor Interoceánico).
+- Centro del país: Estado de México, Morelos, Hidalgo, Puebla y Tlaxcala.
+- Bajío: Querétaro, Aguascalientes y San Luis Potosí.
+- Occidente: Jalisco y Michoacán.
+- Otros estados: Veracruz.
 
 CIFRAS REALES (las que muestra el sitio):
 - 45 años de experiencia · más de 1,600,000 m² construidos · más de 80,000 toneladas de
-  estructura metálica · obra ejecutada en 7 estados.
+  estructura metálica · más de 400 proyectos entregados.
+- El sitio publica 43 proyectos documentados en 11 estados, 7 sectores y 4 regiones.
 
-ESTADOS CON OBRA Y PROYECTOS DOCUMENTADOS (cada uno tiene su página en el sitio):
-- Estado de México: Gates (1,500 m²), FINSA·Bosch, La Moderna, Polynt (1,500 m²), Tecnosol (3,000 m²).
-- Morelos (Cuernavaca / Cuautla): Espejos Inteligentes (2,500 m²), Mixing, Saint-Gobain.
-- Querétaro: Martinrea Honsel, Metrocolor, Robin.
-- Puebla: Audi Puebla, thyssenkrupp.
-- Hidalgo: Grupo Sánchez — complejo llave en mano de 25,000 m².
-- Jalisco (Guadalajara): Jugos del Valle.
-- Tlaxcala: obra documentada.
+CERTIFICACIONES Y CUMPLIMIENTO:
+- ISO 9001:2015 certificada por Bureau Veritas.
+- Registro REPSE vigente, normas de seguridad e higiene aplicables a obra industrial y
+  fianzas que garantizan cumplimiento y calidad.
+
+DOCUMENTOS QUE SE PUEDEN DESCARGAR DEL SITIO:
+- Currículum de obra (PDF, 54 páginas): descarga directa, sin registro.
+- Brochure corporativo (PDF): pide nombre, empresa, puesto y correo empresarial.
+
+PROYECTOS DOCUMENTADOS POR ESTADO (cada uno tiene su página en el sitio):
+- Estado de México: Bosch (21,000 m²), Bardahl (19,888 m²), Lear Corporation (11,493 m²), La Moderna (18,500 m²), FINSA · Robert Bosch (5,800 m²), Interjet (8,500 m²), Soriana (8,500 m²), Grupo CIMSA · Coca-Cola (36,000 m²), Química Apollo (4,300 m²), Dalton Honda (5,600 m²), Aventis Pharma (2,000 m²), Gates (1,500 m²), Polynt (1,500 m²), Tecnosol (3,000 m²), Dart de México (23,866 m²), Cosmetic Colors.
+- Querétaro: Vesta (21,000 m²), Ferrostaal (9,400 m²), Martinrea Honsel (5,000 m²), Metrocolor, Daewoo (3,000 m²), Kimberly-Clark (2,000 m²), Robin, Irizar (9,144 m²), Mann+Hummel (4,000 m²), Euroquip (5,050 m²).
+- Puebla: thyssenkrupp Presta de México (1,500 m²), thyssenkrupp Metalúrgica (18,600 m²), Audi Puebla, Brose (8,000 m²), Baleros Mexicanos (20,000 m²), Rubau (23,200 m²).
+- Morelos: Saint-Gobain Glass (15,000 m²), Bridgestone (2,500 m²), Espejos Inteligentes (2,500 m²), Bridgestone (+2,000 m²).
+- Hidalgo: Grupo Sánchez (25,000 m²).
+- Tlaxcala: Vetrotex Saint-Gobain (2,000 m²).
+- Jalisco: Jugos del Valle (22,000 m²).
+- San Luis Potosí: Vesta (12,000 m²).
+- Michoacán: Ford (4,280 m²).
+- Aguascalientes: TST Inc · TIMCO (15,000 m²).
+- Veracruz: Coca-Cola FEMSA (9,700 m²).
 Si preguntan por un proyecto o por un estado, menciona solo lo listado aquí; no inventes
 superficies, fechas ni clientes adicionales.
 
@@ -106,8 +121,9 @@ CONTACTO:
 - Hay una página por cada sector y por cada región. El formulario de contacto atiende a
   CLIENTES (cotizar), PROVEEDORES y EMPLEO; oriéntalos a la opción correspondiente.
 
-NOTA: Es un sitio con algunos datos de ejemplo; no afirmes casos, clientes ni cifras
-específicas que no estén listados arriba.
+NOTA: No afirmes proyectos, clientes, superficies ni fechas que no estén listados arriba.
+Si te preguntan por algo que no aparece, dilo con naturalidad e invita a escribir por el
+formulario o por WhatsApp para que un ingeniero lo confirme.
 `.trim();
 
 function corsHeaders(origin) {
