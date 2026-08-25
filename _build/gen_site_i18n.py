@@ -377,7 +377,14 @@ def wa(lang):
     <span class="wa__label">{u["wa_label"]}</span>
   </a>'''
 
+# El asistente de IA se apagó antes de publicar, a petición del cliente.
+# Para reactivarlo: poner True y regenerar. El Worker sigue desplegado y
+# `js/chat.js` sigue en el repo, así que no hay nada que reconstruir.
+CHAT_ACTIVO = False
+
 def chat(lang):
+    if not CHAT_ACTIVO: return ""
+
     u = UI[lang]
     return f'''  <button class="ai-fab" id="aiFab" aria-label="{u["ai_open"]}">
     <span class="ai-fab__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.6 3.9L17.5 8l-3.9 1.6L12 13l-1.6-3.4L6.5 8l3.9-1.1z"/><path d="M18.5 13.5l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z"/></svg></span>
@@ -406,9 +413,9 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
+    chat_js = f'  <script src="{base}js/chat.js?v=14"></script>\n' if CHAT_ACTIVO else ""
     return f'''  <script src="{base}js/main.js?v=14"></script>
-  <script src="{base}js/chat.js?v=14"></script>
-</body>
+{chat_js}</body>
 </html>
 '''
 
