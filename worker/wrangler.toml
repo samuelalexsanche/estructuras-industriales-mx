@@ -12,10 +12,11 @@ compatibility_date = "2024-11-01"
 # Admite varios separados por coma:  proyectos@caabsasteel.mx,ventas@caabsasteel.mx
 
 [vars]
-# Remitente. Mientras no esté verificado el dominio en Resend, se deja el de
-# pruebas de Resend. Con caabsasteel.mx verificado, cambiar a:
-#   LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"
-LEAD_FROM = "CAABSA STEEL <onboarding@resend.dev>"
+# Remitente de los avisos del formulario.
+# OJO: esto SOLO funciona una vez verificado caabsasteel.mx en resend.com/domains.
+# Antes de eso, Resend rechaza el envío con 403 y el visitante ve un error.
+# Para volver al modo de pruebas: "CAABSA STEEL <onboarding@resend.dev>"
+LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"
 
 # Desde dónde toma el correo el logotipo del membrete.
 # OJO: desplegar este cambio SOLO cuando el sitio ya esté en caabsasteel.mx;
