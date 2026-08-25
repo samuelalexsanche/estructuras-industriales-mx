@@ -17,6 +17,7 @@ compatibility_date = "2024-11-01"
 #   LEAD_FROM = "Sitio web CAABSA STEEL <web@caabsasteel.mx>"
 LEAD_FROM = "CAABSA STEEL <onboarding@resend.dev>"
 
-# Desde dónde toma el correo el logotipo del membrete. Cambiar al dominio
-# final cuando esté publicado allí.
-SITE_URL = "https://samuelalexsanche.github.io/estructuras-industriales-mx"
+# Desde dónde toma el correo el logotipo del membrete.
+# OJO: desplegar este cambio SOLO cuando el sitio ya esté en caabsasteel.mx;
+# antes de eso el logo del correo saldría roto.
+SITE_URL = "https://caabsasteel.mx"
