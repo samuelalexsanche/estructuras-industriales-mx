@@ -18,6 +18,7 @@
 const ALLOWED_ORIGINS = [
   'https://caabsasteel.mx',
   'https://www.caabsasteel.mx',
+  'https://nuevo.caabsasteel.mx',   // subdominio de revisión, antes del cambio final
   'https://samuelalexsanche.github.io',
   'http://localhost:8099',
   'http://localhost:8080',
