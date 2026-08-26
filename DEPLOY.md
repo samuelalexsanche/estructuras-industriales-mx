@@ -41,21 +41,21 @@ renombradas, fotos retiradas), pero estas rutas están excluidas y quedan intact
 Comprobado con `rsync --dry-run` contra una copia de la estructura real: **cero
 operaciones de borrado** sobre archivos del cliente.
 
-## Si no hay SSH
+## Si no hay SSH (es el caso de este hosting)
 
-Alternativa por FTP, que también sube solo lo cambiado:
+El proveedor tiene el acceso por consola desactivado: *"Shell access is not
+enabled on your account"*. Se puede pedir por ticket, o usar FTP, que también
+sube solo lo que cambió.
 
 ```bash
-brew install lftp
-lftp -u USUARIO,CONTRASEÑA dos2r2063.servwingu.mx -e \
-  "mirror -R --only-newer --parallel=4 \
-   --exclude-glob _build/ --exclude-glob worker/ --exclude-glob .git/ \
-   --exclude-glob clientes/ --exclude-glob sgciso/ --exclude-glob sistema/ \
-   --exclude-glob directorio/ --exclude-glob .well-known/ \
-   . public_html; quit"
+brew install lftp        # una sola vez
+./deploy-ftp.sh --dry    # muestra qué subiría
+./deploy-ftp.sh          # sube
 ```
 
-Sin `--delete`, por seguridad: con FTP conviene borrar a mano lo que sobre.
+La contraseña se pide en cada ejecución y **no se guarda en ningún archivo**.
+Las exclusiones son las mismas que en SSH, salvo que **no borra** lo que sobra:
+por FTP conviene revisar a mano antes de eliminar nada.
 
 ## El Worker es aparte
 
