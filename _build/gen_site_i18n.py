@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=17" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=18" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -413,8 +413,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    chat_js = f'  <script src="{base}js/chat.js?v=17"></script>\n' if CHAT_ACTIVO else ""
-    return f'''  <script src="{base}js/main.js?v=17"></script>
+    chat_js = f'  <script src="{base}js/chat.js?v=18"></script>\n' if CHAT_ACTIVO else ""
+    return f'''  <script src="{base}js/main.js?v=18"></script>
 {chat_js}</body>
 </html>
 '''
@@ -496,7 +496,7 @@ def sector_projects_block(lang, base, sector_key):
         return noproj_block(lang, base)
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
-          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
+          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}{f'<span class="proj__flag" aria-hidden="true">{p["flag"]}</span>' if p.get("flag") else ""}</h3>
           <div class="proj__more"><div>
             <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
             <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
@@ -523,7 +523,7 @@ def region_projects_block(lang, base, region_key):
         return noproj_block(lang, base)
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
-          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
+          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}{f'<span class="proj__flag" aria-hidden="true">{p["flag"]}</span>' if p.get("flag") else ""}</h3>
           <div class="proj__more"><div>
             <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
             <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
@@ -938,7 +938,7 @@ def build_lang(lang):
     name_of = {s["key"]: s["name"][lang] for s in SECTORS}
     proj_cards = "\n".join(f'''        <article class="proj reveal">
           <div class="proj__media"><img src="{base_root}{p[0]}" alt="{p[3]}" loading="lazy" /></div>
-          <div class="proj__info"><span class="chip {p[1]}">{name_of[p[2]]}</span><h3>{p[3]}</h3>
+          <div class="proj__info"><span class="chip {p[1]}">{name_of[p[2]]}</span><h3>{p[3]}<span class="proj__flag" aria-hidden="true">{FLAG_BY_CLIENT.get(p[3],"")}</span></h3>
           <div class="proj__more"><div><p>{p[4][lang]}</p></div></div></div>
         </article>''' for p in PROJ)
 
@@ -1385,9 +1385,8 @@ def clients_marquee(lang, base):
     mid = (len(CLIENT_LOGOS)+1)//2
     def band(items, rev=False):
         imgs = "".join(
-          f'<span class="mq__item"><img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" '
+          f'<img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" '
           f'width="{_logo_w(sl)}" height="46" decoding="async" />'
-          f'<span class="mq__flag" title="{nm}" aria-hidden="true">{fl}</span></span>'
           for sl,nm,fl in items*2)
         return f'<div class="mq"><div class="mq__track{" mq__track--rev" if rev else ""}">{imgs}</div></div>'
     t = ({"kicker":"Confianza","h2":"Empresas que han construido con nosotros",
@@ -1448,6 +1447,7 @@ def pmedia(p, base, lang, alt=None):
     return (f'<div class="proj__media proj__media--blank" role="img" aria-label="{alt} — {lbl}">'
             f'{BLANK_MARK}<span class="proj__blanktxt">{lbl}</span></div>')
 
+FLAG_BY_CLIENT = {p["client"]: (p.get("flag") or "") for p in PROJECTS}
 SECTOR_BY_KEY = {s["key"]: s for s in SECTORS}
 REGION_BY_KEY = {r["key"]: r for r in REGIONS}
 CHIP = {"automotive":"chip--auto","food":"chip--food","logistics":"chip--log",
@@ -1507,7 +1507,7 @@ def build_projects(lang):
         ngal = p["photos"] - (1 if bidx else 0)
         scope = "".join(f"<li>{s}</li>" for s in p["scope"][lang])
         facts = f'''<div class="build-list">
-          <span><b>{pu["client"]}:</b> {p["client"]}</span>
+          <span><b>{pu["client"]}:</b> {p["client"]}{f'<span class="proj__flag" aria-hidden="true">{p["flag"]}</span>' if p.get("flag") else ""}</span>
           <span><b>{pu["sector"]}:</b> {f'<a href="{base}{path_of("sector",lang,SECTOR_BY_KEY[p["sector"]]["slug"][lang])}">{sec}</a>' if p["sector"] in SECTOR_BY_KEY else sec}</span>
           <span><b>{pu["location"]}:</b> {loc}</span>
           {f'<span><b>{pu["surface"]}:</b> {p["m2"]}</span>' if p["m2"] else ''}
@@ -1573,7 +1573,7 @@ def build_states(lang):
                  f'We build industrial facilities, plants and corporate spaces in {stname}, with projects delivered in {st["cities"][lang]}. Every project is completed under ISO 9001:2015 certified processes.')
         cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
-          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3>
+          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}{f'<span class="proj__flag" aria-hidden="true">{p["flag"]}</span>' if p.get("flag") else ""}</h3>
           <div class="proj__more"><div>
             <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
             <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
@@ -1663,7 +1663,7 @@ def build_states(lang):
     alt_p  = ("en/projects/index.html" if lang=="es" else "proyectos/index.html")
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang, p["client"])}
-          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3>
+          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}{f'<span class="proj__flag" aria-hidden="true">{p["flag"]}</span>' if p.get("flag") else ""}</h3>
           <div class="proj__more"><div>
             <p>{p["kind"][lang]} · {STATES[p["state"]]["name"][lang]}</p>
             <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>

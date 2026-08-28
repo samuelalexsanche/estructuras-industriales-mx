@@ -268,16 +268,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mq:hover .mq__track{animation-play-state:paused}
 @keyframes mqScroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @media (prefers-reduced-motion:reduce){.mq__track{animation:none}.mq{overflow-x:auto}}
-.mq__item{position:relative;display:inline-flex;align-items:center;flex:none;margin-right:64px}
-.mq__logo{height:46px;width:auto;flex:none;object-fit:contain;
+.mq__logo{height:46px;width:auto;flex:none;object-fit:contain;margin-right:64px;
   filter:grayscale(1);opacity:.58;transition:filter .35s var(--ease),opacity .35s var(--ease),transform .35s var(--ease)}
 .mq__logo:hover{filter:none;opacity:1;transform:scale(1.06)}
 @media (max-width:560px){
   .clients{padding:48px 0}
   .mq__track{animation-duration:30s}
-  .mq__item{margin-right:40px}
-  .mq__logo{height:36px}
-  .mq__flag{font-size:.8rem}
+  .mq__logo{height:36px;margin-right:40px}
 }
 @media (prefers-reduced-motion:reduce){
   .mq__track{animation:none;flex-wrap:wrap;justify-content:center;width:auto;gap:34px}
@@ -587,5 +584,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 
 /* Bandera del país de origen de cada marca, junto a su logotipo */
-.mq__flag{margin-left:10px;font-size:1rem;line-height:1;opacity:.55;transition:opacity .35s var(--ease)}
-.mq__item:hover .mq__flag{opacity:1}
+
+/* Bandera del país de origen de la marca, junto al nombre del cliente */
+.proj__flag{margin-left:9px;font-size:.72em;line-height:1;opacity:.85;vertical-align:middle}
+.build-list .proj__flag{margin-left:7px;font-size:.95em;opacity:1}
