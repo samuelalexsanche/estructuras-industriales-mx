@@ -86,7 +86,7 @@ REGIONES (cobertura, cada una con su página en el sitio):
 
 CIFRAS REALES (las que muestra el sitio):
 - 45 años de experiencia · más de 1,600,000 m² construidos · más de 80,000 toneladas de
-  estructura metálica · más de 400 proyectos entregados.
+  estructura metálica · más de 500 proyectos entregados.
 - El sitio publica 43 proyectos documentados en 11 estados, 7 sectores y 4 regiones.
 
 CERTIFICACIONES Y CUMPLIMIENTO:

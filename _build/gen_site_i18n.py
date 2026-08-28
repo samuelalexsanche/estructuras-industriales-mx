@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=14" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=17" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -413,8 +413,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    chat_js = f'  <script src="{base}js/chat.js?v=14"></script>\n' if CHAT_ACTIVO else ""
-    return f'''  <script src="{base}js/main.js?v=14"></script>
+    chat_js = f'  <script src="{base}js/chat.js?v=17"></script>\n' if CHAT_ACTIVO else ""
+    return f'''  <script src="{base}js/main.js?v=17"></script>
 {chat_js}</body>
 </html>
 '''
@@ -481,7 +481,8 @@ def proj_block(lang, base, proj, alt=False):
       <div class="proyectos__grid" style="grid-template-columns:1fr">
         <article class="proj reveal" style="min-height:420px">
           <div class="proj__media"><img src="{base}{img}" alt="{name}" loading="lazy" /></div>
-          <div class="proj__info"><h3>{name}</h3><p>{meta[lang]}</p></div>
+          <div class="proj__info"><h3>{name}</h3>
+          <div class="proj__more"><div><p>{meta[lang]}</p></div></div></div>
         </article>
       </div>
     </div>
@@ -496,8 +497,10 @@ def sector_projects_block(lang, base, sector_key):
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
-          <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
-          <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
+          <div class="proj__more"><div>
+            <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
+            <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
+          </div></div></div>
         </article>''' for p in projs)
     n = len(projs)
     title = (f"{n} proyecto{'s' if n>1 else ''} en este sector" if lang=="es"
@@ -521,8 +524,10 @@ def region_projects_block(lang, base, region_key):
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{STATES[p["state"]]["name"][lang]}</span><h3>{p["client"]}</h3>
-          <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
-          <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
+          <div class="proj__more"><div>
+            <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
+            <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
+          </div></div></div>
         </article>''' for p in projs)
     links = " · ".join(f'<a href="{base}{state_path(k,lang)}">{STATES[k]["name"][lang]}</a>' for k in skeys)
     n = len(projs)
@@ -644,7 +649,7 @@ def build_lang(lang):
             br_mail="Correo electrónico empresarial", br_mail_hint="Usa el correo de tu empresa; no aceptamos correos personales (gmail, hotmail, etc.).",
             cv_tag="PDF · 54 páginas", cv_t="Currículum de obra",
             cv_p="45 años de trayectoria documentados: cada proyecto con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que solicitan las áreas de compras y los comités de licitación.",
-            cv_l1="Más de 400 proyectos entregados, por sector",
+            cv_l1="Más de 500 proyectos entregados, por sector",
             cv_l2="Clientes AAA y AA: Bosch, Ford, Bridgestone, Coca-Cola FEMSA y más",
             cv_l3="Superficies, tonelajes y alcance de cada obra",
             cv_l4="Certificación ISO 9001:2015 y registros vigentes",
@@ -675,7 +680,7 @@ def build_lang(lang):
             br_mail="Business email address", br_mail_hint="Please use your company email; personal addresses (gmail, hotmail, etc.) are not accepted.",
             cv_tag="PDF · 54 pages", cv_t="Company project record (CV)",
             cv_p="45 years documented: every project with its client, location, floor area and scope, with photographs from site. This is the document procurement departments and tender committees ask for.",
-            cv_l1="Over 400 delivered projects, broken down by industry",
+            cv_l1="Over 500 delivered projects, broken down by industry",
             cv_l2="AAA and AA clients: Bosch, Ford, Bridgestone, Coca-Cola FEMSA and more",
             cv_l3="Floor areas, tonnage and scope for each project",
             cv_l4="ISO 9001:2015 certification and current registrations",
@@ -834,7 +839,7 @@ def build_lang(lang):
     self_p = path_of("home", lang); alt_p = path_of("home", other)
     H = {"es":dict(
             eyebrow="Construcción industrial &middot; ISO 9001:2015",
-            h1='Construcción Industrial para Corporativos y Empresas <span class="grad">AAA y AA</span>',
+            h1='Construcción Industrial para Empresas y Corporativos <span class="grad">AAA y AA</span>',
             sub="Naves industriales, plantas y edificios comerciales en el centro de México, el Bajío, el occidente y el sur. Respaldamos a nuestros clientes en costo, tiempo, calidad e innovación. Certificados ISO 9001:2015.",
             cta1="Solicita una cotización", cta2="Descarga nuestro brochure",
             m1="años de experiencia", m2="m² construidos", m3="toneladas de acero", m4="proyectos entregados",
@@ -854,7 +859,7 @@ def build_lang(lang):
             band_btn="Cotiza tu proyecto",
             rv_k="Lo que dicen nuestros clientes", rv_t="Cartas de recomendación de quienes ya construyeron con nosotros",
             cvb_k="Currículum de obra", cvb_t="45 años de obra industrial, en un solo documento",
-            cvb_p="Nuestro currículum reúne más de 400 proyectos entregados: cada uno con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que piden las áreas de compras y los comités de licitación.",
+            cvb_p="Nuestro currículum reúne más de 500 proyectos entregados: cada uno con su cliente, ubicación, superficie y alcance, con fotografías de obra. Es el documento que piden las áreas de compras y los comités de licitación.",
             cvb_btn="Descargar CV de la empresa",
             cvb_meta="PDF · 54 páginas · descarga directa, sin registro",
             cvb_alt="Ver también el brochure corporativo",
@@ -866,7 +871,7 @@ def build_lang(lang):
             desc="Constructora industrial con 45 años de experiencia. Naves, plantas y espacios corporativos para empresas AAA y AA en el centro de México, Bajío, occidente y sur. ISO 9001:2015."),
          "en":dict(
             eyebrow="Industrial construction &middot; ISO 9001:2015",
-            h1='Industrial Construction for Corporations and <span class="grad">AAA and AA</span> Companies',
+            h1='Industrial Construction for <span class="grad">AAA and AA</span> Companies and Corporations',
             sub="Industrial facilities, plants and commercial buildings across Central Mexico, the Bajío, the west and the south. We back our clients on cost, schedule, quality and innovation. ISO 9001:2015 certified.",
             cta1="Request a quote", cta2="Download our brochure",
             m1="years of experience", m2="m² built", m3="tons of steel", m4="projects delivered",
@@ -886,7 +891,7 @@ def build_lang(lang):
             band_btn="Request a quote",
             rv_k="What our clients say", rv_t="Recommendation letters from companies that have built with us",
             cvb_k="Project record", cvb_t="45 years of industrial construction, in a single document",
-            cvb_p="Our company CV brings together more than 400 delivered projects: each one with its client, location, floor area and scope, with photographs from site. This is the document procurement departments and tender committees ask for.",
+            cvb_p="Our company CV brings together more than 500 delivered projects: each one with its client, location, floor area and scope, with photographs from site. This is the document procurement departments and tender committees ask for.",
             cvb_btn="Download the company CV",
             cvb_meta="PDF · 54 pages · direct download, no registration",
             cvb_alt="See the corporate brochure as well",
@@ -933,7 +938,8 @@ def build_lang(lang):
     name_of = {s["key"]: s["name"][lang] for s in SECTORS}
     proj_cards = "\n".join(f'''        <article class="proj reveal">
           <div class="proj__media"><img src="{base_root}{p[0]}" alt="{p[3]}" loading="lazy" /></div>
-          <div class="proj__info"><span class="chip {p[1]}">{name_of[p[2]]}</span><h3>{p[3]}</h3><p>{p[4][lang]}</p></div>
+          <div class="proj__info"><span class="chip {p[1]}">{name_of[p[2]]}</span><h3>{p[3]}</h3>
+          <div class="proj__more"><div><p>{p[4][lang]}</p></div></div></div>
         </article>''' for p in PROJ)
 
     def initials(nm):
@@ -977,7 +983,7 @@ def build_lang(lang):
         <div><b>45</b><span>{H["m1"]}</span></div><div class="sep"></div>
         <div><b>+1.6M</b><span>{H["m2"]}</span></div><div class="sep"></div>
         <div><b>+80k</b><span>{H["m3"]}</span></div><div class="sep"></div>
-        <div><b>+400</b><span>{H["m4"]}</span></div>
+        <div><b>+500</b><span>{H["m4"]}</span></div>
       </div>
     </div>
   </section>
@@ -1344,19 +1350,24 @@ def design_band(lang, base, photo, kicker, title, text):
   </div>'''
 
 # Logos de clientes extraídos de la presentación del cliente
+# (archivo, nombre, país de origen de la marca — la bandera sale del currículum,
+#  que muestra la del país junto a cada obra)
 CLIENT_LOGOS = [
- ("bosch","Bosch"),("ford","Ford"),("bridgestone","Bridgestone"),("kimberly-clark","Kimberly-Clark"),
- ("saint-gobain","Saint-Gobain"),("femsa","Coca-Cola FEMSA"),("soriana","Soriana"),("lear","Lear Corporation"),
- ("martinrea","Martinrea Honsel"),("thyssenkrupp","thyssenkrupp"),("la-moderna","La Moderna"),
- ("jugos-del-valle","Jugos del Valle"),("interjet","Interjet"),("vesta","Vesta"),("finsa","FINSA"),
- ("daewoo","Daewoo"),("bardahl","Bardahl"),("grupo-sanchez","Grupo Sánchez"),("ferrostaal","Ferrostaal"),
- ("quimica-apollo","Química Apollo"),("tst-timco","TST Inc · TIMCO"),("cimsa","Grupo CIMSA"),
- ("dalton-honda","Dalton Honda"),
- # añadidos del currículum de obra
- ("gates","Gates"),("brose","Brose"),("dart","Dart de México"),("irizar","Irizar"),
- ("euroquip","Euroquip"),("rubau","Rubau"),("metrocolor","Metrocolor"),("polynt","Polynt"),
- ("tecnosol","Tecnosol"),("vetrotex","Vetrotex"),("aventis","Aventis Pharma"),
- ("baleros-mexicanos","Baleros Mexicanos"),("espejos-inteligentes","Espejos Inteligentes"),
+ ("bosch","Bosch","🇩🇪"),("ford","Ford","🇺🇸"),("bridgestone","Bridgestone","🇯🇵"),
+ ("kimberly-clark","Kimberly-Clark","🇺🇸"),("saint-gobain","Saint-Gobain","🇫🇷"),
+ ("femsa","Coca-Cola FEMSA","🇲🇽"),("soriana","Soriana","🇲🇽"),("lear","Lear Corporation","🇺🇸"),
+ ("martinrea","Martinrea Honsel","🇨🇦"),("thyssenkrupp","thyssenkrupp","🇩🇪"),
+ ("la-moderna","La Moderna","🇲🇽"),("jugos-del-valle","Jugos del Valle","🇲🇽"),
+ ("interjet","Interjet","🇲🇽"),("vesta","Vesta","🇲🇽"),("finsa","FINSA","🇲🇽"),
+ ("daewoo","Daewoo","🇰🇷"),("bardahl","Bardahl","🇺🇸"),("grupo-sanchez","Grupo Sánchez","🇲🇽"),
+ ("ferrostaal","Ferrostaal","🇩🇪"),("quimica-apollo","Química Apollo","🇲🇽"),
+ ("tst-timco","TST Inc · TIMCO","🇺🇸"),("cimsa","Grupo CIMSA","🇲🇽"),
+ ("dalton-honda","Dalton Honda","🇯🇵"),
+ ("gates","Gates","🇺🇸"),("brose","Brose","🇩🇪"),("dart","Dart de México","🇺🇸"),
+ ("irizar","Irizar","🇪🇸"),("euroquip","Euroquip","🇲🇽"),("rubau","Rubau","🇪🇸"),
+ ("metrocolor","Metrocolor","🇲🇽"),("polynt","Polynt","🇮🇹"),("tecnosol","Tecnosol","🇲🇽"),
+ ("vetrotex","Vetrotex","🇫🇷"),("aventis","Aventis Pharma","🇫🇷"),
+ ("baleros-mexicanos","Baleros Mexicanos","🇲🇽"),("espejos-inteligentes","Espejos Inteligentes","🇲🇽"),
 ]
 
 def _logo_w(slug, h=46):
@@ -1374,8 +1385,10 @@ def clients_marquee(lang, base):
     mid = (len(CLIENT_LOGOS)+1)//2
     def band(items, rev=False):
         imgs = "".join(
-          f'<img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" width="{_logo_w(sl)}" height="46" decoding="async" />'
-          for sl,nm in items*2)
+          f'<span class="mq__item"><img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" '
+          f'width="{_logo_w(sl)}" height="46" decoding="async" />'
+          f'<span class="mq__flag" title="{nm}" aria-hidden="true">{fl}</span></span>'
+          for sl,nm,fl in items*2)
         return f'<div class="mq"><div class="mq__track{" mq__track--rev" if rev else ""}">{imgs}</div></div>'
     t = ({"kicker":"Confianza","h2":"Empresas que han construido con nosotros",
           "p":"Grandes corporativos y empresas AAA y AA que han confiado sus proyectos a CAABSA STEEL."}
@@ -1560,8 +1573,11 @@ def build_states(lang):
                  f'We build industrial facilities, plants and corporate spaces in {stname}, with projects delivered in {st["cities"][lang]}. Every project is completed under ISO 9001:2015 certified processes.')
         cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang)}
-          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3><p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
-          <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
+          <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3>
+          <div class="proj__more"><div>
+            <p>{p["kind"][lang]}{" · "+p["m2"] if p["m2"] else ""}</p>
+            <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
+          </div></div></div>
         </article>''' for p in projs)
         reg = REGION_BY_KEY.get(st["region"]) if st["region"] else None
         regline = (f'<p><b>{pu["region_lbl"]}:</b> <a href="{base}{path_of("region",lang,reg["slug"][lang])}">{reg["name"][lang]}</a></p>' if reg else "")
@@ -1648,8 +1664,10 @@ def build_states(lang):
     cards = "\n".join(f'''        <article class="proj reveal">
           {pmedia(p, base, lang, p["client"])}
           <div class="proj__info"><span class="chip {CHIP[p["sector"]]}">{sector_label(p["sector"],lang)}</span><h3>{p["client"]}</h3>
-          <p>{p["kind"][lang]} · {STATES[p["state"]]["name"][lang]}</p>
-          <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a></div>
+          <div class="proj__more"><div>
+            <p>{p["kind"][lang]} · {STATES[p["state"]]["name"][lang]}</p>
+            <a class="post__more" href="{base}{proj_path(p["slug"],lang)}">{"Ver proyecto →" if lang=="es" else "View project →"}</a>
+          </div></div></div>
         </article>''' for p in PROJECTS)
     body = f'''  <section class="subhead">
     <div class="subhead__photo" style="background-image:url('{base}images/proyectos/martinrea-honsel/01.jpg')"></div>
