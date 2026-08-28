@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=18" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=19" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -413,8 +413,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    chat_js = f'  <script src="{base}js/chat.js?v=18"></script>\n' if CHAT_ACTIVO else ""
-    return f'''  <script src="{base}js/main.js?v=18"></script>
+    chat_js = f'  <script src="{base}js/chat.js?v=19"></script>\n' if CHAT_ACTIVO else ""
+    return f'''  <script src="{base}js/main.js?v=19"></script>
 {chat_js}</body>
 </html>
 '''
@@ -1353,21 +1353,95 @@ def design_band(lang, base, photo, kicker, title, text):
 # (archivo, nombre, país de origen de la marca — la bandera sale del currículum,
 #  que muestra la del país junto a cada obra)
 CLIENT_LOGOS = [
- ("bosch","Bosch","🇩🇪"),("ford","Ford","🇺🇸"),("bridgestone","Bridgestone","🇯🇵"),
- ("kimberly-clark","Kimberly-Clark","🇺🇸"),("saint-gobain","Saint-Gobain","🇫🇷"),
- ("femsa","Coca-Cola FEMSA","🇲🇽"),("soriana","Soriana","🇲🇽"),("lear","Lear Corporation","🇺🇸"),
- ("martinrea","Martinrea Honsel","🇨🇦"),("thyssenkrupp","thyssenkrupp","🇩🇪"),
- ("la-moderna","La Moderna","🇲🇽"),("jugos-del-valle","Jugos del Valle","🇲🇽"),
- ("interjet","Interjet","🇲🇽"),("vesta","Vesta","🇲🇽"),("finsa","FINSA","🇲🇽"),
- ("daewoo","Daewoo","🇰🇷"),("bardahl","Bardahl","🇺🇸"),("grupo-sanchez","Grupo Sánchez","🇲🇽"),
- ("ferrostaal","Ferrostaal","🇩🇪"),("quimica-apollo","Química Apollo","🇲🇽"),
- ("tst-timco","TST Inc · TIMCO","🇺🇸"),("cimsa","Grupo CIMSA","🇲🇽"),
- ("dalton-honda","Dalton Honda","🇯🇵"),
- ("gates","Gates","🇺🇸"),("brose","Brose","🇩🇪"),("dart","Dart de México","🇺🇸"),
- ("irizar","Irizar","🇪🇸"),("euroquip","Euroquip","🇲🇽"),("rubau","Rubau","🇪🇸"),
- ("metrocolor","Metrocolor","🇲🇽"),("polynt","Polynt","🇮🇹"),("tecnosol","Tecnosol","🇲🇽"),
- ("vetrotex","Vetrotex","🇫🇷"),("aventis","Aventis Pharma","🇫🇷"),
- ("baleros-mexicanos","Baleros Mexicanos","🇲🇽"),("espejos-inteligentes","Espejos Inteligentes","🇲🇽"),
+ ("abc-group","ABC Group"),
+ ("alpla","ALPLA"),
+ ("atotech","Atotech"),
+ ("autoliv","Autoliv"),
+ ("aventis","Aventis Pharma"),
+ ("b-and-b","B&B Apparel"),
+ ("baleros-mexicanos","Baleros Mexicanos"),
+ ("bardahl","Bardahl"),
+ ("basf","BASF"),
+ ("bmw","BMW"),
+ ("bocar","Bocar"),
+ ("bosch","Bosch"),
+ ("bridgestone","Bridgestone"),
+ ("brose","Brose"),
+ ("c-and-a","C&A"),
+ ("cadbury","Cadbury"),
+ ("cargill","Cargill"),
+ ("cimsa","Grupo CIMSA"),
+ ("coca-cola","Coca-Cola"),
+ ("cosmetic-colors","Cosmetic Colors"),
+ ("daewoo","Daewoo"),
+ ("dalton-honda","Dalton Honda"),
+ ("dart","Dart de México"),
+ ("delco-remy","Delco Remy"),
+ ("dsc","DSC"),
+ ("edscha","Edscha"),
+ ("elringklinger","ElringKlinger"),
+ ("espejos-inteligentes","Espejos Inteligentes"),
+ ("euroquip","Euroquip"),
+ ("fargos","Fargos"),
+ ("femsa","Coca-Cola FEMSA"),
+ ("fernandez-editores","Fernández Editores"),
+ ("ferrostaal","Ferrostaal"),
+ ("finsa","FINSA"),
+ ("firmenich","Firmenich"),
+ ("ford","Ford"),
+ ("gates","Gates"),
+ ("georgia-pacific","Georgia-Pacific"),
+ ("gm","General Motors"),
+ ("grupo-modelo","Grupo Modelo"),
+ ("grupo-sanchez","Grupo Sánchez"),
+ ("hcq","HCQ"),
+ ("imprentor","Imprentor"),
+ ("industrias-cazel","Industrias Cazel"),
+ ("industrias-kirkwood","Industrias Kirkwood"),
+ ("innes","Innes"),
+ ("interjet","Interjet"),
+ ("irizar","Irizar"),
+ ("jsp","JSP"),
+ ("jugos-del-valle","Jugos del Valle"),
+ ("kimberly-clark","Kimberly-Clark"),
+ ("kostal","Kostal"),
+ ("la-moderna","La Moderna"),
+ ("lear","Lear Corporation"),
+ ("losifra","Losifra"),
+ ("magna","Magna"),
+ ("mann-hummel","Mann+Hummel"),
+ ("mapupita","Mapupita"),
+ ("mars","Mars"),
+ ("marti","Martí"),
+ ("martinrea","Martinrea Honsel"),
+ ("mercedes-benz","Mercedes-Benz"),
+ ("metrocolor","Metrocolor"),
+ ("nch","NCH"),
+ ("polynt","Polynt"),
+ ("quimica-apollo","Química Apollo"),
+ ("robin","Robin Mexicana"),
+ ("rubau","Rubau"),
+ ("saint-gobain","Saint-Gobain"),
+ ("sicpa","SICPA"),
+ ("signa","Signa"),
+ ("skf","SKF"),
+ ("sommer-allibert","Sommer Allibert"),
+ ("soriana","Soriana"),
+ ("stanley","Stanley"),
+ ("t-fal","T-Fal"),
+ ("tafime","Tafime"),
+ ("tec-monterrey","Tecnológico de Monterrey"),
+ ("tecnosol","Tecnosol"),
+ ("teya","Constructora Teya"),
+ ("thyssenkrupp","thyssenkrupp"),
+ ("tst-timco","TST Inc · TIMCO"),
+ ("tsys","T-SYS"),
+ ("vesta","Vesta"),
+ ("vetrotex","Vetrotex"),
+ ("warner-lambert","Warner Lambert"),
+ ("wilson","Wilson"),
+ ("wyn","WYN"),
+ ("zeller-plastik","Zeller Plastik"),
 ]
 
 def _logo_w(slug, h=46):
@@ -1387,7 +1461,7 @@ def clients_marquee(lang, base):
         imgs = "".join(
           f'<img class="mq__logo" src="{base}images/logos/{sl}.png" alt="{nm}" '
           f'width="{_logo_w(sl)}" height="46" decoding="async" />'
-          for sl,nm,fl in items*2)
+          for sl,nm in items*2)
         return f'<div class="mq"><div class="mq__track{" mq__track--rev" if rev else ""}">{imgs}</div></div>'
     t = ({"kicker":"Confianza","h2":"Empresas que han construido con nosotros",
           "p":"Grandes corporativos y empresas AAA y AA que han confiado sus proyectos a CAABSA STEEL."}
@@ -1469,7 +1543,7 @@ PUI = {
    more_state="Ver más proyectos en", back_projects="Ver todos los proyectos",
    in_state="Proyectos en", states_title="Estados donde construimos",
    states_sub="Construcción industrial y estructura de acero con presencia comprobada en estos estados.",
-   region_lbl="Región", cities="Zonas donde operamos", nproj="proyectos documentados",
+   region_lbl="Región", cities="Zonas donde operamos", nproj="Proyectos representativos",
    proj_kicker="Proyecto"),
  "en": dict(projects="Projects", states="States", crumb_proj="Projects",
    scope="Scope of work", about="About the project", gallery="Project gallery",
@@ -1477,7 +1551,7 @@ PUI = {
    more_state="See more projects in", back_projects="View all projects",
    in_state="Projects in", states_title="States where we build",
    states_sub="Industrial construction and structural steel with a proven track record in these states.",
-   region_lbl="Region", cities="Areas we serve", nproj="documented projects",
+   region_lbl="Region", cities="Areas we serve", nproj="Representative projects",
    proj_kicker="Project"),
 }
 
@@ -1565,9 +1639,9 @@ def build_states(lang):
         self_p = state_path(skey, lang); alt_p = state_path(skey, other)
         title = (f'Construcción industrial en {stname} — Naves y estructura de acero | CAABSA STEEL' if lang=="es"
                  else f'Industrial construction in {stname} — Facilities and structural steel | CAABSA STEEL')
-        desc = (f'Constructora industrial en {stname}: naves industriales, plantas y estructura de acero. {len(projs)} proyectos documentados en {st["cities"][lang]}. ISO 9001:2015.'
+        desc = (f'Constructora industrial en {stname}: naves industriales, plantas y estructura de acero. Proyectos representativos en {st["cities"][lang]}. ISO 9001:2015.'
                 if lang=="es" else
-                f'Industrial construction company in {stname}: industrial facilities, plants and structural steel. {len(projs)} documented projects in {st["cities"][lang]}. ISO 9001:2015 certified.')
+                f'Industrial construction company in {stname}: industrial facilities, plants and structural steel. Representative projects in {st["cities"][lang]}. ISO 9001:2015 certified.')
         intro = (f'Construimos naves industriales, plantas y espacios corporativos en {stname}, con obra ejecutada en {st["cities"][lang]}. Cada proyecto se entrega bajo procesos certificados ISO 9001:2015.'
                  if lang=="es" else
                  f'We build industrial facilities, plants and corporate spaces in {stname}, with projects delivered in {st["cities"][lang]}. Every project is completed under ISO 9001:2015 certified processes.')
@@ -1610,7 +1684,7 @@ def build_states(lang):
 
   <section class="section section--alt">
     <div class="container">
-      <div class="section-head reveal"><div class="kicker">{pu["in_state"]} {stname}</div><h2 class="h2">{len(projs)} {pu["nproj"]}</h2></div>
+      <div class="section-head reveal"><div class="kicker">{pu["in_state"]} {stname}</div><h2 class="h2">{pu["nproj"]}</h2></div>
       <div class="proyectos__grid">
 {cards}
       </div>
@@ -1634,7 +1708,7 @@ def build_states(lang):
     alt_p  = ("en/states/index.html" if lang=="es" else "estados/index.html")
     cards = "\n".join(f'''        <a class="region-card reveal" href="{base}{state_path(k,lang)}">
           <h3>{st["name"][lang]}</h3><p>{st["cities"][lang]}</p>
-          <span class="region-card__states">{len([p for p in PROJECTS if p["state"]==k])} {pu["nproj"]} →</span>
+          <span class="region-card__states">{pu["nproj"]} →</span>
         </a>''' for k,st in STATES.items())
     body = f'''  <section class="subhead">
     <div class="subhead__bg"></div>
