@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=19" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=20" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -413,8 +413,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    chat_js = f'  <script src="{base}js/chat.js?v=19"></script>\n' if CHAT_ACTIVO else ""
-    return f'''  <script src="{base}js/main.js?v=19"></script>
+    chat_js = f'  <script src="{base}js/chat.js?v=20"></script>\n' if CHAT_ACTIVO else ""
+    return f'''  <script src="{base}js/main.js?v=20"></script>
 {chat_js}</body>
 </html>
 '''
@@ -530,9 +530,7 @@ def region_projects_block(lang, base, region_key):
           </div></div></div>
         </article>''' for p in projs)
     links = " · ".join(f'<a href="{base}{state_path(k,lang)}">{STATES[k]["name"][lang]}</a>' for k in skeys)
-    n = len(projs)
-    title = (f"{n} proyecto{'s' if n>1 else ''} en esta región" if lang=="es"
-             else f"{n} project{'s' if n>1 else ''} in this region")
+    title = ("Proyectos representativos" if lang=="es" else "Representative projects")
     lbl = ("Páginas por estado" if lang=="es" else "Pages by state")
     return f'''  <section class="section section--alt">
     <div class="container">
