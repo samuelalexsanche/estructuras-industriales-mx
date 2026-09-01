@@ -312,7 +312,7 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="{base}css/styles.css?v=20" />
+  <link rel="stylesheet" href="{base}css/styles.css?v=21" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>'''
@@ -413,8 +413,8 @@ def chat(lang):
   </section>'''
 
 def scripts(base):
-    chat_js = f'  <script src="{base}js/chat.js?v=20"></script>\n' if CHAT_ACTIVO else ""
-    return f'''  <script src="{base}js/main.js?v=20"></script>
+    chat_js = f'  <script src="{base}js/chat.js?v=21"></script>\n' if CHAT_ACTIVO else ""
+    return f'''  <script src="{base}js/main.js?v=21"></script>
 {chat_js}</body>
 </html>
 '''
@@ -1024,7 +1024,7 @@ def build_lang(lang):
         <div class="stat reveal"><div class="stat__num" data-count="45" data-suffix="{' años' if lang=='es' else ' yrs'}">0</div><div class="stat__label">{H["st1"]}</div><div class="stat__bar"><i></i></div></div>
         <div class="stat reveal"><div class="stat__num" data-count="1600000" data-suffix="+">0</div><div class="stat__label">{H["st2"]}</div><div class="stat__bar"><i></i></div></div>
         <div class="stat reveal"><div class="stat__num" data-count="80000" data-suffix="+">0</div><div class="stat__label">{H["st3"]}</div><div class="stat__bar"><i></i></div></div>
-        <div class="stat reveal"><div class="stat__num" data-count="400" data-suffix="+">0</div><div class="stat__label">{H["st4"]}</div><div class="stat__bar"><i></i></div></div>
+        <div class="stat reveal"><div class="stat__num" data-count="500" data-suffix="+">0</div><div class="stat__label">{H["st4"]}</div><div class="stat__bar"><i></i></div></div>
       </div>
     </div>
   </section>
