@@ -314,6 +314,15 @@ def head(lang, title, desc, base, self_path, alt_path):
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
   <link rel="stylesheet" href="{base}css/styles.css?v=21" />
   <link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0B9SLMLNE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+
+    gtag('config', 'G-K0B9SLMLNE');
+  </script>
 </head>
 <body>'''
 
