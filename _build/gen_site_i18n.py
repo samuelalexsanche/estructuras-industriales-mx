@@ -218,7 +218,7 @@ UI = {
    home="Inicio",
    foot_desc="Construcción industrial y estructura de acero para empresas AAA y AA. 45 años de experiencia · ISO 9001:2015.",
    foot_sectors="Sectores", foot_regions="Regiones", foot_contact="Contacto",
-   foot_rights="Todos los derechos reservados.", foot_tag="Construcción industrial · ISO 9001:2015",
+   foot_rights="Todos los derechos reservados.", foot_tag="Construcción industrial · ISO 9001:2015", foot_credit="Sitio por Mattera Systems",
    foot_cv="Descargar CV de la empresa (PDF)",
    phone_lbl="Tel / WhatsApp", address="Metepec, Estado de México",
    wa_aria="Escríbenos por WhatsApp", wa_label="¿Cotizamos tu proyecto?",
@@ -254,7 +254,7 @@ UI = {
    home="Home",
    foot_desc="Industrial construction and structural steel for AAA and AA companies. 45 years of experience · ISO 9001:2015.",
    foot_sectors="Industries", foot_regions="Regions", foot_contact="Contact",
-   foot_rights="All rights reserved.", foot_tag="Industrial construction · ISO 9001:2015",
+   foot_rights="All rights reserved.", foot_tag="Industrial construction · ISO 9001:2015", foot_credit="Site by Mattera Systems",
    foot_cv="Download company CV (PDF)",
    phone_lbl="Phone / WhatsApp", address="Metepec, State of Mexico",
    wa_aria="Message us on WhatsApp", wa_label="Shall we quote your project?",
@@ -375,6 +375,7 @@ def footer(lang, base):
     <div class="footer__bottom container">
       <span>© <span id="year"></span> CAABSA STEEL. {u["foot_rights"]}</span>
       <span>{u["foot_tag"]}</span>
+      <span><a href="https://matterasystems.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">{u["foot_credit"]}</a></span>
     </div>
   </footer>'''
 
